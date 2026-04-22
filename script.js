@@ -8,8 +8,8 @@ function toggleMenu() {
     }
 }
 
-// Definindo a data-alvo para 25 de Agosto de 2025, às 08:00
-const targetDate = new Date("August 25, 2025 08:00:00").getTime();
+// Definindo a data-alvo para 28 de etembro de 2026, às 08:00
+const targetDate = new Date("September 28, 2026 08:00:00").getTime();
 
 // Atualiza a contagem regressiva a cada segundo
 const countdownFunction = setInterval(() => {
