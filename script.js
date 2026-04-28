@@ -8,7 +8,7 @@ function toggleMenu() {
     }
 }
 
-// Definindo a data-alvo para 28 de etembro de 2026, às 08:00
+// Atualizando a data para 28 de setembro de 2026, às 08:00
 const targetDate = new Date("September 28, 2026 08:00:00").getTime();
 
 // Atualiza a contagem regressiva a cada segundo
