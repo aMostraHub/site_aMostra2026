@@ -51,10 +51,9 @@
             <a href="../pages/amostra.html"
               class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">aMostra</a>
           </li>
-          <!-- <li>
             <a href="/~amostra/pages/comissao.html"
               class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">Comissão</a>
-          </li> -->
+          </li>
           <div id="parceiros" class="hidden"> <!-- Ocultando acesso aos Parceiros-->
           <li>
             <a href="../pages/patrocinadores.html"
@@ -85,47 +84,96 @@ A programação mistura palestras, mesas-redondas e minicursos — tudo voltado 
     </div>
   </section>
 
-<h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-4">
-  Edições Anteriores
-</h2>
+  <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-4">
+    Edições Anteriores
+  </h2>
   
 
-  <div class="w-full px-4 lg:w-3/5 mx-auto mb-10">
-    <div class="splide splide__list h-64 sm:h-80 md:h-[32rem]" aria-label="Galeria de Slides">
-      <div class="splide__track rounded-2xl overflow-hidden"> 
-        <ul class="splide__list h-64 md:h-full">
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/1.jpg" alt="Slide 1"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/2.jpg" alt="Slide 2"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/3.jpg" alt="Slide 3"></li>
-          <!-- <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/4.jpg" alt="Slide 4"></li>-->
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/5.jpg" alt="Slide 5"></li>
-          <!-- <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/6.jpg" alt="Slide 6"></li> -->
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/7.jpg" alt="Slide 7"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/8.jpg" alt="Slide 8"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/9.jpg" alt="Slide 9"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/10.jpg" alt="Slide 10"></li>
-          <!-- <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/11.jpg" alt="Slide 11"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/12.jpg" alt="Slide 12"></li> -->
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/13.jpg" alt="Slide 13"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/14.jpg" alt="Slide 14"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/15.jpg" alt="Slide 15"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/16.jpg" alt="Slide 16"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/17.jpg" alt="Slide 17"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/18.jpg" alt="Slide 18"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/19.jpg" alt="Slide 19"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/20.jpg" alt="Slide 20"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/21.jpg" alt="Slide 21"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/22.jpg" alt="Slide 22"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/23.jpg" alt="Slide 23"></li>
-          <!-- <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/24.jpg" alt="Slide 24"></li> -->
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/25.jpg" alt="Slide 25"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/26.jpg" alt="Slide 26"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/27.jpg" alt="Slide 27"></li>
-          <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/28.jpg" alt="Slide 28"></li>
-        </ul>
+  <button onclick="toggleConteudo(3)" style="display: block; margin: 0 auto;">
+    <p class="mt-4 text-gray-600">2023 <span id="seta3">˅</span></p>
+  </button>
+  <div id="conteudo3" style="display: none;text-align: center;">
+    <div class="w-full px-4 lg:w-3/5 mx-auto mb-10">
+      <div class="splide h-64 sm:h-80 md:h-[32rem]" aria-label="Galeria de Slides">
+        <div class="splide__track rounded-2xl overflow-hidden"> 
+          <ul class="splide__list h-64 md:h-full">
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG1_2023.avif" alt="Slide 1"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG2_2023.avif" alt="Slide 2"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG3_2023.avif" alt="Slide 3"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG4_2023.avif" alt="Slide 4"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG5_2023.avif" alt="Slide 5"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG6_2023.avif" alt="Slide 6"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG7_2023.avif" alt="Slide 7"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG8_2023.avif" alt="Slide 8"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG9_2023.avif" alt="Slide 9"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG10_2023.avif" alt="Slide 10"></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+
+  <button onclick="toggleConteudo(4)" style="display: block; margin: 0 auto;">
+    <p class="mt-4 text-gray-600">2024 <span id="seta4">˅</span></p>
+  </button>
+  <div id="conteudo4" style="display: none;text-align: center;">
+    <div class="w-full px-4 lg:w-3/5 mx-auto mb-10">
+      <div class="splide h-64 sm:h-80 md:h-[32rem]" aria-label="Galeria de Slides">
+        <div class="splide__track rounded-2xl overflow-hidden"> 
+          <ul class="splide__list h-64 md:h-full">
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG1_2024.avif" alt="Slide 1"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG2_2024.avif" alt="Slide 2"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG3_2024.avif" alt="Slide 3"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG4_2024.avif" alt="Slide 4"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG5_2024.avif" alt="Slide 5"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG6_2024.avif" alt="Slide 6"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG7_2024.avif" alt="Slide 7"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG8_2024.avif" alt="Slide 8"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG9_2024.avif" alt="Slide 9"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button onclick="toggleConteudo(5)" style="display: block; margin: 0 auto;">
+    <p class="mt-4 text-gray-600">2025 <span id="seta5">˅</span></p>
+  </button>
+  <div id="conteudo5" style="display: none;text-align: center;">
+    <div class="w-full px-4 lg:w-3/5 mx-auto mb-10">
+      <div class="splide h-64 sm:h-80 md:h-[32rem]" aria-label="Galeria de Slides">
+        <div class="splide__track rounded-2xl overflow-hidden"> 
+          <ul class="splide__list h-64 md:h-full">
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG1_2025.avif" alt="Slide 1"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG2_2025.avif" alt="Slide 2"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG3_2025.avif" alt="Slide 3"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG4_2025.avif" alt="Slide 4"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG5_2025.avif" alt="Slide 5"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG6_2025.avif" alt="Slide 6"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG7_2025.avif" alt="Slide 7"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG8_2025.avif" alt="Slide 8"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG9_2025.avif" alt="Slide 9"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG10_2025.avif" alt="Slide 10"></li>
+            <li class="splide__slide"><img class="w-full h-full object-cover" src="../styles/fotos/IMG11_2025.avif" alt="Slide 11"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  function toggleConteudo(ano) {
+    const c = document.getElementById('conteudo'+ano);
+    const seta = document.getElementById('seta'+ano);
+    if (c.style.display === 'none') {
+      c.style.display = 'block';
+      seta.textContent = '˄';
+    } else {
+      c.style.display = 'none';
+      seta.textContent = '˅';
+    }
+  }
+  </script>
+
   <footer class="bg-gray-100">
     <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
       <div class="flex justify-center">
