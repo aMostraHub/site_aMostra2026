@@ -1,553 +1,348 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>aMostra de Estatística</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../styles/style.css" />
-    <link
-      rel="stylesheet"
-      href="../styles/font-awesome/css/font-awesome.min.css"
-    />
-    <script src="../script.js" defer></script>
-    <style>
-      #bootstrap-scope * {
-        all: revert;
-        font-family: inherit;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aMostra de Estatística - FAQ</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css" />
+  <script src="../script.js" defer></script>
+  <style>
+    #bootstrap-scope * {
+      all: revert;
+      font-family: inherit;
+    }
 
-      .accordion-content {
-        transition: 
-        height 0.3s ease-out,
-        opacity 0.2s ease,
-        padding 0.2s ease;
-        will-change: height, opacity;
-}
-    </style>
-  </head>
+    /* Animação suave para as sanfonas */
+    .accordion-content {
+      transition: height 0.3s ease-out, opacity 0.2s ease, padding 0.2s ease;
+      will-change: height, opacity;
+    }
+  </style>
+</head>
 
-  <body>
-    <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200">
-    <div
-      class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 bg-opacity-90 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4">
+<body class="bg-gray-50 flex flex-col min-h-screen">
+  
+  <!-- NAVEGAÇÃO ORIGINAL -->
+  <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200">
+    <div class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 bg-opacity-90 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <a href="../index.html"><span class="font-semibold text-xl tracking-tight">aMostra XIX</span></a>
       </div>
-      <button onclick="toggleMenu()" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-default" aria-expanded="false">
+      <button onclick="toggleMenu()" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
         </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="menu">
-        <ul
-          class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
-          <li>
-              <a
-                href="../pages/faq.html"
-                class="block py-2 px-3 md:p-0 hover:text-slate-400"
-                >FAQ</a
-              >
-            </li>
-          <li>
-            <a href="../index.html" class="block py-2 px-3 md:p-0 hover:text-slate-400">Ínicio</a>
-          </li>
-          <li>
-            <a href="../pages/amostra.html"
-              class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">aMostra</a>
-          </li>
-          <!-- <li>
-            <a href="/~amostra/pages/comissao.html"
-              class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">Comissão</a>
-          </li> -->
-          <div id="parceiros" class="hidden"> <!-- Ocultando acesso aos Parceiros-->
-          <li>
-            <a href="./pages/patrocinadores.html"
-              class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">Parceiros</a>
-          </li>
-          </div> <!-- Ocultando acesso aos Parceiros-->
+        <ul class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
+          <li><a href="../pages/faq.html" class="block py-2 px-3 md:p-0 text-slate-300 hover:text-white">FAQ</a></li>
+          <li><a href="../index.html" class="block py-2 px-3 md:p-0 hover:text-slate-400">Ínicio</a></li>
+          <li><a href="../pages/amostra.html" class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">aMostra</a></li>
+          <li><a href="../pages/patrocinadores.html" class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">Parceiros</a></li>
         </ul>
       </div>
     </div>
   </nav>
-    <div class="content h-auto">
-      <h1 class="text-3xl font-semibold mb-4">PERGUNTAS FREQUENTES</h1>
-      <div class="w-full max-w mx-auto mt-8 text-lg">
-        <h2 class="text-xl font-bold text-black mt-6 mb-2 sm:text-2xl text-left ">
-          Inscrições
-        </h2>
-        <div class="border rounded-xl overflow-hidden">
-          <div>
-            <button
-              onclick="toggleAccordion('item1')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Como faço para me inscrever nas atividades?
-            </button>
-            <div id="item1" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              A inscrição será possível por meio de um formulário a ser divulgado nas redes sociais da aMostra de Estatística.
-            </div>
-          </div>
 
-          <div>
-            <button
-              onclick="toggleAccordion('item2')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Preciso me inscrever separadamente para cada minicurso ou
-              palestra?
-            </button>
-            <div id="item2" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-               Não haverá minicursos na 18ª edição da aMostra de Estatística e o evento contará com apenas uma inscrição para todas as palestras do evento, havendo, porém, um formulário a ser preenchido em relação à presença em cada palestra, individualmente.
-            </div>
-          </div>
+  <!-- CONTEÚDO PRINCIPAL DO FAQ (NOVO DESIGN) -->
+  <main class="flex-grow mx-auto w-full max-w-3xl px-4 sm:px-6 pt-32 pb-24">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800">Perguntas Frequentes</h1>
+    </div>
 
-          <div>
-            <button
-              onclick="toggleAccordion('item3')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              As vagas são limitadas?
-            </button>
-            <div id="item3" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Há um número limitado de cadeiras disponíveis no auditório, porém a transmissão online do evento é aberta e independente de vagas.
-            </div>
-          </div>
-
-          <div>
-            <button
-              onclick="toggleAccordion('item4')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Posso me inscrever no dia do evento?
-            </button>
-            <div id="item4" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Sim, será possível realizar a inscrição no dia do evento.
-            </div>
-          </div>
-
-          <div>
-            <button
-              onclick="toggleAccordion('item5')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              A inscrição é gratuita?
-            </button>
-            <div id="item5" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Sim, não há quaisquer taxas de inscrição.
-            </div>
+    <!-- SEÇÃO: Inscrições -->
+    <div class="mb-10">
+      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Inscrições</h2>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+        <!-- Item 1 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item1', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Como faço para me inscrever nas atividades?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item1" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            A inscrição será possível por meio de um formulário a ser divulgado nas redes sociais da aMostra de Estatística.
           </div>
         </div>
-
-        <h2 class="text-xl font-bold text-black mt-6 mb-2 sm:text-2xl text-left">
-          Local e Formato
-        </h2>
-        <div class="border rounded-xl overflow-hidden">
-          <div>
-            <button
-              onclick="toggleAccordion('item9')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Onde vai acontecer o evento?
-            </button>
-            <div id="item9" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              O evento acontecerá no auditório Jacy Monteiro e em seus arredores, localizado no Instituto de Matemática e Estatística da USP.
-            </div>
-          </div>
-
-          <div>
-            <button
-              onclick="toggleAccordion('item10')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              O evento será presencial, online ou híbrido?
-            </button>
-            <div id="item10" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              O evento será presencial, mas contará com uma transmissão feita no YouTube para acompanhamento virtual.
-            </div>
-          </div>
-
-          <div>
-            <button
-              onclick="toggleAccordion('item11')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Vai ter transmissão online ou gravação das palestras?
-            </button>
-            <div id="item11" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Haverá uma transmissão online do evento no canal do YouTube da aMostra de Estatística, que ficará gravada e poderá ser acessada posteriormente.
-            </div>
+        <!-- Item 2 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item2', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Preciso me inscrever separadamente para cada minicurso ou palestra?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item2" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            O evento contará com apenas uma inscrição para todas as palestras do evento, havendo, porém, um formulário a ser preenchido em relação à presença em cada palestra/minicurso, individualmente.
           </div>
         </div>
-
-        <h2 class="text-xl font-bold text-black mt-6 mb-2 sm:text-2xl text-left">
-          O que levar / Como se preparar
-        </h2>
-        <div class="border rounded-xl overflow-hidden">
-          <div>
-            <button
-              onclick="toggleAccordion('item12')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Preciso levar algum material?
-            </button>
-            <div id="item12" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Não é necessário levar quaisquer materiais, porém é possível trazer cadernos ou notebooks para eventuais registros e anotações.
-            </div>
-          </div>
-
-          <div>
-            <button
-              onclick="toggleAccordion('item13')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              As atividades têm pré-requisitos?
-            </button>
-            <div id="item13" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-             Não, nenhuma atividade possui qualquer pré-requisito ou necessidade de antemão.
-            </div>
+        <!-- Item 3 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item3', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">As vagas são limitadas?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item3" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Há um número limitado de cadeiras disponíveis no auditório, porém a transmissão online do evento é aberta e independente de vagas.
           </div>
         </div>
-
-        <h2 class="text-xl font-bold text-black mt-6 mb-2 sm:text-2xl text-left">
-          Alimentação e Conforto
-        </h2>
-        <div class="border rounded-xl overflow-hidden">
-          <div>
-            <button
-              onclick="toggleAccordion('item14')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Vai ter coffee break ou intervalo para almoço?
-            </button>
-            <div id="item14" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Haverá tanto um coffee break quanto um intervalo para almoço durante o tempo de ocorrência do evento.
-            </div>
+        <!-- Item 4 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item4', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Posso me inscrever no dia do evento?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item4" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Sim, será possível realizar a inscrição no dia do evento.
           </div>
-          
-          <div>
-            <button
-              onclick="toggleAccordion('item15')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Tem lugar para comer por perto?
-            </button>
-            <div id="item15" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Sim, o Instituto de Matemática e Estatística da USP conta com uma lanchonete localizada na entrada de seu bloco B.
-            </div>
-          </div>
-
-          <div>
-            <button
-              onclick="toggleAccordion('item16')"
-              class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-            >
-              Posso levar lanche?
-            </button>
-            <div id="item16" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-              Será possível trazer lanches e comidas próprias, mas reitera-se que é estritamente proibido o consumo de quaisquer alimentos dentro do auditório.
-            </div>
-          </div>
-          </div>
-
-          <h2 class="text-xl font-bold text-black mt-6 mb-2 sm:text-2xl text-left">
-            Acompanhantes e Contato
-          </h2>
-          <div class="border rounded-xl overflow-hidden">
-            <div>
-              <button
-                onclick="toggleAccordion('item17')"
-                class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-              >
-                Posso levar acompanhante?
-              </button>
-              <div id="item17" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-                Será permitido levar acompanhantes para o evento.
-              </div>
-            </div>
-
-            <div>
-              <button
-                onclick="toggleAccordion('item18')"
-                class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-              >
-                Quem organiza o evento?
-              </button>
-              <div id="item18" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-                O evento é organizado por uma equipe de alunos do Bacharelado em Estatística do Instituto de Matemática e Estatística da USP, juntamente com o professor coordenador Victor Fossaluza.
-              </div>
-            </div>
-
-            <div>
-              <button
-                onclick="toggleAccordion('item19')"
-                class="w-full px-4 py-4 text-left font-medium bg-gray-100 hover:bg-gray-200"
-              >
-                Com quem eu falo se tiver dúvidas?
-              </button>
-              <div id="item19" class="accordion-content px-4 h-0 opacity-0 overflow-hidden transition-all duration-300">
-                Em caso de dúvidas, é aconselhado entrar em contato com a equipe responsável pelo evento por meio de qualquer uma de nossas redes sociais.
-              </div>
-            </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item5', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">A inscrição é gratuita?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item5" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Sim, não há quaisquer taxas de inscrição.
           </div>
         </div>
       </div>
     </div>
 
-    <footer class="bg-gray-100 bottom-0 w-full">
-      <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-        <div class="flex justify-center">
-          <img
-            src="./../styles/Logo.png"
-            alt="Logo da Amostra"
-            class="w-10 h-auto max-w-32 mb-10 md:mb-2"
-          />
-          <h6 class="p-2">Amostra de Estatística</h6>
+    <!-- SEÇÃO: Local e Formato -->
+    <div class="mb-10">
+      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Local e Formato</h2>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+        <!-- Item 9 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item9', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Onde vai acontecer o evento?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item9" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            O evento acontecerá no auditório Jacy Monteiro e em seus arredores, localizado no Instituto de Matemática e Estatística da USP.
+          </div>
         </div>
-
-        <p
-          class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500"
-        >
-          aMostra de Estatística 2026 <br />
-          © 2026 Todos os direitos reservados <br>
-        <a href="../pages/faq.html" class="underline transition hover:text-gray-500/75">
-         FAQ 
-        </a>
-        </p>
-
-        <ul class="mt-10 flex justify-center gap-6 md:gap-8">
-          <li>
-            <a
-              href="https://www.facebook.com/aMostra.de.Estatistica/"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:text-gray-700/75"
-            >
-              <span class="sr-only">Facebook</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                viewBox="0,0,256,256"
-              >
-                <g
-                  fill="#666e7b"
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray=""
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <g transform="scale(5.12,5.12)">
-                    <path
-                      d="M25,3c-12.15,0 -22,9.85 -22,22c0,11.03 8.125,20.137 18.712,21.728v-15.897h-5.443v-5.783h5.443v-3.848c0,-6.371 3.104,-9.168 8.399,-9.168c2.536,0 3.877,0.188 4.512,0.274v5.048h-3.612c-2.248,0 -3.033,2.131 -3.033,4.533v3.161h6.588l-0.894,5.783h-5.694v15.944c10.738,-1.457 19.022,-10.638 19.022,-21.775c0,-12.15 -9.85,-22 -22,-22z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://www.instagram.com/amostraestatistica/"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:text-gray-700/75"
-            >
-              <span class="sr-only">Instagram</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-6 h-6"
-                viewBox="0,0,256,256"
-              >
-                <g
-                  fill="#666e7b"
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray=""
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <g transform="scale(5.12,5.12)">
-                    <path
-                      d="M16,3c-7.17,0 -13,5.83 -13,13v18c0,7.17 5.83,13 13,13h18c7.17,0 13,-5.83 13,-13v-18c0,-7.17 -5.83,-13 -13,-13zM37,11c1.1,0 2,0.9 2,2c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2c0,-1.1 0.9,-2 2,-2zM25,14c6.07,0 11,4.93 11,11c0,6.07 -4.93,11 -11,11c-6.07,0 -11,-4.93 -11,-11c0,-6.07 4.93,-11 11,-11zM25,16c-4.96,0 -9,4.04 -9,9c0,4.96 4.04,9 9,9c4.96,0 9,-4.04 9,-9c0,-4.96 -4.04,-9 -9,-9z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://www.youtube.com/@aMostra-de-Estatistica"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:text-gray-700/75"
-            >
-              <span class="sr-only">Youtube</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                viewBox="0 0 256 256"
-              >
-                <g
-                  fill="#666e7b"
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray=""
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <g transform="scale(5.12,5.12)">
-                    <path
-                      d="M44.89844,14.5c-0.39844,-2.19922 -2.29687,-3.80078 -4.5,-4.30078c-3.29687,-0.69922 -9.39844,-1.19922 -16,-1.19922c-6.59766,0 -12.79687,0.5 -16.09766,1.19922c-2.19922,0.5 -4.10156,2 -4.5,4.30078c-0.40234,2.5 -0.80078,6 -0.80078,10.5c0,4.5 0.39844,8 0.89844,10.5c0.40234,2.19922 2.30078,3.80078 4.5,4.30078c3.5,0.69922 9.5,1.19922 16.10156,1.19922c6.60156,0 12.60156,-0.5 16.10156,-1.19922c2.19922,-0.5 4.09766,-2 4.5,-4.30078c0.39844,-2.5 0.89844,-6.10156 1,-10.5c-0.20312,-4.5 -0.70312,-8 -1.20312,-10.5zM19,32v-14l12.19922,7z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://www.linkedin.com/company/amostraestatistica/"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:text-gray-700/75"
-            >
-              <span class="sr-only">Linkedin</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                class="h-6 w-6"
-                viewBox="0,0,256,256"
-              >
-                <g
-                  fill="#666e7b"
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray=""
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <g transform="scale(5.12,5.12)">
-                    <path
-                      d="M41,4h-32c-2.76,0 -5,2.24 -5,5v32c0,2.76 2.24,5 5,5h32c2.76,0 5,-2.24 5,-5v-32c0,-2.76 -2.24,-5 -5,-5zM17,20v19h-6v-19zM11,14.47c0,-1.4 1.2,-2.47 3,-2.47c1.8,0 2.93,1.07 3,2.47c0,1.4 -1.12,2.53 -3,2.53c-1.8,0 -3,-1.13 -3,-2.53zM39,39h-6c0,0 0,-9.26 0,-10c0,-2 -1,-4 -3.5,-4.04h-0.08c-2.42,0 -3.42,2.06 -3.42,4.04c0,0.91 0,10 0,10h-6v-19h6v2.56c0,0 1.93,-2.56 5.81,-2.56c3.97,0 7.19,2.73 7.19,8.26z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.tiktok.com/@amostra.usp"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:text-gray-700/75"
-            >
-              <span class="sr-only">Tiktok</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                class="h-6 w-6"
-                viewBox="0,0,256,256"
-              >
-                <g
-                  fill="#666e7b"
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray=""
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <g transform="scale(5.12,5.12)">
-                    <path
-                      d="M41,4h-32c-2.757,0 -5,2.243 -5,5v32c0,2.757 2.243,5 5,5h32c2.757,0 5,-2.243 5,-5v-32c0,-2.757 -2.243,-5 -5,-5zM37.006,22.323c-0.227,0.021 -0.457,0.035 -0.69,0.035c-2.623,0 -4.928,-1.349 -6.269,-3.388c0,5.349 0,11.435 0,11.537c0,4.709 -3.818,8.527 -8.527,8.527c-4.709,0 -8.527,-3.818 -8.527,-8.527c0,-4.709 3.818,-8.527 8.527,-8.527c0.178,0 0.352,0.016 0.527,0.027v4.202c-0.175,-0.021 -0.347,-0.053 -0.527,-0.053c-2.404,0 -4.352,1.948 -4.352,4.352c0,2.404 1.948,4.352 4.352,4.352c2.404,0 4.527,-1.894 4.527,-4.298c0,-0.095 0.042,-19.594 0.042,-19.594h4.016c0.378,3.591 3.277,6.425 6.901,6.685z"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-            </a>
-          </li>
-        </ul>
+        <!-- Item 10 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item10', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">O evento será presencial, online ou híbrido?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item10" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            O evento será presencial, mas contará com uma transmissão feita no YouTube para acompanhamento virtual.
+          </div>
+        </div>
+        <!-- Item 11 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item11', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Vai ter transmissão online ou gravação das palestras?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item11" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Haverá uma transmissão online do evento no canal do YouTube da aMostra de Estatística, que ficará gravada e poderá ser acessada posteriormente.
+          </div>
+        </div>
       </div>
-    </footer>
-    <script>
-      function toggleAccordion(id) {
-        const content = document.getElementById(id);
-        const isClosed = content.classList.contains("opacity-0");
+    </div>
 
-        // Fecha todos os itens
-        document.querySelectorAll(".accordion-content").forEach((item) => {
-            item.classList.add("h-0", "opacity-0");
-            item.classList.remove("h-auto", "opacity-100", "py-4");
-        });
+    <!-- SEÇÃO: O que levar -->
+    <div class="mb-10">
+      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">O que levar / Como se preparar</h2>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+        <!-- Item 12 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item12', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Preciso levar algum material?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item12" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Não é necessário levar quaisquer materiais, porém é possível trazer cadernos ou notebooks para eventuais registros e anotações.
+          </div>
+        </div>
+        <!-- Item 13 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item13', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">As atividades têm pré-requisitos?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item13" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Não, nenhuma atividade possui qualquer pré-requisito ou necessidade de antemão.
+          </div>
+        </div>
+      </div>
+    </div>
 
-        // Reseta todos os botões
-        document.querySelectorAll('button[onclick^="toggleAccordion"]').forEach((button) => {
-            button.classList.remove("bg-red-700", "text-white", "hover:bg-red-800");
-            button.classList.add("bg-gray-100", "hover:bg-gray-200");
-        });
+    <!-- SEÇÃO: Alimentação -->
+    <div class="mb-10">
+      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Alimentação e Conforto</h2>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+        <!-- Item 14 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item14', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Vai ter coffee break ou intervalo para almoço?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item14" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Haverá tanto um coffee break quanto um intervalo para almoço durante o tempo de ocorrência do evento.
+          </div>
+        </div>
+        <!-- Item 15 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item15', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Tem lugar para comer por perto?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item15" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Sim, o Instituto de Matemática e Estatística da USP conta com uma lanchonete localizada na entrada de seu bloco B.
+          </div>
+        </div>
+        <!-- Item 16 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item16', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Posso levar lanche?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item16" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Será possível trazer lanches e comidas próprias, mas reitera-se que é estritamente proibido o consumo de quaisquer alimentos dentro do auditório.
+          </div>
+        </div>
+      </div>
+    </div>
 
-        if (isClosed) {
-            content.classList.remove("h-0", "opacity-0");
-            content.classList.add("h-auto", "opacity-100", "py-4");
-            
-            // Estiliza o botão ativo
-            const activeButton = document.querySelector(`button[onclick="toggleAccordion('${id}')"]`);
-            activeButton.classList.remove("bg-gray-100", "hover:bg-gray-200");
-            activeButton.classList.add("bg-red-700", "text-white", "hover:bg-red-800");
-        }
+    <!-- SEÇÃO: Acompanhantes e Contato -->
+    <div class="mb-10">
+      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Acompanhantes e Contato</h2>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+        <!-- Item 17 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item17', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Posso levar acompanhante?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item17" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Será permitido levar acompanhantes para o evento.
+          </div>
+        </div>
+        <!-- Item 18 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item18', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Quem organiza o evento?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item18" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            O evento é organizado por uma equipe de alunos do Bacharelado em Estatística do Instituto de Matemática e Estatística da USP, juntamente com o professor coordenador Victor Fossaluza.
+          </div>
+        </div>
+        <!-- Item 19 -->
+        <div class="border-b border-gray-100 last:border-0">
+          <button onclick="toggleAccordion('item19', this)" class="w-full px-6 py-4 text-left font-medium text-gray-700 bg-white hover:bg-gray-50 flex justify-between items-center transition-colors">
+            <span class="pr-4">Com quem eu falo se tiver dúvidas?</span>
+            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300 chevron shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="item19" class="accordion-content px-6 h-0 opacity-0 overflow-hidden transition-all duration-300 bg-gray-50 text-gray-600">
+            Em caso de dúvidas, é aconselhado entrar em contato com a equipe responsável pelo evento por meio de qualquer uma de nossas redes sociais.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ ORIGINAL -->
+  <footer class="bg-gray-100 bottom-0 w-full mt-auto">
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="flex justify-center">
+        <img src="./../styles/Logo.png" alt="Logo da Amostra" class="w-10 h-auto max-w-32 mb-10 md:mb-2" />
+        <h6 class="p-2">Amostra de Estatística</h6>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
+        aMostra de Estatística 2026 <br />
+        © 2026 Todos os direitos reservados <br>
+        <a href="/~amostra/pages/faq.html" class="underline transition hover:text-gray-500/75">FAQ</a>
+      </p>
+
+      <ul class="mt-10 flex justify-center gap-6 md:gap-8">
+        <li>
+          <a href="https://www.facebook.com/aMostra.de.Estatistica/" rel="noreferrer" target="_blank" class="text-gray-700 transition hover:text-gray-700/75">
+            <span class="sr-only">Facebook</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0,0,256,256">
+              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,3c-12.15,0 -22,9.85 -22,22c0,11.03 8.125,20.137 18.712,21.728v-15.897h-5.443v-5.783h5.443v-3.848c0,-6.371 3.104,-9.168 8.399,-9.168c2.536,0 3.877,0.188 4.512,0.274v5.048h-3.612c-2.248,0 -3.033,2.131 -3.033,4.533v3.161h6.588l-0.894,5.783h-5.694v15.944c10.738,-1.457 19.022,-10.638 19.022,-21.775c0,-12.15 -9.85,-22 -22,-22z"></path></g></g>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/amostraestatistica/" rel="noreferrer" target="_blank" class="text-gray-700 transition hover:text-gray-700/75">
+            <span class="sr-only">Instagram</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0,0,256,256">
+              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M16,3c-7.17,0 -13,5.83 -13,13v18c0,7.17 5.83,13 13,13h18c7.17,0 13,-5.83 13,-13v-18c0,-7.17 -5.83,-13 -13,-13zM37,11c1.1,0 2,0.9 2,2c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2c0,-1.1 0.9,-2 2,-2zM25,14c6.07,0 11,4.93 11,11c0,6.07 -4.93,11 -11,11c-6.07,0 -11,-4.93 -11,-11c0,-6.07 4.93,-11 11,-11zM25,16c-4.96,0 -9,4.04 -9,9c0,4.96 4.04,9 9,9c4.96,0 9,-4.04 9,-9c0,-4.96 -4.04,-9 -9,-9z"></path></g></g>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@aMostra-de-Estatistica" rel="noreferrer" target="_blank" class="text-gray-700 transition hover:text-gray-700/75">
+            <span class="sr-only">Youtube</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 256 256">
+              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M44.89844,14.5c-0.39844,-2.19922 -2.29687,-3.80078 -4.5,-4.30078c-3.29687,-0.69922 -9.39844,-1.19922 -16,-1.19922c-6.59766,0 -12.79687,0.5 -16.09766,1.19922c-2.19922,0.5 -4.10156,2 -4.5,4.30078c-0.40234,2.5 -0.80078,6 -0.80078,10.5c0,4.5 0.39844,8 0.89844,10.5c0.40234,2.19922 2.30078,3.80078 4.5,4.30078c3.5,0.69922 9.5,1.19922 16.10156,1.19922c6.60156,0 12.60156,-0.5 16.10156,-1.19922c2.19922,-0.5 4.09766,-2 4.5,-4.30078c0.39844,-2.5 0.89844,-6.10156 1,-10.5c-0.20312,-4.5 -0.70312,-8 -1.20312,-10.5zM19,32v-14l12.19922,7z"></path></g></g>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/amostraestatistica/" rel="noreferrer" target="_blank" class="text-gray-700 transition hover:text-gray-700/75">
+            <span class="sr-only">Linkedin</span>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-6 w-6" viewBox="0,0,256,256">
+              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M41,4h-32c-2.76,0 -5,2.24 -5,5v32c0,2.76 2.24,5 5,5h32c2.76,0 5,-2.24 5,-5v-32c0,-2.76 -2.24,-5 -5,-5zM17,20v19h-6v-19zM11,14.47c0,-1.4 1.2,-2.47 3,-2.47c1.8,0 2.93,1.07 3,2.47c0,1.4 -1.12,2.53 -3,2.53c-1.8,0 -3,-1.13 -3,-2.53zM39,39h-6c0,0 0,-9.26 0,-10c0,-2 -1,-4 -3.5,-4.04h-0.08c-2.42,0 -3.42,2.06 -3.42,4.04c0,0.91 0,10 0,10h-6v-19h6v2.56c0,0 1.93,-2.56 5.81,-2.56c3.97,0 7.19,2.73 7.19,8.26z"></path></g></g>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@amostra.usp" rel="noreferrer" target="_blank" class="text-gray-700 transition hover:text-gray-700/75">
+            <span class="sr-only">Tiktok</span>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-6 w-6" viewBox="0,0,256,256">
+              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M41,4h-32c-2.757,0 -5,2.243 -5,5v32c0,2.757 2.243,5 5,5h32c2.757,0 5,-2.243 5,-5v-32c0,-2.757 -2.243,-5 -5,-5zM37.006,22.323c-0.227,0.021 -0.457,0.035 -0.69,0.035c-2.623,0 -4.928,-1.349 -6.269,-3.388c0,5.349 0,11.435 0,11.537c0,4.709 -3.818,8.527 -8.527,8.527c-4.709,0 -8.527,-3.818 -8.527,-8.527c0,-4.709 3.818,-8.527 8.527,-8.527c0.178,0 0.352,0.016 0.527,0.027v4.202c-0.175,-0.021 -0.347,-0.053 -0.527,-0.053c-2.404,0 -4.352,1.948 -4.352,4.352c0,2.404 1.948,4.352 4.352,4.352c2.404,0 4.527,-1.894 4.527,-4.298c0,-0.095 0.042,-19.594 0.042,-19.594h4.016c0.378,3.591 3.277,6.425 6.901,6.685z"></path></g></g>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ATUALIZADO DAS SANFONAS -->
+  <script>
+    function toggleAccordion(id, btnElement) {
+      const content = document.getElementById(id);
+      const isClosed = content.classList.contains("opacity-0");
+
+      // Fecha todos os itens e reseta as setas
+      document.querySelectorAll(".accordion-content").forEach((item) => {
+          item.classList.add("h-0", "opacity-0", "py-0");
+          item.classList.remove("h-auto", "opacity-100", "py-4");
+      });
+
+      document.querySelectorAll('button[onclick^="toggleAccordion"]').forEach((button) => {
+          button.classList.remove("bg-red-50", "text-red-700");
+          button.classList.add("bg-white", "text-gray-700");
+          // Reseta a rotação da seta
+          const chevron = button.querySelector('.chevron');
+          if(chevron) chevron.classList.remove("rotate-180", "text-red-600");
+      });
+
+      // Se estava fechado, abre o clicado
+      if (isClosed) {
+          content.classList.remove("h-0", "opacity-0", "py-0");
+          content.classList.add("h-auto", "opacity-100", "py-4");
+          
+          // Estiliza o botão ativo e vira a seta
+          btnElement.classList.remove("bg-white", "text-gray-700");
+          btnElement.classList.add("bg-red-50", "text-red-700");
+          const activeChevron = btnElement.querySelector('.chevron');
+          if(activeChevron) activeChevron.classList.add("rotate-180", "text-red-600");
+      }
     }
-    </script>
-    <script src="script.js"></script>
-  </body>
+  </script>
+</body>
 </html>
