@@ -38,32 +38,40 @@ const countdownFunction = setInterval(() => {
 // Carousel splide.js
 
 document.addEventListener('DOMContentLoaded', function () {
-    var splide = new Splide('.splide', {
-      type    : 'loop',      
-      focus: 'center',       
-      perPage : 1,
-      perMove : 1,
-      rewind  : true,
-      autoplay: true,         
-      interval: 8000,         // tempo entre slides (em ms), coloquei 8 segundos. 
-      pauseOnHover: true,     // pausa se passar o mouse em cima
-      breakpoints:{
-        640:{
-            padding : "0rem"
-        }
-    },
-    padding: '5rem',
-    gap: '1rem'
+    // Seleciona TODOS os elementos com a classe .splide
+    var splides = document.querySelectorAll('.splide');
+
+    // Loop para criar uma instância para cada um
+    splides.forEach(function(splideElement) {
+        var splide = new Splide(splideElement, {
+            type : 'loop',
+            focus : 'center',
+            perPage : 1,
+            perMove : 1,
+            rewind : true,
+            autoplay : true,
+            interval : 8000,
+            pauseOnHover : true,
+            breakpoints: {
+                640: {
+                    padding : "0rem"
+                }
+            },
+            padding : '5rem',
+            gap : '1rem'
+        });
+
+        // Se você tiver a barra de progresso para cada um, descomente as linhas abaixo
+        
+        // var bar = splideElement.querySelector('.my-slider-progress-bar');
+        
+        // splide.on('mounted move', function () {
+        // var end = splide.Components.Controller.getEnd() + 1;
+        // var rate = Math.min((splide.index + 1) / end, 1);
+        // bar.style.width = String(100 * rate) + '%';
+        // });
+
+        splide.mount();
     });
-    
-    var bar = document.querySelector('.my-slider-progress-bar');
-  
-    splide.on('mounted move', function () {
-      var end  = splide.Components.Controller.getEnd() + 1;
-      var rate = Math.min((splide.index + 1) / end, 1);
-      bar.style.width = String(100 * rate) + '%';
-    });
-  
-    splide.mount();
-  });
+});
   
