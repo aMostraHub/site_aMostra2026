@@ -4,279 +4,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>aMostra de Estatística</title>
+  <title>aMostra de Estatística - Parceiros</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../styles/style.css">
   <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="../script.js" defer></script>
-  <script>
-    $(document).ready(function () {
-      $(".owl-carousel").owlCarousel({
-        // Configurações do Owl Carousel, se necessário
-      });
-    });
-  </script>
 </head>
 
-<body>
-  <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200">
-    <div
-      class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 bg-opacity-90 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4">
+<script>
+  // Função para abrir o pop-up
+  function abrilModal(idModal) {
+    const modal = document.getElementById(idModal);
+    modal.classList.remove('hidden');
+    // Trava o scroll da página ao fundo para melhorar a experiência
+    document.body.classList.add('overflow-hidden');
+  }
+
+  // Função para fechar o pop-up
+  function fecharModal(idModal) {
+    const modal = document.getElementById(idModal);
+    modal.classList.add('hidden');
+    // Devolve o scroll da página
+    document.body.classList.remove('overflow-hidden');
+  }
+</script>
+
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-gradient-to-r from-red-900 to-red-600 fixed w-full z-50 shadow-sm backdrop-blur-sm bg-opacity-90">
+    <div class="max-w-7xl mx-auto p-4 flex flex-wrap items-center justify-between">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="/~amostra/index.html"><span class="font-semibold text-xl tracking-tight">aMostra XIX</span></a>
+        <a href="/~amostra/index.html">
+          <span class="font-semibold text-xl tracking-tight">aMostra XIX</span>
+        </a>
       </div>
       <button onclick="toggleMenu()" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-default" aria-expanded="false">
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-700/50 focus:outline-none"
+        aria-controls="menu" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
         </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="menu">
-        <ul
-          class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
+        <ul class="font-medium flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent">
           <li>
-              <a
-                href="../pages/faq.html"
-                class="block py-2 px-3 md:p-0 hover:text-slate-400"
-                >FAQ</a
-              >
-            </li>
-          <li>
-            <a href="../index.html" class="block py-2 px-3 md:p-0 hover:text-slate-400">Ínicio</a>
+            <a href="../pages/faq.html" class="block py-2 px-3 md:p-0 hover:text-slate-300 transition">FAQ</a>
           </li>
           <li>
-            <a href="../pages/amostra.html"
-              class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">aMostra</a>
+            <a href="../index.html" class="block py-2 px-3 md:p-0 hover:text-slate-300 transition">Início</a>
           </li>
-          <!-- <li>
-            <a href="/~amostra/pages/comissao.html"
-              class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">Comissão</a>
-          </li> -->
           <li>
-            <a href="../pages/patrocinadores.html"
-              class="block py-2 px-3 rounded hover:text-slate-400 md:border-0 md:p-0">Parceiros</a>
+            <a href="../pages/amostra.html" class="block py-2 px-3 md:p-0 hover:text-slate-300 transition">aMostra</a>
+          </li>
+          <li>
+            <a href="../pages/patrocinadores.html" class="block py-2 px-3 md:p-0 text-slate-300 border-b-2 border-white pb-1">Parceiros</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="content h-full">
-    <h1 class="text-3xl font-semibold my-4">Nossos parceiros</h1>
-    <p> Os parceiros da aMostra têm um papel essencial na viabilização do evento. Sua contribuição permite a
-      realização de uma programação diversificada e de alta qualidade. Além do suporte financeiro, muitos deles oferecem
-      conhecimento e experiência, enriquecendo a interação entre a academia e o mercado profissional. Essa colaboração
-      fortalece a conexão entre os estudantes e as oportunidades no campo da estatística.</p>
 
-    <div class="container mx-auto py-8">
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <!-- IME USP -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/ime.png" alt="IME USP" class="object-contain">
-        </div>
-        <!-- IME Jr -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/imejr.png" alt="IME Jr" class="object-contain">
-        </div>
-        <!-- C6 Bank -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/c6.png" alt="C6 Bank" class="object-contain">
-        </div>
-        <!-- Casio -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center">
-          <img src="../logos/casio.png" alt="Casio" class="object-contain">
-        </div>
-        <!-- CONRE -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/conre.jpg" alt="CONRE" class="object-contain">
-        </div>
-        <!-- Edusp -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/edusp.png" alt="Edusp" class="object-contain">
-        </div>
-        <!-- Management Solutions -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/ms.jpg" alt="Management Solutions" class="object-contain">
-        </div>
-        <!-- FGVemap -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/fgvemap.png" alt="FGVemap" class="object-contain">
-        </div>
-        <!-- Quod -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-40">
-          <img src="../logos/quod.png" alt="Quod" class="object-contain">
-        </div>
-        <!-- Santander -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-40">
-          <img src="../logos/santander.png" alt="Santander" class="object-contain">
-        </div>
-        <!-- SPG -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-40">
-          <img src="../logos/spg.png" alt="SPG" class="object-contain">
-        </div>
-        <!-- Associação Brasileira de Estatística -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-40">
-          <img src="../logos/abe.png" alt="Associação Brasileira de Estatística" class="object-contain">
-        </div>
-        <!-- Insper -->
-        <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-          <img src="../logos/insper.png" alt="Insper" class="object-contain">
-        </div>
-        
-      </div>
+  <!-- Conteúdo Principal (Opção 2 adaptada para Light Mode) -->
+  <main class="flex-grow pt-28 pb-20 px-6 max-w-7xl mx-auto w-full">
+    
+    <!-- Cabeçalho de Impacto Moderno -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-red-700 bg-red-50 px-3 py-1 rounded-full border border-red-200">
+        Parcerias Estratégicas
+      </span>
+      <h1 class="text-4xl font-black tracking-tight sm:text-5xl mt-4 mb-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-500 bg-clip-text text-transparent">
+        Conectando a Academia ao Mercado
+      </h1>
+      <p class="text-base text-gray-500 leading-relaxed">
+        Os parceiros da aMostra têm um papel essencial na viabilização do evento. Sua contribuição permite a realização de uma programação diversificada e de alta qualidade, fortalecendo a conexão entre os estudantes e as oportunidades no campo da estatística.
+      </p>
     </div>
-    <!-- <div class="pb-10">
-      <h1 class="text-3xl font-semibold my-2">COLABORADORES</h1>
-      <p>Os colaboradores da aMostra desempenham um papel fundamental ao proporcionar uma experiência enriquecedora para todos os participantes. Com suas contribuições, eles compartilham conhecimentos e práticas do mercado profissional, oferecendo minicursos e atividades que complementam a formação acadêmica dos estudantes. Essa parceria fomenta a troca de experiências e amplia o horizonte de possibilidades para aqueles que desejam seguir carreira na área da estatística.</p>
+
+    <!-- Grade de Logos Clean Inteligente -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
       
-      <div class="container mx-auto py-8">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          
-          <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-            <img src="../logos/imejr.jpg" alt="R-ladies Goiania" class="object-contain">
-          </div>
-         
-          <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-            <img src="../logos/rladies.jpg" alt="R-Ladies" class="object-contain">
-          </div>
-          
-          
-          <div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center">
-            <img src="../logos/cursor.png" alt="Cursor" class="object-contain">
-          </div>
-        </div>
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-6 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/ime.png" alt="IME USP" class="max-h-20 max-w-full object-contain">
       </div>
-     
-    </div> -->
-  
-  </div>
-  <footer class="bg-gray-100">
-    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="flex justify-center">
-        <img src="./../styles/Logo.png" alt="Logo da Amostra" class="w-10 h-auto max-w-32 mb-10 md:mb-2">
-        <h6 class="p-2">Amostra de Estatística</h6>
+      
+      <div onclick="abrilModal('modal-imejr')" class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-6 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300 cursor-pointer">
+        <img src="../logos/imejr.png" alt="IME Jr" class="max-h-20 max-w-full object-contain">
       </div>
 
-      <p class="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/c6.png" alt="C6 Bank" class="max-h-12 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/casio.png" alt="Casio" class="max-h-12 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/conre.jpg" alt="CONRE" class="max-h-16 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/edusp.png" alt="Edusp" class="max-h-16 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/ms.jpg" alt="Management Solutions" class="max-h-14 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/fgvemap.png" alt="FGVemap" class="max-h-16 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/quod.png" alt="Quod" class="max-h-12 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/santander.png" alt="Santander" class="max-h-12 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/spg.png" alt="SPG" class="max-h-12 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/abe.png" alt="Associação Brasileira de Estatística" class="max-h-14 max-w-full object-contain">
+      </div>
+
+      <div class="bg-neutral-50 border border-neutral-200/60 rounded-xl p-8 flex items-center justify-center h-32 hover:border-neutral-300 hover:bg-white hover:shadow-sm transition duration-300">
+        <img src="../logos/insper.png" alt="Insper" class="max-h-12 max-w-full object-contain">
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-gray-600 py-12 border-t border-gray-200">
+    <div class="mx-auto max-w-5xl px-4 text-center">
+      <div class="flex justify-center items-center gap-2 mb-4">
+        <img src="./../styles/Logo.png" alt="Logo da Amostra" class="w-8 h-auto">
+        <h6 class="font-semibold text-gray-800">aMostra de Estatística</h6>
+      </div>
+
+      <p class="text-sm leading-relaxed text-gray-500 mb-6">
         aMostra de Estatística 2026 <br>
         © 2026 Todos os direitos reservados <br>
-        <a href="/~amostra/pages/faq.html" class="underline transition hover:text-gray-500/75">
-         FAQ 
-        </a>
+        <a href="/~amostra/pages/faq.html" class="underline hover:text-gray-700 transition">FAQ</a>
       </p>
 
-      <ul class="mt-10 flex justify-center gap-6 md:gap-8">
+      <!-- Redes Sociais -->
+      <ul class="flex justify-center gap-6">
         <li>
-          <a href="https://www.facebook.com/aMostra.de.Estatistica/" rel="noreferrer" target="_blank"
-            class="text-gray-700 transition hover:text-gray-700/75">
+          <a href="https://www.facebook.com/aMostra.de.Estatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
             <span class="sr-only">Facebook</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0,0,256,256">
-              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(5.12,5.12)">
-                  <path
-                    d="M25,3c-12.15,0 -22,9.85 -22,22c0,11.03 8.125,20.137 18.712,21.728v-15.897h-5.443v-5.783h5.443v-3.848c0,-6.371 3.104,-9.168 8.399,-9.168c2.536,0 3.877,0.188 4.512,0.274v5.048h-3.612c-2.248,0 -3.033,2.131 -3.033,4.533v3.161h6.588l-0.894,5.783h-5.694v15.944c10.738,-1.457 19.022,-10.638 19.022,-21.775c0,-12.15 -9.85,-22 -22,-22z">
-                  </path>
-                </g>
-              </g>
-            </svg>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8.02 9.71v-6.86H7.56v-2.85h2.46V9.81c0-2.42 1.44-3.76 3.65-3.76 1.06 0 2.16.19 2.16.19v2.37h-1.21c-1.2 0-1.57.74-1.57 1.51v1.8h2.67l-.43 2.85h-2.24v6.86C18.56 20.87 22 16.84 22 12z"/></svg>
           </a>
         </li>
-
         <li>
-          <a href="https://www.instagram.com/amostraestatistica/" rel="noreferrer" target="_blank"
-            class="text-gray-700 transition hover:text-gray-700/75">
+          <a href="https://www.instagram.com/amostraestatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
             <span class="sr-only">Instagram</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0,0,256,256">
-              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(5.12,5.12)">
-                  <path
-                    d="M16,3c-7.17,0 -13,5.83 -13,13v18c0,7.17 5.83,13 13,13h18c7.17,0 13,-5.83 13,-13v-18c0,-7.17 -5.83,-13 -13,-13zM37,11c1.1,0 2,0.9 2,2c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2c0,-1.1 0.9,-2 2,-2zM25,14c6.07,0 11,4.93 11,11c0,6.07 -4.93,11 -11,11c-6.07,0 -11,-4.93 -11,-11c0,-6.07 4.93,-11 11,-11zM25,16c-4.96,0 -9,4.04 -9,9c0,4.96 4.04,9 9,9c4.96,0 9,-4.04 9,-9c0,-4.96 -4.04,-9 -9,-9z">
-                  </path>
-                </g>
-              </g>
-            </svg>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
           </a>
         </li>
-
-
         <li>
-          <a href="https://www.youtube.com/@aMostra-de-Estatistica" rel="noreferrer" target="_blank"
-            class="text-gray-700 transition hover:text-gray-700/75">
+          <a href="https://www.youtube.com/@aMostra-de-Estatistica" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
             <span class="sr-only">Youtube</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 256 256">
-              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(5.12,5.12)">
-                  <path
-                    d="M44.89844,14.5c-0.39844,-2.19922 -2.29687,-3.80078 -4.5,-4.30078c-3.29687,-0.69922 -9.39844,-1.19922 -16,-1.19922c-6.59766,0 -12.79687,0.5 -16.09766,1.19922c-2.19922,0.5 -4.10156,2 -4.5,4.30078c-0.40234,2.5 -0.80078,6 -0.80078,10.5c0,4.5 0.39844,8 0.89844,10.5c0.40234,2.19922 2.30078,3.80078 4.5,4.30078c3.5,0.69922 9.5,1.19922 16.10156,1.19922c6.60156,0 12.60156,-0.5 16.10156,-1.19922c2.19922,-0.5 4.09766,-2 4.5,-4.30078c0.39844,-2.5 0.89844,-6.10156 1,-10.5c-0.20312,-4.5 -0.70312,-8 -1.20312,-10.5zM19,32v-14l12.19922,7z">
-                  </path>
-                </g>
-              </g>
-            </svg>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </a>
         </li>
-
         <li>
-          <a href="https://www.linkedin.com/company/amostraestatistica/" rel="noreferrer" target="_blank"
-            class="text-gray-700 transition hover:text-gray-700/75">
+          <a href="https://www.linkedin.com/company/amostraestatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
             <span class="sr-only">Linkedin</span>
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-6 w-6" viewBox="0,0,256,256">
-              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(5.12,5.12)">
-                  <path
-                    d="M41,4h-32c-2.76,0 -5,2.24 -5,5v32c0,2.76 2.24,5 5,5h32c2.76,0 5,-2.24 5,-5v-32c0,-2.76 -2.24,-5 -5,-5zM17,20v19h-6v-19zM11,14.47c0,-1.4 1.2,-2.47 3,-2.47c1.8,0 2.93,1.07 3,2.47c0,1.4 -1.12,2.53 -3,2.53c-1.8,0 -3,-1.13 -3,-2.53zM39,39h-6c0,0 0,-9.26 0,-10c0,-2 -1,-4 -3.5,-4.04h-0.08c-2.42,0 -3.42,2.06 -3.42,4.04c0,0.91 0,10 0,10h-6v-19h6v2.56c0,0 1.93,-2.56 5.81,-2.56c3.97,0 7.19,2.73 7.19,8.26z">
-                  </path>
-                </g>
-              </g>
-            </svg>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           </a>
         </li>
         <li>
-          <a href="https://www.tiktok.com/@amostra.usp" rel="noreferrer" target="_blank"
-            class="text-gray-700 transition hover:text-gray-700/75">
+          <a href="https://www.tiktok.com/@amostra.usp" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
             <span class="sr-only">Tiktok</span>
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-6 w-6" viewBox="0,0,256,256">
-              <g fill="#666e7b" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                style="mix-blend-mode: normal">
-                <g transform="scale(5.12,5.12)">
-                  <path
-                    d="M41,4h-32c-2.757,0 -5,2.243 -5,5v32c0,2.757 2.243,5 5,5h32c2.757,0 5,-2.243 5,-5v-32c0,-2.757 -2.243,-5 -5,-5zM37.006,22.323c-0.227,0.021 -0.457,0.035 -0.69,0.035c-2.623,0 -4.928,-1.349 -6.269,-3.388c0,5.349 0,11.435 0,11.537c0,4.709 -3.818,8.527 -8.527,8.527c-4.709,0 -8.527,-3.818 -8.527,-8.527c0,-4.709 3.818,-8.527 8.527,-8.527c0.178,0 0.352,0.016 0.527,0.027v4.202c-0.175,-0.021 -0.347,-0.053 -0.527,-0.053c-2.404,0 -4.352,1.948 -4.352,4.352c0,2.404 1.948,4.352 4.352,4.352c2.404,0 4.527,-1.894 4.527,-4.298c0,-0.095 0.042,-19.594 0.042,-19.594h4.016c0.378,3.591 3.277,6.425 6.901,6.685z">
-                  </path>
-                </g>
-              </g>
-            </svg>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31.027 2.595.361 3.75 1.01a7.46 7.46 0 0 1 2.522 2.611 7.426 7.426 0 0 0-3.413-.85c-.173 0-.342.008-.513.022V6.66c.17-.008.34-.014.513-.014 2.446 0 4.542 1.547 5.347 3.72a7.48 7.48 0 0 1 .53 2.705V.02h-8.75zm-7.462 7.5c-2.446 0-4.542 1.547-5.347 3.72a7.48 7.48 0 0 0-.53 2.705c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5V0h-4.204v13.945c0 2.404-1.948 4.352-4.352 4.352-2.404 0-4.352-1.948-4.352-4.352 0-2.404 1.948-4.352 4.352-4.352.174 0 .343.01.513.027V7.547a4.42 4.42 0 0 0-.513-.027z"/></svg>
           </a>
         </li>
       </ul>
     </div>
   </footer>
+<div id="modal-imejr" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div onclick="fecharModal('modal-imejr')" class="absolute inset-0 bg-neutral-900/40 backdrop-blur-sm"></div>
   
-  
-  <script src="script.js"></script>
-</body>
+  <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-neutral-100 relative z-10 animate-[fadeIn_0.2s_ease-out]">
+    
+    <div class="flex items-start justify-between mb-4">
+      <img src="../logos/imejr.png" alt="IME Jr" class="max-h-12 object-contain">
+      <button onclick="fecharModal('modal-imejr')" class="text-neutral-400 hover:text-neutral-600 p-1 rounded-lg hover:bg-neutral-100 transition">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <h3 class="text-xl font-bold text-neutral-900 mb-2">IME Júnior</h3>
+    <p class="text-sm text-neutral-600 leading-relaxed mb-6">
+      A IME Júnior é a empresa júnior de tecnologia, estatística e matemática aplicada do Instituto de Matemática e Estatística da USP. Formada inteiramente por estudantes, desenvolve projetos reais de software, análise de dados e consultoria estatística com o suporte do corpo docente da universidade.
+    </p>
+    
+    <div class="flex justify-end">
+      <a href="https://imejr.com.br/" target="_blank" class="bg-red-700 hover:bg-red-800 text-white text-sm font-medium px-4 py-2 rounded-lg transition shadow-sm">
+        Visitar Website
+      </a>
+    </div>
 
-<!-- Empresa 7: IME Jr
-<div class="bg-white shadow-md rounded-lg p-6 flex items-center justify-center max-h-60">
-  <img src="../logos/imejr.png" alt="IME Jr" class="object-contain">
-</div> -->
+  </div>
+</div>
+</body>
 </html>

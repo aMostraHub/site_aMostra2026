@@ -14,9 +14,10 @@
 <body class="flex flex-col">
 
   <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
-      <h2 class="text-2xl font-bold mb-4">Participe da aMostra!</h2>
-      <p class="mb-6">Inscreva-se agora e não perca nenhum detalhe do evento.</p>
+   <p class="max-w-xl sm:text-xl text-white sm:w-2/3 bg-black/10 backdrop-blur-sm p-4 md:p-6 rounded-xl border border-white/10 shadow-lg mt-4">
+  Participe da nossa tradicional aMostra de Estatística. 
+  Um evento 100% gratuito, imersivo e com uma programação espetacular. De 28/09 a 02/10.
+</p>
       <button id="subscribe-btn"
         class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300">Inscrever-se</button>
       <button id="close-btn" class="mt-4 text-gray-500 hover:text-gray-700">Fechar</button>
@@ -82,8 +83,8 @@
       </h1>
 
       <p class=" max-w-xl sm:text-xl text-white sm:w-2/3">
-        Dê um pulinho na nossa aMostra de Estatística, um evento gratuito e espetacular
-        que vai rolar de 28/09 a 02/10!
+        Participe da nossa tradicional aMostra de Estatística. 
+        Um evento 100% gratuito, imersivo e com uma programação espetacular. De 28/09 a 02/10.
       <div id="cronogrma" class="hidden" > <!--Ocultei o botão do cronogrma e incrição, par voltar, apaga essa linha-->
       <div class="flex gap-4 mt-8 w-full max-w-md">
         <a class="flex-1 block rounded border border-red-600 bg-red-600 px-0 py-3 text-sm font-medium text-white text-center hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 transition-colors duration-200"
@@ -144,57 +145,93 @@
 
     
     
-    <div
-      class="mx-auto bg-red-600 text-white m-16 p-6 md:p-10 rounded-lg shadow-md text-center max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl">
-      <h1 class="text-xl sm:text-2xl mb-4">Só faltam alguns dias até a aMostra!</h1>
-      <div id="countdown" class="text-2xl sm:text-3xl">
-        <span id="days" class="px-1 sm:px-2">00</span> dias
-        <span id="hours" class="px-1 sm:px-2">00</span>h
-        <span id="minutes" class="px-1 sm:px-2">00</span>m
-        <span id="seconds" class="px-1 sm:px-2">00</span>s
-      </div>
+  <div class="mx-auto my-16 px-4 text-center max-w-xl">
+  <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-8">Só faltam alguns dias até a aMostra!</h2>
+  
+  <div id="countdown" class="flex justify-center gap-4 sm:gap-6">
+    <!-- Box Dias -->
+    <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
+      <span id="days" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
+      <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">dias</span>
     </div>
+    
+    <!-- Box Horas -->
+    <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
+      <span id="hours" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
+      <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">horas</span>
+    </div>
+    
+    <!-- Box Minutos -->
+    <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
+      <span id="minutes" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
+      <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">min</span>
+    </div>
+    
+    <!-- Box Segundos -->
+    <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
+      <span id="seconds" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
+      <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">seg</span>
+    </div>
+  </div>
+</div>
 
   <section id="sec-2">
-    <div class="mx-auto max-w-screen-xl px-4 pb-8 sm:px-6 sm:pb-12">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-        <div class="relative h-64 overflow-hidden rounded-3xl sm:h-80 lg:order-last lg:h-full">
-          <img alt="" src="styles/foto_palestra.jpg" class="absolute inset-0 h-full w-full object-cover" />
-        </div>
-        
-        <div class="lg:py-24">
-          <h2 class="text-3xl font-bold sm:text-4xl">O que é aMostra?</h2>
-
-          <p class="m-4 text-gray-600">
-            Ah, a nossa querida aMostra! Um evento cheio de estatística, com palestras e minicursos que vão te deixar
-            animado para explorar o mundo dos dados!
-          </p>
-        </div>
+  <div class="mx-auto max-w-screen-xl px-4 pb-8 sm:px-6 sm:pb-12">
+    <!-- Adicionado 'items-center' para alinhar foto e texto no meio -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+      
+      <!-- Contêiner da Imagem com bordas padronizadas -->
+      <div class="relative h-64 sm:h-80 lg:h-96 w-full lg:order-last rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+        <img alt="Palestra da aMostra" src="styles/foto_palestra.jpg" class="absolute inset-0 h-full w-full object-cover" />
       </div>
+      
+      <!-- Bloco de Texto -->
+      <div class="lg:py-24">
+        <h2 class="text-3xl font-bold sm:text-4xl text-gray-900">O que é a aMostra?</h2>
+        <!-- Removido o m-4 e colocado mt-4 para alinhar a margem esquerda com o título -->
+        <p class="mt-4 text-gray-600 text-lg leading-relaxed">
+          Um evento feito para quem é apaixonado por estatística e ciência de dados. 
+          Nossa programação é repleta de palestras com especialistas e minicursos práticos que vão transformar a sua forma de enxergar e analisar o mundo dos dados.
+        </p>
+      </div>
+      
     </div>
-  </section>
+  </div>
+</section>
   
-  <section class="bg-white-200 py-12">
+  <section class="bg-white-200 pt-12 pb-24"> <!-- Aumentei o pb-24 (padding-bottom) para dar o respiro antes do mapa -->
     <div id="counterContainer"
       class="container mx-auto px-4 flex flex-col items-center md:flex-row md:justify-center gap-8 sm:gap-16 text-white text-center">
 
-      <div class="bg-red-600 rounded-xl px-8 py-6 w-full max-w-xs shadow-md flex flex-col items-center">
+      <!-- Card 1: Presenças (Ícone de Pessoas) -->
+      <div class="bg-red-600 rounded-xl px-8 py-6 w-full max-w-xs shadow-md flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
+        <svg class="w-12 h-12 text-white mb-3 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
         <h1 class="text-4xl font-extrabold">+ <span class="count" data-count="600">0</span></h1>
         <p class="mt-2 text-sm sm:text-base font-medium text-white text-center">Presenças no<br>ano passado</p>
       </div>
 
-      <div class="bg-red-600 rounded-xl px-8 py-6 w-full max-w-xs shadow-md flex flex-col items-center">
+      <!-- Card 2: Patrocinadores (Ícone de Maleta) -->
+      <div class="bg-red-600 rounded-xl px-8 py-6 w-full max-w-xs shadow-md flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
+        <svg class="w-12 h-12 text-white mb-3 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
         <h1 class="text-4xl font-extrabold">+ <span class="count" data-count="20">0</span></h1>
         <p class="mt-2 text-sm sm:text-base font-medium text-white text-center">Patrocinadores<br> no ano passado</p>
       </div>
 
-      <div class="bg-red-600 rounded-xl px-8 py-6 w-full max-w-xs shadow-md flex flex-col items-center">
+      <!-- Card 3: Palestras (Ícone de Microfone) -->
+      <div class="bg-red-600 rounded-xl px-8 py-6 w-full max-w-xs shadow-md flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
+        <svg class="w-12 h-12 text-white mb-3 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+        </svg>
         <h1 class="text-4xl font-extrabold">+ <span class="count" data-count="20">0</span></h1>
         <p class="mt-2 text-sm sm:text-base font-medium text-white text-center">Palestras no<br>ano passado</p>
       </div>
+
     </div>
   </section>
-
   <div id="cronograma" class="hidden"> <!--Ocultei o Cronograma, para voltar, apaga essa linha-->
     <div class="container mx-auto py-8 px-4 md:px-44" id="sec-3">
       <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -554,14 +591,43 @@
   </div>
   </div>  <!--Ocultei o cronogrma, para voltar, apaga essa linha também-->
 
-  <section class="py-8">
-    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-      <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8">Localização do Evento</h2>
-      <div class="w-full h-96 flex justify-center">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d828.223684832221!2d-46.73246197271794!3d-23.55920779367132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5614445ea63f%3A0x81bb971c3a8f0fcf!2sInstituto%20de%20Matem%C3%A1tica%20e%20Estat%C3%ADstica%20da%20Universidade%20de%20S%C3%A3o%20Paulo%20(IME-USP)!5e1!3m2!1spt-BR!2sbr!4v1776719031392!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <section class="py-12 bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">Localização do Evento</h2>
+
+    <!-- Grid: Divide em 1 coluna no celular e 2 no desktop -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      
+      <!-- Informações em Texto -->
+      <div class="flex flex-col justify-center p-8 bg-gray-50 rounded-2xl border border-gray-100 shadow-sm">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">IME - USP</h3>
+        <p class="text-gray-700 mb-3">
+          <strong>Endereço:</strong> R. do Matão, 1010 - Butantã, São Paulo - SP
+        </p>
+        <p class="text-gray-700 mb-3">
+          <strong>Ponto de Referência:</strong> As atividades principais vão rolar no Bloco B (Auditório Jacy Monteiro). O prédio fica na Praça do Oceanógrafo, bem pertinho da FAU e da FEA.
+        </p>
+        <p class="text-gray-700">
+          <strong>Como Chegar:</strong> Há pontos de parada bem em frente ao prédio para os ônibus circulares da Cidade Universitária/Butantã (linhas <strong>8082-10</strong>, <strong>8084-10</strong> e <strong>8085-10</strong>).
+        </p>
       </div>
+
+      <!-- Mapa Normal -->
+      <div class="w-full h-80 lg:h-96 rounded-2xl overflow-hidden shadow-md border border-gray-200">
+        <iframe 
+          src="https://maps.google.com/maps?q=Instituto%20de%20Matematica%20e%20Estatistica%20da%20USP&t=m&z=16&output=embed&iwloc=near" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Atualizar depois com links atualizados assim que disponível -->
 
