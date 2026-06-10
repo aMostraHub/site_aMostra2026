@@ -59,7 +59,7 @@
   <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
-    <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200 mb-20">
+    <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200">
       <div
         class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 bg-opacity-95 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4 shadow-sm"
       >
@@ -146,6 +146,30 @@
         </div>
       </div>
     </nav>
+
+    <!-- Seção Hero com Animação de Mistura de Gaussianas -->
+    <section id="hero-section" class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-red-900 to-red-600 text-white pt-32 shadow-inner">
+      <!-- Canvas da Animação (fundo do Hero) -->
+      <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-30"></canvas>
+      
+      <!-- Conteúdo do Hero -->
+      <div class="relative z-10 max-w-4xl px-6 flex flex-col items-center justify-center text-center select-none">
+        <h1 class="text-white font-black tracking-tight leading-none text-5xl md:text-6xl lg:text-7xl drop-shadow-md mb-3 font-spartan">
+          aNormal
+        </h1>
+        <p class="text-white/80 text-base md:text-lg lg:text-xl font-light tracking-wide max-w-xl mx-auto drop-shadow-md text-center">
+          O blog oficial de divulgação científica da aMostra de Estatística da USP
+        </p>
+        <div class="w-16 h-1 bg-white/20 rounded-full mt-5"></div>
+      </div>
+
+      <!-- Indicador de Scroll -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20">
+        <svg id="scroll-arrow" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white/70 hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+    </section>
 
     <!-- Conteúdo Principal -->
     <div class="container blog-container">
@@ -324,5 +348,264 @@
         </ul>
       </div>
     </footer>
+
+    <script>
+      /* ── script do fundo animado: Mistura de Gaussianas (Hero Section) ── */
+      (function() {
+        const canvas = document.getElementById('hero-canvas');
+        const container = document.getElementById('hero-section');
+        if (!canvas || !container) return;
+        const ctx = canvas.getContext('2d');
+
+        // Cores vibrantes de alto contraste para o fundo escuro do hero
+        const COMPS = [
+          { mu: -2, sigma: 0.8, pi: 0.3, color: '#f43f5e' }, // Rosa vibrante
+          { mu:  1, sigma: 0.5, pi: 0.5, color: '#fb923c' }, // Laranja quente
+          { mu:  4, sigma: 1.2, pi: 0.2, color: '#facc15' }, // Amarelo ouro
+        ];
+
+        const XMIN = -6, XMAX = 8;
+        const R    = 7; // Aumentado o raio das bolinhas de 5 para 7 para maior visibilidade
+        const COL  = R * 2 + 2;
+        
+        // Margens para o canvas em tela cheia (h-screen)
+        // t: 100px (onde as bolinhas começam a nascer)
+        // b: 0px (eixo x desenhado exatamente no fundo da tela, sem espaçamento)
+        const PAD  = { l: 0, r: 0, t: 100, b: 0 };
+        const yOffset = 90; // Início superior da área de densidade (libera espaço para o navbar fixo)
+
+        let speed = 3;
+        let running = true, lastT = null, accumMs = 0;
+        let falling = [], stacks = {}, samples = [];
+
+        function randn() {
+          let u = 0, v = 0;
+          while (!u) u = Math.random();
+          while (!v) v = Math.random();
+          return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+        }
+
+        function sample() {
+          const r = Math.random(); let acc = 0;
+          for (const c of COMPS) {
+            acc += c.pi;
+            if (r < acc) return { val: c.mu + c.sigma * randn(), comp: c };
+          }
+          const c = COMPS[2];
+          return { val: c.mu + c.sigma * randn(), comp: c };
+        }
+
+        function updatePaddings() {
+          PAD.l = 0;
+          PAD.r = 0;
+        }
+
+        function resize() {
+          const dpr = window.devicePixelRatio || 1;
+          canvas.width  = container.clientWidth * dpr;
+          canvas.height = container.clientHeight * dpr;
+          ctx.scale(dpr, dpr);
+          updatePaddings();
+          
+          // Limpa o estado ao redimensionar para evitar inconsistências nos bins
+          falling = [];
+          stacks = {};
+          samples = [];
+        }
+
+        function cw()     { return container.clientWidth - PAD.l - PAD.r; }
+        function axisY()  { return container.clientHeight - PAD.b; }
+        function xToPixel(x)   { return PAD.l + (x - XMIN) / (XMAX - XMIN) * cw(); }
+        function xToBin(x)     { return Math.round((xToPixel(x) - PAD.l) / COL); }
+        function binToPixel(b) { return PAD.l + b * COL; }
+        function groundY(bin)  { return axisY() - R - (stacks[bin] || 0) * COL; }
+
+        function spawnDot() {
+          const { val, comp } = sample();
+          const bin = xToBin(val);
+          falling.push({ bin, px: binToPixel(bin), py: PAD.t, vy: 0, comp });
+          samples.push(val);
+          if (samples.length > 1000) {
+            samples.shift(); // Evita gargalo de performance no cálculo de KDE com muitas bolinhas
+          }
+        }
+
+        function stepPhysics() {
+          for (let i = falling.length - 1; i >= 0; i--) {
+            const d = falling[i];
+            d.vy += 0.6;
+            d.py += d.vy;
+            const gy = groundY(d.bin);
+            if (d.py >= gy) {
+              d.py = gy;
+              stacks[d.bin] = (stacks[d.bin] || 0) + 1;
+              falling.splice(i, 1);
+
+              // Equilíbrio dinâmico aumentado para 2000 pontos
+              let totalStacked = Object.values(stacks).reduce((a, b) => a + b, 0);
+              if (totalStacked > 2000) {
+                const activeBins = Object.keys(stacks).filter(b => stacks[b] > 0);
+                if (activeBins.length > 0) {
+                  const randomBin = activeBins[Math.floor(Math.random() * activeBins.length)];
+                  stacks[randomBin]--;
+                }
+              }
+            }
+          }
+        }
+
+        function silvermanBW() {
+          const n = samples.length;
+          if (n < 2) return 1;
+          const mean = samples.reduce((a, b) => a + b, 0) / n;
+          const std  = Math.sqrt(samples.reduce((s, x) => s + (x - mean) ** 2, 0) / (n - 1));
+          const sorted = [...samples].sort((a, b) => a - b);
+          const q1 = sorted[Math.floor(n * 0.25)];
+          const q3 = sorted[Math.floor(n * 0.75)];
+          const iqr = (q3 - q1) / 1.34;
+          const s = Math.min(std, iqr || std);
+          return 1.06 * s * Math.pow(n, -0.2);
+        }
+
+        function kde(x) {
+          if (!samples.length) return 0;
+          const h = silvermanBW();
+          return samples.reduce((s, xi) => {
+            const z = (x - xi) / h;
+            return s + Math.exp(-0.5 * z * z) / (h * Math.sqrt(2 * Math.PI));
+          }, 0) / samples.length;
+        }
+
+        function theoreticalPDF(x) {
+          return COMPS.reduce((s, c) => {
+            const z = (x - c.mu) / c.sigma;
+            return s + c.pi / (c.sigma * Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * z * z);
+          }, 0);
+        }
+
+        function draw() {
+          const W = container.clientWidth, H = container.clientHeight;
+          const ay = axisY();
+
+          // Tons de branco e semitransparente para se destacar no fundo Borgonha
+          const gridC  = 'rgba(255, 255, 255, 0.03)';
+          const axC    = 'rgba(255, 255, 255, 0.15)';
+          const txtC   = 'rgba(255, 255, 255, 0.4)';
+          const stackC = 'rgba(255, 255, 255, 0.28)'; // Aumentada a opacidade das bolinhas empilhadas (0.12 -> 0.28)
+          const theoC  = 'rgba(255, 255, 255, 0.2)';
+          const kdeC   = '#ffffff'; // Linha KDE branca
+          const divC   = 'rgba(255, 255, 255, 0.08)';
+
+          ctx.clearRect(0, 0, W, H);
+
+          /* grade e eixo x */
+          const STEPS = 120;
+          const xs = Array.from({ length: STEPS + 1 }, (_, i) => XMIN + i * (XMAX - XMIN) / STEPS);
+          const kdeH = ay - yOffset; // A curva agora ocupa toda a altura útil do Hero Section
+          const maxPDF = Math.max(...xs.map(theoreticalPDF)) * 1.2;
+          const densityY = v => ay - (v / maxPDF) * kdeH; // Base da curva alinhada ao eixo y (ay)
+
+          ctx.font = '11px "Poppins", sans-serif';
+          ctx.textAlign = 'center';
+          for (let x = Math.ceil(XMIN); x <= Math.floor(XMAX); x++) {
+            const px = xToPixel(x);
+            ctx.strokeStyle = gridC; ctx.lineWidth = 0.5;
+            ctx.beginPath(); ctx.moveTo(px, yOffset); ctx.lineTo(px, ay); ctx.stroke();
+            // Removido o fillText do índice numérico para limpar o visual do fundo
+          }
+          ctx.strokeStyle = axC; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(PAD.l, ay); ctx.lineTo(W - PAD.r, ay); ctx.stroke();
+
+          /* curva teórica tracejada */
+          ctx.setLineDash([4, 3]);
+          ctx.strokeStyle = theoC; ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          let first = true;
+          for (const x of xs) {
+            const px = xToPixel(x), py = densityY(theoreticalPDF(x));
+            first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+            first = false;
+          }
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          /* KDE */
+          if (samples.length >= 3) {
+            const kdeVals = xs.map(x => kde(x));
+            const maxKDE  = Math.max(...kdeVals);
+            const scale   = maxKDE > 0 ? maxPDF / maxKDE : 1;
+
+            /* área preenchida */
+            ctx.fillStyle = kdeC + '1a'; // ~10% de opacidade (mais visível sobre o Borgonha)
+            ctx.beginPath(); first = true;
+            for (let i = 0; i < xs.length; i++) {
+              const px = xToPixel(xs[i]), py = densityY(kdeVals[i] * scale);
+              first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+              first = false;
+            }
+            ctx.lineTo(xToPixel(XMAX), ay); // Fecha o polígono exatamente no eixo X (ay)
+            ctx.lineTo(xToPixel(XMIN), ay);
+            ctx.closePath(); ctx.fill();
+
+            /* linha KDE */
+            ctx.strokeStyle = kdeC; ctx.lineWidth = 3.5; // Linha mais espessa para maior destaque visual
+            ctx.beginPath(); first = true;
+            for (let i = 0; i < xs.length; i++) {
+              const px = xToPixel(xs[i]), py = densityY(kdeVals[i] * scale);
+              first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+              first = false;
+            }
+            ctx.stroke();
+          }
+
+          /* pilhas de pontos já assentados */
+          for (const [bin, count] of Object.entries(stacks)) {
+            const px = binToPixel(parseInt(bin));
+            if (px < PAD.l || px > W - PAD.r) continue;
+            for (let i = 0; i < count; i++) {
+              const cy = ay - R - i * COL;
+              if (cy - R < PAD.t) break;
+              ctx.beginPath(); ctx.arc(px, cy, R, 0, 2 * Math.PI);
+              ctx.fillStyle = stackC; ctx.fill();
+            }
+          }
+
+          /* pontos em queda */
+          for (const d of falling) {
+            if (d.px < PAD.l || d.px > W - PAD.r) continue;
+            ctx.beginPath(); ctx.arc(d.px, d.py, R, 0, 2 * Math.PI);
+            ctx.fillStyle = d.comp.color; ctx.fill(); // Bolinhas em queda agora com cor 100% sólida/opaca
+          }
+        }
+
+        function loop(ts) {
+          if (!lastT) lastT = ts;
+          const dt = Math.min(ts - lastT, 80); lastT = ts;
+          if (running) {
+            accumMs += dt;
+            const interval = 1100 / speed;
+            while (accumMs >= interval) { accumMs -= interval; spawnDot(); }
+            stepPhysics();
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+
+        // Clique na seta para rolar a tela suavemente até o conteúdo do blog
+        const scrollArrow = document.getElementById('scroll-arrow');
+        if (scrollArrow) {
+          scrollArrow.addEventListener('click', () => {
+            const blogContainer = document.querySelector('.blog-container');
+            if (blogContainer) {
+              blogContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        }
+
+        resize();
+        window.addEventListener('resize', resize);
+        requestAnimationFrame(loop);
+      })();
+    </script>
   </body>
 </html>
