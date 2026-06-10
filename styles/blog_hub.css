@@ -145,12 +145,6 @@ body {
     display: block;
 }
 
-@media (max-width: 768px) {
-    .post-img {
-        height: 200px;
-    }
-}
-
 /* Barra Lateral */
 .sidebar {
     flex: 1;
@@ -202,6 +196,10 @@ body {
 
 /* Responsividade (Telas menores/Celular) */
 @media (max-width: 768px) {
+    .post-img {
+        height: 200px;
+    }
+
     .header-container {
         flex-direction: column;
         gap: 15px;
@@ -213,7 +211,7 @@ body {
 
     .posts-container, .sidebar {
         flex: none;
-        width: 100%;
+        width: 86%;
     }
 
     /* Aumenta levemente a margem lateral em telas menores */
