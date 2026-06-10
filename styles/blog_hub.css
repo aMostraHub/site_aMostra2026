@@ -1,0 +1,208 @@
+/* Configurações Globais e Variáveis */
+:root {
+    --primary-color: #821114;
+    --text-color: #000000;
+    --light-text: #666666;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --max-width: 1100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #1e293b;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--light-text);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Estrutura do Layout do Blog */
+.blog-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Área de Artigos */
+.posts-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.post {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.post-content {
+    padding: 25px;
+}
+
+.category {
+    background-color: #bc2020;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.post h2 {
+    margin: 15px 0 10px 0;
+    font-size: 24px;
+    color: #000;
+}
+
+.date {
+    font-size: 13px;
+    color: var(--light-text);
+    margin-bottom: 15px;
+}
+
+.excerpt {
+    color: var(--light-text);
+    margin-bottom: 20px;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.read-more:hover {
+    transform: translateX(5px);
+}
+
+/* Barra Lateral */
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sidebar-widget {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.sidebar-widget h3 {
+    margin-bottom: 15px;
+    color: #000;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 8px;
+}
+
+.categories-list {
+    list-style: none;
+}
+
+.categories-list li {
+    margin-bottom: 10px;
+}
+
+.categories-list a {
+    text-decoration: none;
+    color: var(--light-text);
+    transition: color 0.2s;
+}
+
+.categories-list a:hover {
+    color: var(--primary-color);
+}
+
+/* Rodapé */
+.footer {
+    background-color: #1e293b;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: auto;
+}
+
+/* Responsividade (Telas menores/Celular) */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .blog-container {
+        flex-direction: column;
+    }
+
+    .posts-container, .sidebar {
+        flex: none;
+        width: 100%;
+    }
+
+    /* Aumenta levemente a margem lateral em telas menores */
+    .container {
+        width: 86%;
+    }
+}
