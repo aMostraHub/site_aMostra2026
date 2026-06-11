@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Título do Post | Blog aNormal</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts (Poppins & League Spartan) -->
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../styles/font-awesome/css/font-awesome.min.css" />
+
+  <!-- Custom Styles for Blog Post -->
+  <link rel="stylesheet" href="../../styles/blog_post.css" />
+
+  <script src="../../script.js" defer></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              1: '#821114',
+              2: '#940714',
+              3: '#BC2020',
+              4: '#F2292F',
+              5: '#000000',
+              6: '#E3E4DE',
+              7: '#E1B868',
+            }
+          },
+          fontFamily: {
+            spartan: ['"League Spartan"', 'sans-serif'],
+            poppins: ['"Poppins"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-6 text-brand-5 min-h-screen flex flex-col font-poppins">
+
+  <!-- Navigation Menu -->
+  <nav class="bg-gradient-to-r from-[#821114] via-[#940714] to-[#BC2020] border-b border-[#821114] relative">
+    <div class="fixed w-full bg-gradient-to-r from-[#821114] via-[#940714] to-[#BC2020] bg-opacity-95 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4 shadow-sm">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <a href="../../index.html" class="font-semibold text-xl tracking-tight font-spartan">aMostra XIX</a>
+      </div>
+      <button
+        onclick="toggleMenu()"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-[#940714] focus:outline-none"
+        aria-controls="menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+      <div class="hidden w-full md:block md:w-auto" id="menu">
+        <ul class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
+          <li><a href="../../pages/faq.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">FAQ</a></li>
+          <li><a href="../../index.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">Início</a></li>
+          <li><a href="../../pages/amostra.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">aMostra</a></li>
+          <li><a href="hub.html" class="block py-2 px-3 md:p-0 border-b-2 border-[#E1B868] pb-1">Blog</a></li>
+          <li><a href="../../pages/comissao.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">Comissão</a></li>
+          <div id="parceiros" class="hidden">
+            <li><a href="../../pages/patrocinadores.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">Parceiros</a></li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main layout wrapper -->
+  <main class="flex-grow pt-28 pb-20 blog-post-wrapper">
+    
+    <!-- Breadcrumbs -->
+    <nav class="flex text-sm text-[#000000]/60 mb-6 items-center gap-2" aria-label="Breadcrumb">
+      <a href="../../index.html" class="hover:text-[#821114] transition">Início</a>
+      <span><i class="fa fa-angle-right text-xs"></i></span>
+      <a href="hub.html" class="hover:text-[#821114] transition">Blog</a>
+      <span><i class="fa fa-angle-right text-xs"></i></span>
+      <span class="text-[#821114] font-semibold">Nome Curto do Post</span>
+    </nav>
+
+    <!-- Post Info Header -->
+    <header class="mb-8">
+      <div class="flex gap-2 mb-4">
+        <span class="bg-[#BC2020] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Categoria 1</span>
+        <span class="bg-black/10 text-black/80 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Categoria 2</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#821114] tracking-tight leading-tight mb-4 font-spartan">
+        Título do Post
+      </h1>
+      
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-black/60 border-b border-black/10 pb-6">
+        <div class="flex items-center gap-2">
+          <i class="fa fa-calendar text-[#BC2020]"></i>
+          <span>Publicado em Data de Publicação</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa fa-user text-[#BC2020]"></i>
+          <span>Por Autor</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    <div class="w-full h-[240px] sm:h-[320px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg mb-10 bg-cover bg-center" 
+         style="background-image: url('../../styles/caminho_da_imagem.avif');">
+    </div>
+
+    <!-- Layout Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-12 items-start">
+      
+      <!-- Table of Contents Sidebar -->
+      <aside class="sticky top-24 hidden lg:block border-r border-black/10 pr-6">
+        <h4 class="text-xs uppercase font-bold tracking-widest text-[#940714] mb-4 font-spartan">Neste artigo</h4>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="#secao1" class="toc-link block text-black/75 hover:text-[#821114] active">Título da Seção 1</a>
+          </li>
+          <li>
+            <a href="#secao2" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 2</a>
+          </li>
+          <li>
+            <a href="#secao3" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 3</a>
+          </li>
+          <li>
+            <a href="#secao4" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 4</a>
+          </li>
+          <li>
+            <a href="#secao5" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 5</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Article Body -->
+      <article class="article-content bg-white p-6 sm:p-8 md:p-12 rounded-2xl shadow-sm border border-black/5">
+        <section id="secao1">
+          <h2>Título da Seção 1</h2>
+          <p>
+            Parágrafo 1 da Seção 1. Este é um parágrafo de exemplo contendo explicações ou introdução ao tema abordado no post.
+          </p>
+          <p>
+            Parágrafo 2 da Seção 1. Aqui você pode continuar a dissertar sobre o assunto, citar dados ou introduzir a citação abaixo.
+          </p>
+          <div class="editorial-quote">
+            "Citação ou Destaque Editorial importante relacionado à Seção 1."
+          </div>
+        </section>
+
+        <section id="secao2" class="mt-8">
+          <h2>Título da Seção 2</h2>
+          <p>
+            Parágrafo 1 da Seção 2. Este parágrafo introduz uma fórmula, equação ou um bloco destacado em formato mono.
+          </p>
+          <div class="bg-[#E3E4DE]/40 p-4 rounded-lg text-center font-mono my-6 text-[#821114] text-lg font-bold">
+            Fórmula / Equação / Bloco Destacado
+          </div>
+          <p>
+            Parágrafo 2 da Seção 2. Este parágrafo serve para explicar a fórmula ou a informação apresentada acima, introduzindo uma lista de itens a seguir.
+          </p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li><strong>Item de Lista 1 (Negrito)</strong>: Descrição ou detalhamento do Item 1 da lista.</li>
+            <li><strong>Item de Lista 2 (Negrito)</strong>: Descrição ou detalhamento do Item 2 da lista.</li>
+            <li><strong>Item de Lista 3 (Negrito)</strong>: Descrição ou detalhamento do Item 3 da lista.</li>
+          </ul>
+        </section>
+
+        <section id="secao3" class="mt-8">
+          <h2>Título da Seção 3</h2>
+          <p>
+            Parágrafo 1 da Seção 3. Este parágrafo pode conter mais explicações, análises ou discussões teóricas do post.
+          </p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li><strong>Item Ordenado 1</strong>: Explicação detalhada do primeiro ponto ordenado.</li>
+            <li><strong>Item Ordenado 2</strong>: Explicação detalhada do segundo ponto ordenado.</li>
+            <li><strong>Item Ordenado 3</strong>: Explicação detalhada do terceiro ponto ordenado.</li>
+          </ol>
+          <p>
+            Parágrafo 2 da Seção 3. Conclusão da análise da Seção 3.
+          </p>
+        </section>
+
+        <section id="secao4" class="mt-8">
+          <h2>Título da Seção 4</h2>
+          <p>
+            Parágrafo 1 da Seção 4. Texto explicativo sobre a Seção 4.
+          </p>
+        </section>
+
+        <section id="secao5" class="mt-8">
+          <h2>Título da Seção 5</h2>
+          <p>
+            Parágrafo 1 da Seção 5. Este parágrafo costuma ser a conclusão do post ou a discussão das aplicações práticas do assunto no mundo real.
+          </p>
+          <p>
+            Parágrafo 2 da Seção 5. Considerações finais do post.
+          </p>
+        </section>
+      </article>
+
+    </div>
+
+    <!-- Authors Bio Card -->
+    <section class="mt-12 bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-black/5">
+      <h4 class="text-xs uppercase font-bold tracking-widest text-[#940714] mb-6 font-spartan">Sobre os Autores</h4>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#821114] to-[#E1B868] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+            Sigla Autor 1
+          </div>
+          <div>
+            <h5 class="font-bold text-gray-900">Nome do Autor 1 / Comissão Organizadora</h5>
+            <p class="text-xs text-[#BC2020] mb-2 font-spartan font-medium">Subtítulo/Afiliação do Autor 1</p>
+            <p class="text-sm text-gray-600 leading-relaxed">Biografia ou descrição curta do Autor 1.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#940714] to-[#E1B868] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+            Sigla Autor 2
+          </div>
+          <div>
+            <h5 class="font-bold text-gray-900">Nome do Autor 2 / Orientador</h5>
+            <p class="text-xs text-[#BC2020] mb-2 font-spartan font-medium">Subtítulo/Afiliação do Autor 2</p>
+            <p class="text-sm text-gray-600 leading-relaxed">Biografia ou descrição curta do Autor 2.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-[#E3E4DE] py-12 border-t border-black/20 mt-auto w-full block clear-both">
+    <div class="mx-auto max-w-5xl px-4 flex flex-col items-center justify-center text-center">
+      <div class="flex items-center justify-center gap-2 mb-4 w-full">
+        <img src="../../styles/Logo.png" alt="Logo da Amostra" class="w-8 h-auto filter brightness-90" />
+        <h6 class="font-semibold text-white m-0 font-spartan text-lg">aMostra de Estatística</h6>
+      </div>
+
+      <p class="text-sm leading-relaxed text-[#E3E4DE]/60 mb-6 w-full text-center">
+        aMostra de Estatística 2026 <br />
+        © 2026 Todos os direitos reservados <br />
+        <a href="../../pages/faq.html" class="underline hover:text-white transition">FAQ</a>
+      </p>
+
+      <ul class="flex justify-center gap-6 w-full p-0 m-0 list-none">
+        <li>
+          <a href="https://www.facebook.com/aMostra.de.Estatistica/" target="_blank" rel="noreferrer" class="text-white/40 hover:text-white transition">
+            <span class="sr-only">Facebook</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8.02 9.71v-6.86H7.56v-2.85h2.46V9.81c0-2.42 1.44-3.76 3.65-3.76 1.06 0 2.16.19 2.16.19v2.37h-1.21c-1.2 0-1.57.74-1.57 1.51v1.8h2.67l-.43 2.85h-2.24v6.86C18.56 20.87 22 16.84 22 12z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/amostraestatistica/" target="_blank" rel="noreferrer" class="text-white/40 hover:text-white transition">
+            <span class="sr-only">Instagram</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@aMostra-de-Estatistica" target="_blank" rel="noreferrer" class="text-white/40 hover:text-white transition">
+            <span class="sr-only">Youtube</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/amostraestatistica/" target="_blank" rel="noreferrer" class="text-white/40 hover:text-white transition">
+            <span class="sr-only">Linkedin</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@amostra.usp" target="_blank" rel="noreferrer" class="text-white/40 hover:text-white transition">
+            <span class="sr-only">Tiktok</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path d="M12.525.02c1.31.027 2.595.361 3.75 1.01a7.46 7.46 0 0 1 2.522 2.611 7.426 7.426 0 0 0-3.413-.85c-.173 0-.342.008-.513.022V6.66c.17-.008.34-.014.513-.014 2.446 0 4.542 1.547 5.347 3.72a7.48 7.48 0 0 1 .53 2.705V.02h-8.75zm-7.462 7.5c-2.446 0-4.542 1.547-5.347 3.72a7.48 7.48 0 0 0-.53 2.705c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5V0h-4.204v13.945c0 2.404-1.948 4.352-4.352 4.352-2.404 0-4.352-1.948-4.352-4.352 0-2.404 1.948-4.352 4.352-4.352.174 0 .343.01.513.027V7.547a4.42 4.42 0 0 0-.513-.027z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scroll active TOC highlighting script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('article section[id]');
+      const tocLinks = document.querySelectorAll('.toc-link');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(link => link.classList.remove('active'));
+            const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+            if (active) active.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+
+      sections.forEach(s => observer.observe(s));
+    });
+  </script>
+</body>
+</html>
