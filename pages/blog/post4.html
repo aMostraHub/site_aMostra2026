@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testes de personalidade e suas bases teóricas | Blog aNormal</title>
+  <title>Paradoxo de Simpson | Blog aNormal</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -64,14 +64,14 @@
 
   <!-- Main layout wrapper -->
   <main class="flex-grow pt-28 pb-20 blog-post-wrapper">
-    
+
     <!-- Breadcrumbs -->
     <nav class="flex text-sm text-[#000000]/60 mb-6 items-center gap-2" aria-label="Breadcrumb">
       <a href="../../index.html" class="hover:text-[#821114] transition">Início</a>
       <span><i class="fa fa-angle-right text-xs"></i></span>
       <a href="hub.html" class="hover:text-[#821114] transition">Blog</a>
       <span><i class="fa fa-angle-right text-xs"></i></span>
-      <span class="text-[#821114] font-semibold">Testes de Personalidade</span>
+      <span class="text-[#821114] font-semibold">Paradoxo de Simpson</span>
     </nav>
 
     <!-- Post Info Header -->
@@ -80,137 +80,136 @@
         <span class="h-px w-6 bg-[#E1B868]"></span> aNormal · Divulgação Científica
       </span>
       <div class="flex gap-2 mb-4">
-        <span class="bg-[#BC2020] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Psicometria</span>
-        <span class="bg-black/10 text-black/80 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Estatística</span>
+        <span class="bg-[#BC2020] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Estatística</span>
+        <span class="bg-black/10 text-black/80 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Análise de Dados</span>
       </div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#821114] tracking-tight leading-tight mb-4 font-spartan">
-        Testes de personalidade e suas bases teóricas
+        Paradoxo de Simpson: quando os números mentem
       </h1>
-      
+
       <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-black/60 border-b border-black/10 pb-6">
         <div class="flex items-center gap-2">
           <i class="fa fa-calendar text-[#BC2020]"></i>
-          <span>Publicado em 30 de Junho, 2026</span>
+          <span>Publicado em 25 de Junho, 2026</span>
         </div>
         <div class="flex items-center gap-2">
           <i class="fa fa-user text-[#BC2020]"></i>
-          <span>Por Alunos da Estatística IME-USP</span>
+          <span>Por Akira Iwai</span>
         </div>
       </div>
     </header>
 
-    <!-- Featured Image -->
+     <!-- Featured Image -->
     <div class="w-full h-[240px] sm:h-[320px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg mb-10 bg-cover bg-center" 
-         style="background-image: url('../../styles/post1.avif');">
+         style="background-image: url('../../styles/post4.avif');">
     </div>
+
 
     <!-- Layout Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-12 items-start">
-      
+
       <!-- Table of Contents Sidebar -->
       <aside class="sticky top-24 hidden lg:block border-r border-black/10 pr-6">
         <h4 class="text-xs uppercase font-bold tracking-widest text-[#940714] mb-4 font-spartan">Neste artigo</h4>
         <ul class="space-y-3 text-sm">
-          <li>
-            <a href="#definicao" class="toc-link block text-black/75 hover:text-[#821114] active">O que é a Psicometria?</a>
-          </li>
-          <li>
-            <a href="#como-funciona" class="toc-link block text-black/75 hover:text-[#821114]">Como Funciona (TCT vs. TRI)</a>
-          </li>
-          <li>
-            <a href="#big-five" class="toc-link block text-black/75 hover:text-[#821114]">O Modelo Big Five</a>
-          </li>
-          <li>
-            <a href="#validacao" class="toc-link block text-black/75 hover:text-[#821114]">Alfa de Cronbach e Validação</a>
-          </li>
-          <li>
-            <a href="#aplicacoes" class="toc-link block text-black/75 hover:text-[#821114]">Aplicações no Mundo Real</a>
-          </li>
+          <li><a href="#o-que-e" class="toc-link block text-black/75 hover:text-[#821114] active">O que é o Paradoxo?</a></li>
+          <li><a href="#berkeley" class="toc-link block text-black/75 hover:text-[#821114]">O viés de Berkeley (1973)</a></li>
+          <li><a href="#exemplo" class="toc-link block text-black/75 hover:text-[#821114]">Como os números enganam</a></li>
+          <li><a href="#evitar" class="toc-link block text-black/75 hover:text-[#821114]">Como não cair na armadilha</a></li>
         </ul>
       </aside>
 
       <!-- Article Body -->
       <article class="article-content bg-white p-6 sm:p-8 md:p-12 rounded-2xl shadow-sm border border-black/5">
-        <section id="definicao">
-          <h2>O que é a Psicometria?</h2>
+        <section id="o-que-e">
+          <h2>O que é o Paradoxo de Simpson?</h2>
           <p>
-            Quem nunca se deparou com um teste rápido na internet prometendo revelar aspectos profundos do seu comportamento, ou mesmo um questionário corporativo em um processo seletivo? Embora muitos desses testes informais pareçam meras brincadeiras, a medição sistemática e científica do comportamento e dos traços de personalidade é uma área extremamente séria da ciência de dados e da psicologia, conhecida como <strong>Psicometria</strong>.
-          </p>
-          <p>
-            A psicometria lida com o desafio de medir o invisível. Diferente de características físicas como altura ou pressão arterial, fenômenos psicológicos — chamados de <strong>variáveis latentes</strong> ou <strong>constructos</strong> — não podem ser observados de forma direta. Traços como a extroversão, ansiedade, inteligência ou foco precisam ser inferidos a partir de comportamentos observáveis, geralmente as respostas de um indivíduo a um conjunto de perguntas estruturadas.
+            O <strong>Paradoxo de Simpson</strong> acontece quando uma tendência clara aparece em diferentes grupos de dados, mas desaparece — ou se inverte completamente — quando esses grupos são combinados (agregados). Ou seja, os dados podem "enganar" você, mesmo que a matemática esteja absolutamente correta.
           </p>
           <div class="editorial-quote">
-            "A estatística é a ponte que nos permite quantificar o intangível, transformando comportamentos qualitativos em dados precisos e analisáveis."
+            "Os dados podem contar exatamente a mentira que você quer ouvir — basta escolher se olha para os grupos separados ou para o total."
           </div>
         </section>
 
-        <section id="como-funciona" class="mt-8">
-          <h2>Como Funciona (TCT vs. TRI)</h2>
+        <section id="berkeley" class="mt-8">
+          <h2>O caso real: o viés de Berkeley (1973)</h2>
           <p>
-            Para construir e validar um instrumento de medição de personalidade, os estatísticos utilizam duas grandes correntes teóricas. A primeira é a <strong>Teoria Clássica dos Testes (TCT)</strong>, que postula um modelo linear simples:
-          </p>
-          <div class="bg-[#E3E4DE]/40 p-4 rounded-lg text-center font-mono my-6 text-[#821114] text-lg font-bold">
-            X = T + E
-          </div>
-          <p>
-            Onde <strong>X</strong> é a nota observada (o score bruto somado no teste), <strong>T</strong> é o score verdadeiro (o real nível do traço do indivíduo) e <strong>E</strong> é o erro de medição aleatório. Embora muito intuitiva e fácil de calcular, a TCT possui uma limitação crucial: o score final de uma pessoa depende inteiramente do conjunto específico de perguntas feitas (se o teste for muito fácil ou curto, o score será superestimado).
-          </p>
-          <p>
-            Para resolver essa limitação, a psicometria moderna recorre à <strong>Teoria de Resposta ao Item (TRI)</strong>. Em vez de focar no score total, a TRI modela probabilisticamente a resposta a cada item individual do questionário em função do nível do traço latente do indivíduo (representado pela letra grega <i>theta</i>, &theta;).
-          </p>
-          <p>
-            A probabilidade de um indivíduo responder positivamente a um item de personalidade é calculada com base em parâmetros como:
+            O exemplo mais famoso da história aconteceu na Universidade de Berkeley, na Califórnia. A instituição foi quase processada por discriminação de gênero na admissão da pós-graduação. Os dados gerais eram alarmantes:
           </p>
           <ul class="list-disc pl-5 space-y-1">
-            <li><strong>Discriminação (a)</strong>: a capacidade do item de diferenciar indivíduos com níveis próximos do traço latente.</li>
-            <li><strong>Dificuldade/Locação (b)</strong>: o ponto na escala do traço latente onde a probabilidade de concordância é de 50%.</li>
-            <li><strong>Acerto Casual (c)</strong>: parâmetro de 'chute', que mede a probabilidade de um indivíduo responder positivamente mesmo com nível mínimo do traço.</li>
+            <li><strong>Homens inscritos:</strong> 44% de aprovação</li>
+            <li><strong>Mulheres inscritas:</strong> 35% de aprovação</li>
           </ul>
+          <p>
+            Parecia um caso óbvio de preconceito. No entanto, quando os estatísticos analisaram os departamentos individualmente, descobriram algo inacreditável: a maioria dos departamentos tinha uma taxa de aceitação ligeiramente <strong>maior para mulheres</strong>.
+          </p>
+          <h3>O que explica isso?</h3>
+          <p>
+            As mulheres tendiam a se candidatar em massa para departamentos altamente concorridos (como Humanas), onde a taxa de aceitação geral era baixa para todo mundo. Os homens se candidatavam mais para departamentos com mais vagas (como Engenharia e Química), onde era mais fácil entrar.
+          </p>
+          <p>
+            Ao juntar tudo, a preferência pelos cursos difíceis mascarou o cenário real. O problema não era o viés dos avaliadores, mas uma <strong>variável oculta</strong>: a distribuição das escolhas de cursos.
+          </p>
         </section>
 
-        <section id="big-five" class="mt-8">
-          <h2>O Modelo Big Five</h2>
+        <section id="exemplo" class="mt-8">
+          <h2>Como os números enganam: um exemplo simples</h2>
           <p>
-            Nas últimas décadas, estatísticos e psicólogos aplicaram técnicas de <strong>análise fatorial</strong> em questionários aplicados a milhares de pessoas em diferentes culturas. O resultado desse processo estatístico foi a convergência para um modelo de cinco fatores fundamentais da personalidade, amplamente conhecido como o <strong>Big Five</strong> (ou modelo OCEAN):
+            Para ficar fácil de entender na prática, imagine o teste de um novo remédio dividido entre 100 homens e 100 mulheres. Analisando cada grupo <strong>separadamente</strong>, o placebo vence nos dois:
+          </p>
+          <div class="overflow-x-auto my-6">
+            <table class="w-full text-sm border border-black/10 rounded-lg overflow-hidden">
+              <thead>
+                <tr class="bg-[#821114] text-white font-montserrat text-left">
+                  <th class="px-4 py-3 font-semibold">Grupo</th>
+                  <th class="px-4 py-3 font-semibold">Remédio</th>
+                  <th class="px-4 py-3 font-semibold">Placebo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-t border-black/10">
+                  <td class="px-4 py-3 font-semibold">Homens</td>
+                  <td class="px-4 py-3">80 de 100 — <strong>80%</strong></td>
+                  <td class="px-4 py-3">9 de 10 — <strong>90%</strong></td>
+                </tr>
+                <tr class="border-t border-black/10 bg-black/[0.02]">
+                  <td class="px-4 py-3 font-semibold">Mulheres</td>
+                  <td class="px-4 py-3">1 de 10 — <strong>10%</strong></td>
+                  <td class="px-4 py-3">30 de 100 — <strong>30%</strong></td>
+                </tr>
+                <tr class="border-t border-black/10 bg-[#E1B868]/15">
+                  <td class="px-4 py-3 font-bold text-[#821114]">Total (agregado)</td>
+                  <td class="px-4 py-3 font-bold text-[#821114]">81 de 110 — 73,6%</td>
+                  <td class="px-4 py-3">39 de 110 — 35,4%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            O <strong>paradoxo</strong>: o placebo foi melhor para os homens <i>e</i> melhor para as mulheres. Mas, se você olhar apenas para o total, o remédio parece ser duas vezes melhor! Isso acontece porque o tamanho das amostras dentro de cada grupo é desproporcional — os grupos não têm o mesmo peso.
+          </p>
+        </section>
+
+        <section id="evitar" class="mt-8">
+          <h2>Como não ser enganado pelo Paradoxo de Simpson</h2>
+          <p>
+            No mundo do <i>Big Data</i>, cientistas de dados enfrentam esse perigo diariamente em testes A/B, análises de conversão e métricas de negócios. Para evitar cair nessa armadilha, siga três regras de ouro:
           </p>
           <ol class="list-decimal pl-5 space-y-2">
-            <li><strong>O (Openness to Experience)</strong>: Abertura a novas experiências, curiosidade intelectual e imaginação.</li>
-            <li><strong>C (Conscientiousness)</strong>: Conscienciosidade, indicando organização, responsabilidade, autodisciplina e foco em metas.</li>
-            <li><strong>E (Extraversion)</strong>: Extroversão, medindo sociabilidade, assertividade e busca por estímulos sociais.</li>
-            <li><strong>A (Agreeableness)</strong>: Amabilidade ou simpatia, que envolve empatia, cooperação, altruísmo e confiança.</li>
-            <li><strong>N (Neuroticism)</strong>: Neuroticismo ou instabilidade emocional, refletindo a propensão a experimentar emoções negativas como ansiedade e estresse.</li>
+            <li><strong>Nunca confie apenas na média geral:</strong> sempre que houver subgrupos naturais na sua base (idade, gênero, localização, comportamento), quebre os dados para ver se a tendência se mantém.</li>
+            <li><strong>Procure por variáveis ocultas (confundidoras):</strong> pergunte-se sempre: "Existe algum fator externo que está influenciando quem cai em qual grupo?"</li>
+            <li><strong>Entenda o contexto antes do cálculo:</strong> a matemática pura não entende o comportamento humano. O contexto do problema dita qual visão — a isolada ou a agregada — faz mais sentido para a tomada de decisão.</li>
           </ol>
-          <p>
-            Através da análise fatorial exploratória e confirmatória, é possível reduzir centenas de adjetivos comportamentais em apenas cinco dimensões ortogonais (independentes entre si) que explicam a maior parte da variabilidade da personalidade humana.
-          </p>
-        </section>
-
-        <section id="validacao" class="mt-8">
-          <h2>Alfa de Cronbach e Validação</h2>
-          <p>
-            Como garantir que as perguntas elaboradas realmente funcionam bem juntas e medem o mesmo traço? O primeiro indicador avaliado é a <strong>consistência interna</strong> do instrumento, comumente medida através do <strong>Coeficiente Alfa de Cronbach</strong> (&alpha;):
-          </p>
-          <p>
-            O valor de &alpha; varia de 0 a 1. Na prática acadêmica e corporativa, considera-se que valores acima de <strong>0,70</strong> atestam uma consistência interna aceitável, enquanto valores acima de <strong>0,80</strong> indicam excelente confiabilidade. Se removermos um item do teste e o Alfa de Cronbach subir expressivamente, isso indica que aquela pergunta específica não está alinhada ao constructo e deve ser eliminada ou reformulada.
-          </p>
-          
-        </section>
-
-        <section id="aplicacoes" class="mt-8">
-          <h2>Aplicações no Mundo Real</h2>
-          <p>
-            Longe de ser apenas teórica, a psicometria tem aplicações vitais hoje. Em processos seletivos de grandes empresas, ela ajuda a identificar a aderência cultural e comportamental de candidatos. Na área clínica, auxilia na triagem e diagnóstico de condições psiquiátricas. No marketing e vendas, permite a segmentação de clientes com base em perfis psicográficos, gerando campanhas muito mais personalizadas e eficientes.
-          </p>
-          <p>
-            Desta forma, os testes de personalidade fundamentados estatisticamente deixam de ser simples caixas-pretas especulativas e se consolidam como valiosas ferramentas preditivas do comportamento humano.
-          </p>
+          <div class="editorial-quote">
+            "Dados são ferramentas poderosas, mas sem a análise correta da estrutura dos grupos, eles podem contar exatamente a mentira que você quer (ou não quer) ouvir."
+          </div>
         </section>
       </article>
 
     </div>
 
     <!-- Authors Bio Card -->
-     <section class="reveal mt-12 bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-black/5">
+    <section class="reveal mt-12 bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-black/5">
       <h4 class="text-xs uppercase font-bold tracking-widest text-[#940714] mb-6 font-spartan">Sobre os Autores</h4>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="flex gap-4 items-start">
@@ -225,10 +224,10 @@
         </div>
         <div class="flex gap-4 items-start">
           <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#940714] to-[#E1B868] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-            GS
+            AI
           </div>
           <div>
-            <h5 class="font-bold text-gray-900">Gabriel Sanchez</h5>
+            <h5 class="font-bold text-gray-900">Akira Iwai</h5>
             <p class="text-xs text-[#BC2020] mb-2 font-spartan font-medium">Autor</p>
             <p class="text-sm text-gray-600 leading-relaxed">Aluno do Bacharelado em Estatística do IME-USP e integrante da comissão organizadora da aMostra de Estatística.</p>
           </div>

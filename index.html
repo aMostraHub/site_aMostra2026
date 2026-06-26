@@ -19,33 +19,74 @@
     })();
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          keyframes: {
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-15px)' },
-            }
-          },
-          animation: {
-            'fade-in-up': 'fadeInUp 1s ease-out forwards',
-            'float': 'float 6s ease-in-out infinite',
-          }
-        }
-      }
-    }
-  </script>
+  <script src="styles/brand.js"></script>
 
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
   <script src="script.js" defer></script>
+
+  <style>
+    /* ===== index — realces visuais (respeitando brand.js / style.css) ===== */
+
+    /* Trama sutil sobre o gradiente do hero */
+    .hero-grid {
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, .06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 38%, #000 28%, transparent 75%);
+      mask-image: radial-gradient(ellipse at 50% 38%, #000 28%, transparent 75%);
+    }
+
+    /* Link da navbar com filete dourado pontual no hover */
+    .nav-link {
+      position: relative;
+      padding: .25rem .35rem;
+      transition: color .2s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: .35rem;
+      right: .35rem;
+      bottom: -3px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--c-gold, #E1B868);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after { transform: scaleX(1); }
+    .nav-link.active { color: #fff; }
+
+    /* Revelar ao rolar */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* Brilho pontual nos cartões de estatística */
+    .stat-card { position: relative; overflow: hidden; }
+    .stat-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 120% at 50% -20%, rgba(255, 255, 255, .28), transparent 60%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      pointer-events: none;
+    }
+    .stat-card:hover::after { opacity: 1; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+      .animate-float, .animate-bounce { animation: none !important; }
+    }
+  </style>
 </head>
 
 <body class="flex flex-col relative">
@@ -65,14 +106,18 @@
   <nav class="border-gray-200">
     <div
       id="navbar"
-      class="fixed w-full bg-transparent z-40 flex flex-wrap items-center justify-between mx-auto p-4 transition-all duration-300">
+      class="fixed w-full bg-transparent z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4 transition-all duration-300">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="./index.html"><span class="font-semibold text-xl tracking-tight">aMostra XIX</span></a>
+        <a href="./index.html" class="group flex items-center gap-2.5">
+          <img src="styles/logo_branco_isolado.png" alt="aMostra de Estatística"
+            class="h-8 w-auto drop-shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+          <span class="font-montserrat font-semibold text-lg tracking-tight">aMostra <span class="text-gold">XIX</span></span>
+        </a>
       </div>
       <button onclick="toggleMenu()" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition-colors"
         aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Abrir menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M1 1h15M1 7h15M1 13h15" />
@@ -80,46 +125,44 @@
       </button>
       <div class="hidden w-full md:block md:w-auto" id="menu">
         <ul
-          class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
+          class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0">
           <li>
-              <a
-                href="./pages/faq.html"
-                class="block py-2 px-3 md:p-0 hover:text-slate-200 transition-colors"
-                >FAQ</a
-              >
-            </li>
-          <li>
-            <a href="./index.html" class="block py-2 px-3 md:p-0 hover:text-slate-200 transition-colors">Início</a>
+            <a href="./index.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition-colors">Início</a>
           </li>
           <li>
-            <a href="./pages/amostra.html"
-              class="block py-2 px-3 rounded hover:text-slate-200 transition-colors md:border-0 md:p-0">aMostra</a>
+            <a href="./pages/galeria.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Galeria</a>
           </li>
           <li>
-            <a href="./pages/blog/hub.html"
-              class="block py-2 px-3 rounded hover:text-slate-200 transition-colors md:border-0 md:p-0">Blog</a>
+            <a href="./pages/blog/hub.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Blog</a>
           </li>
           <li>
-            <a href="./pages/comissao.html"
-              class="block py-2 px-3 rounded hover:text-slate-200 transition-colors md:border-0 md:p-0">Comissão</a>
+            <a href="./pages/comissao.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Comissão</a>
+          </li>
+          <li>
+            <a href="./pages/faq.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">FAQ</a>
           </li>
           <div id="parceiros" class="hidden"> <li>
-            <a href="./pages/patrocinadores.html"
-              class="block py-2 px-3 rounded hover:text-slate-200 transition-colors md:border-0 md:p-0">Parceiros</a>
+            <a href="./pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Parceiros</a>
           </li>
-          </div> </ul>
+          </div>
+        </ul>
       </div>
     </div>
   </nav>
 
   <section
-    class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-red-800 via-red-600 to-red-500 pt-24 pb-20">
+    class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-red-600 pt-28 pb-24">
 
     <div
-      class="absolute top-1/2 right-20 -translate-y-1/2 w-[500px] h-[500px] bg-white/20 blur-3xl rounded-full pointer-events-none">
+      class="absolute -top-24 -right-24 w-[520px] h-[520px] bg-white/15 blur-3xl rounded-full pointer-events-none">
+    </div>
+    <div
+      class="absolute bottom-0 -left-24 w-[440px] h-[440px] bg-gold/20 blur-3xl rounded-full pointer-events-none">
     </div>
 
-    <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+
+    <div class="absolute inset-0 opacity-[0.15] pointer-events-none">
       <img
         src="styles/bg-vector.svg"
         alt=""
@@ -127,27 +170,60 @@
     </div>
 
     <div
-      class="relative z-10 w-full max-w-6xl mx-auto px-12 lg:px-20 mt-10">
+      class="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 mt-10">
 
-      <div class="grid lg:grid-cols-[1fr_0.8fr] gap-10 items-center">
+      <div class="grid lg:grid-cols-[1fr_0.8fr] gap-10 lg:gap-16 items-center">
 
         <div class="opacity-0 animate-fade-in-up">
-          <h1 class="text-white font-black leading-[0.9] text-5xl md:text-6xl lg:text-7xl">
-          aMostra XIX
-          </h1>
+          <span class="eyebrow inline-flex items-center gap-3 text-gold mb-5">
+            <span class="h-px w-8 bg-gold/70"></span>
+            XIX Edição · IME-USP
+          </span>
 
-          <div class="w-24 h-1 bg-white rounded-full mt-6 mb-8"></div>
+          <h1 class="font-spartan text-white font-black leading-[0.88] text-5xl md:text-6xl lg:text-7xl">
+            aMostra <span class="text-gold">XIX</span>
+          </h1>
+          <p class="font-spartan text-white/75 text-2xl md:text-3xl font-semibold mt-2">de Estatística</p>
+
+          <div class="w-24 h-1 bg-gold rounded-full mt-6 mb-8"></div>
 
           <p class="text-white/90 text-lg md:text-xl leading-relaxed max-w-xl">
             Participe da nossa tradicional aMostra de Estatística.
-            Um evento <strong>100% gratuito</strong>, imersivo e com uma programação espetacular.
+            Um evento <strong class="text-white">100% gratuito</strong>, imersivo e com uma programação espetacular.
           </p>
-          
-          <div class="inline-flex items-center gap-3 mt-8 bg-white/10 hover:bg-white/20 transition-colors duration-300 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-xl shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span class="font-bold text-xl md:text-2xl tracking-wide">28/09 a 02/10</span>
+
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8 font-montserrat text-white">
+            <span class="inline-flex items-center gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span class="font-bold text-lg md:text-xl tracking-wide">28/09 — 02/10</span>
+            </span>
+            <span class="hidden sm:inline-block w-px h-5 bg-white/30"></span>
+            <span class="inline-flex items-center gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span class="font-semibold text-base md:text-lg">IME · USP</span>
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-x-7 gap-y-4 mt-9">
+            <a href="#sec-2"
+              class="font-montserrat inline-flex items-center gap-2 bg-white text-red-800 hover:bg-gold hover:text-red-900 font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5">
+              Conheça a aMostra
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a href="./pages/blog/hub.html"
+              class="font-montserrat inline-flex items-center gap-2 text-white/85 hover:text-gold font-semibold transition-colors group">
+              Ler o Blog
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -190,96 +266,125 @@
   </section>
 
   <div class="bg-white pt-16 pb-12">
-    <div class="mx-auto px-4 text-center max-w-xl">
-      <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-8">Só faltam alguns dias até a aMostra!</h2>
-      
-      <div id="countdown" class="flex justify-center gap-4 sm:gap-6">
-        <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
-          <span id="days" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
-          <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">dias</span>
+    <div class="mx-auto px-4 text-center max-w-2xl reveal">
+      <span class="eyebrow text-red-700">Contagem regressiva</span>
+      <h2 class="font-spartan text-2xl sm:text-3xl font-bold text-gray-900 mt-3 mb-4">Só faltam alguns dias até a aMostra!</h2>
+      <div class="accent-bar mx-auto mb-10"></div>
+
+      <div id="countdown" class="flex justify-center gap-3 sm:gap-5">
+        <div class="relative flex flex-col items-center justify-center bg-paper border border-gray-200 rounded-2xl shadow-sm w-[4.5rem] h-24 sm:w-28 sm:h-32 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md">
+          <span class="absolute top-0 inset-x-0 h-1 bg-gold/80"></span>
+          <span id="days" class="font-spartan text-3xl sm:text-5xl font-black text-red-700 tabular-nums">00</span>
+          <span class="font-montserrat text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">dias</span>
         </div>
-        
-        <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
-          <span id="hours" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
-          <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">horas</span>
+
+        <div class="relative flex flex-col items-center justify-center bg-paper border border-gray-200 rounded-2xl shadow-sm w-[4.5rem] h-24 sm:w-28 sm:h-32 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md">
+          <span class="absolute top-0 inset-x-0 h-1 bg-gold/80"></span>
+          <span id="hours" class="font-spartan text-3xl sm:text-5xl font-black text-red-700 tabular-nums">00</span>
+          <span class="font-montserrat text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">horas</span>
         </div>
-        
-        <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
-          <span id="minutes" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
-          <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">min</span>
+
+        <div class="relative flex flex-col items-center justify-center bg-paper border border-gray-200 rounded-2xl shadow-sm w-[4.5rem] h-24 sm:w-28 sm:h-32 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md">
+          <span class="absolute top-0 inset-x-0 h-1 bg-gold/80"></span>
+          <span id="minutes" class="font-spartan text-3xl sm:text-5xl font-black text-red-700 tabular-nums">00</span>
+          <span class="font-montserrat text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">min</span>
         </div>
-        
-        <div class="flex flex-col items-center justify-center bg-white border border-gray-200 rounded-2xl shadow-sm w-20 h-20 sm:w-24 sm:h-24 transition-transform hover:-translate-y-1">
-          <span id="seconds" class="text-3xl sm:text-4xl font-extrabold text-red-600">00</span>
-          <span class="text-xs sm:text-sm text-gray-500 uppercase font-medium mt-1">seg</span>
+
+        <div class="relative flex flex-col items-center justify-center bg-paper border border-gray-200 rounded-2xl shadow-sm w-[4.5rem] h-24 sm:w-28 sm:h-32 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md">
+          <span class="absolute top-0 inset-x-0 h-1 bg-gold/80"></span>
+          <span id="seconds" class="font-spartan text-3xl sm:text-5xl font-black text-red-700 tabular-nums">00</span>
+          <span class="font-montserrat text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">seg</span>
         </div>
       </div>
     </div>
   </div>
 
-  <section id="sec-2">
-  <div class="mx-auto max-w-screen-xl px-4 pb-8 sm:px-6 sm:pb-12">
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+
+    <!-- Seção: O que é a aMostra? (Cole no seu index.html substituindo a sec-2) -->
+<section id="sec-2" class="bg-gray-50 py-12 lg:py-16 border-t border-gray-200">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center reveal">
       
-      <div class="relative h-64 sm:h-80 lg:h-96 w-full lg:order-last rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-        <img alt="Palestra da aMostra" src="styles/foto_palestra.jpg" class="absolute inset-0 h-full w-full object-cover" />
+      <!-- Textos -->
+      <div class="order-2 lg:order-1">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-100 text-red-800 text-xs font-bold uppercase tracking-wider mb-6 border border-red-200">
+          <i class="fa fa-info-circle"></i> Sobre o Evento
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6 font-spartan tracking-tight">
+          O que é a aMostra de Estatística?
+        </h2>
+        <div class="w-16 h-1 bg-[#E1B868] rounded-full mb-8"></div>
+        <div class="text-gray-600 text-lg leading-relaxed space-y-6">
+          <p>
+            A aMostra é um evento anual organizado pelos estudantes de Estatística do IME-USP, com apoio do professor Victor Fossaluza.
+          </p>
+          <p>
+            A ideia é criar um espaço descontraído e ao mesmo tempo profundo para discutir o que realmente importa no dia a dia de quem trabalha com estatística. A programação mistura palestras, mesas-redondas e minicursos — tudo voltado para ampliar o olhar, trocar experiências e pensar, com mais senso crítico, nos caminhos da profissão.
+          </p>
+        </div>
       </div>
       
-      <div class="lg:py-24">
-        <h2 class="text-3xl font-bold sm:text-4xl text-gray-900">O que é a aMostra?</h2>
-        <p class="mt-4 text-gray-600 text-lg leading-relaxed">
-          Um evento feito para quem é apaixonado por estatística e ciência de dados. 
-          Nossa programação é repleta de palestras com especialistas e minicursos práticos que vão transformar a sua forma de enxergar e analisar o mundo dos dados.
-        </p>
+      <!-- Imagem com Efeito -->
+      <div class="order-1 lg:order-2 relative h-80 sm:h-96 lg:h-[28rem] w-full rounded-3xl overflow-hidden shadow-2xl shadow-red-900/10 border border-gray-100 group">
+        <img alt="Comissão organizadora da aMostra" src="styles/PRINCIPAL.avif" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+        <!-- Overlay sutil no hover -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </div>
-      
+
     </div>
   </div>
 </section>
   
-  <section class="bg-white-200 pt-12 pb-24"> 
-    <div id="counterContainer" class="container mx-auto px-4 flex flex-col items-center md:flex-row md:justify-center gap-8 sm:gap-12 text-white text-center">
+  <section class="bg-white pt-12 pb-10">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 text-center mb-12 reveal">
+      <span class="eyebrow text-red-700">A aMostra em números</span>
+      <h2 class="font-spartan text-3xl md:text-4xl font-black text-gray-900 mt-3">Uma tradição que cresce a cada ano</h2>
+      <div class="accent-bar mx-auto mt-5"></div>
+    </div>
 
-      <div class="bg-red-600 rounded-xl px-6 py-5 w-full max-w-[260px] shadow-md flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
-        <div class="h-14 flex items-end justify-center mb-3">
-          <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <div id="counterContainer" class="container mx-auto px-4 flex flex-col items-center md:flex-row md:justify-center gap-6 sm:gap-8 text-white text-center">
+
+      <div class="stat-card bg-gradient-to-br from-red-700 to-red-600 rounded-2xl px-6 py-7 w-full max-w-[280px] shadow-lg shadow-red-900/20 flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
+        <div class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-white/15 ring-1 ring-white/25 mb-4">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
           </svg>
         </div>
-        <div class="flex items-center justify-center w-[120px] mb-1">
-          <span class="text-4xl font-extrabold w-10 text-right pr-2">+</span>
-          <span class="text-4xl font-extrabold flex-1 text-left tabular-nums count" data-count="600">0</span>
+        <div class="relative z-10 flex items-baseline justify-center mb-1">
+          <span class="font-spartan text-5xl font-black">+</span>
+          <span class="font-spartan text-5xl font-black tabular-nums count" data-count="600">0</span>
         </div>
-        <p class="mt-2 text-sm sm:text-base font-medium text-white text-center leading-snug">Presenças no<br>ano passado</p>
+        <p class="relative z-10 mt-1 text-sm sm:text-base font-montserrat font-medium text-white/90 text-center leading-snug">Presenças no<br>ano passado</p>
       </div>
 
-      <div class="bg-red-600 rounded-xl px-6 py-5 w-full max-w-[260px] shadow-md flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
-        <div class="h-14 flex items-end justify-center mb-3">
-          <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="stat-card bg-gradient-to-br from-red-700 to-red-600 rounded-2xl px-6 py-7 w-full max-w-[280px] shadow-lg shadow-red-900/20 flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
+        <div class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-white/15 ring-1 ring-white/25 mb-4">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
           </svg>
         </div>
-        <div class="flex items-center justify-center w-[120px] mb-1">
-          <span class="text-4xl font-extrabold w-10 text-right pr-2">+</span>
-          <span class="text-4xl font-extrabold flex-1 text-left tabular-nums count" data-count="20">0</span>
+        <div class="relative z-10 flex items-baseline justify-center mb-1">
+          <span class="font-spartan text-5xl font-black">+</span>
+          <span class="font-spartan text-5xl font-black tabular-nums count" data-count="20">0</span>
         </div>
-        <p class="mt-2 text-sm sm:text-base font-medium text-white text-center leading-snug">Patrocinadores<br> no ano passado</p>
+        <p class="relative z-10 mt-1 text-sm sm:text-base font-montserrat font-medium text-white/90 text-center leading-snug">Patrocinadores<br>no ano passado</p>
       </div>
 
-      <div class="bg-red-600 rounded-xl px-6 py-5 w-full max-w-[260px] shadow-md flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
-        <div class="h-14 flex items-end justify-center mb-3">
-          <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div class="stat-card bg-gradient-to-br from-red-700 to-red-600 rounded-2xl px-6 py-7 w-full max-w-[280px] shadow-lg shadow-red-900/20 flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-default">
+        <div class="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-white/15 ring-1 ring-white/25 mb-4">
+          <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
           </svg>
         </div>
-        <div class="flex items-center justify-center w-[120px] mb-1">
-          <span class="text-4xl font-extrabold w-10 text-right pr-2">+</span>
-          <span class="text-4xl font-extrabold flex-1 text-left tabular-nums count" data-count="20">0</span>
+        <div class="relative z-10 flex items-baseline justify-center mb-1">
+          <span class="font-spartan text-5xl font-black">+</span>
+          <span class="font-spartan text-5xl font-black tabular-nums count" data-count="20">0</span>
         </div>
-        <p class="mt-2 text-sm sm:text-base font-medium text-white text-center leading-snug">Palestras no<br>ano passado</p>
+        <p class="relative z-10 mt-1 text-sm sm:text-base font-montserrat font-medium text-white/90 text-center leading-snug">Palestras no<br>ano passado</p>
       </div>
 
     </div>
+
   </section>
   <div id="cronograma" class="hidden"> <div class="container mx-auto py-8 px-4 md:px-44" id="sec-3">
       <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -622,33 +727,87 @@
       </div>
     </div>
   </div>
-  </div>  <section class="py-12 bg-white">
-  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">Localização do Evento</h2>
+  </div>  
+  <!-- Seção de Destaque do Blog (aNormal) -->
+  <section class="bg-gray-50 py-12 lg:py-16 border-t border-gray-200">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center reveal">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-      
-      <div class="flex flex-col justify-center p-8 bg-gray-50 rounded-2xl border border-gray-100 shadow-sm">
-        <h3 class="text-xl font-bold text-gray-800 mb-4">IME - USP</h3>
-        <p class="text-gray-700 mb-3">
-          <strong>Endereço:</strong> R. do Matão, 1010 - Butantã, São Paulo - SP
-        </p>
-        <p class="text-gray-700 mb-3">
-          <strong>Ponto de Referência:</strong> As atividades principais vão rolar no Bloco B (Auditório Jacy Monteiro). O prédio fica na Praça do Oceanógrafo, bem pertinho da FAU e da FEA.
-        </p>
-        <p class="text-gray-700">
-          <strong>Como Chegar:</strong> Há pontos de parada bem em frente ao prédio para os ônibus circulares da Cidade Universitária/Butantã (linhas <strong>8082-10</strong>, <strong>8084-10</strong> e <strong>8085-10</strong>).
-        </p>
+        <!-- Textos e Chamada para Ação -->
+        <div class="lg:py-8 order-last lg:order-first">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-100 text-red-800 text-xs font-bold uppercase tracking-wider mb-6 border border-red-200">
+            <i class="fa fa-newspaper-o"></i> Divulgação Científica
+          </div>
+          <h2 class="text-3xl font-bold sm:text-4xl text-gray-900 mb-4">
+            Conheça o <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-500 font-black tracking-tight font-spartan">aNormal</span>
+          </h2>
+          <div class="w-16 h-1 bg-red-600 rounded-full mb-6"></div>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            A divulgação científica não para! Mergulhe em artigos exclusivos escritos pelos nossos alunos e descubra o impacto dos dados no mundo real. Descomplicamos conceitos complexos como psicometria, algoritmos de recomendação e as aplicações práticas da estatística no dia a dia.
+          </p>
+          <a href="./pages/blog/hub.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 text-white bg-red-600 hover:bg-red-700 rounded-xl font-bold transition-all hover:-translate-y-1 hover:shadow-lg shadow-red-600/30">
+            Acessar o Blog <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Preview do Último Post -->
+        <a href="./pages/blog/hub.html" class="relative w-full h-80 sm:h-96 rounded-3xl overflow-hidden shadow-xl border border-gray-200 group block">
+           <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('styles/post1.avif');"></div>
+           <!-- Gradiente escuro na base para dar leitura ao texto -->
+           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+           
+           <div class="absolute bottom-0 left-0 p-6 sm:p-8 w-full">
+             <span class="bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Post em Destaque</span>
+             <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 font-spartan group-hover:text-red-200 transition-colors">Testes de personalidade e suas bases teóricas</h3>
+             <p class="text-gray-300 text-sm line-clamp-2">Descubra os fundamentos estatísticos que dão razão aos testes psicométricos.</p>
+           </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-12 lg:py-16 bg-white border-t border-gray-200">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <span class="eyebrow text-red-700">Onde acontece</span>
+      <h2 class="font-spartan text-3xl md:text-4xl font-black text-gray-900 mt-3">Localização do Evento</h2>
+      <div class="accent-bar mx-auto mt-5"></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch reveal">
+
+      <div class="flex flex-col justify-center p-8 sm:p-10 bg-gray-50 rounded-3xl border border-gray-100 border-l-4 border-l-gold shadow-sm">
+        <h3 class="font-spartan text-2xl font-bold text-gray-900 mb-6">IME · USP</h3>
+
+        <div class="flex gap-4 mb-5">
+          <i class="fa fa-map-marker text-red-600 text-lg mt-1 w-5 text-center" aria-hidden="true"></i>
+          <p class="text-gray-700 m-0">
+            <strong>Endereço:</strong> R. do Matão, 1010 — Butantã, São Paulo - SP
+          </p>
+        </div>
+        <div class="flex gap-4 mb-5">
+          <i class="fa fa-building-o text-red-600 text-lg mt-1 w-5 text-center" aria-hidden="true"></i>
+          <p class="text-gray-700 m-0">
+            <strong>Ponto de Referência:</strong> As atividades principais vão rolar no Bloco B (Auditório Jacy Monteiro). O prédio fica na Praça do Oceanógrafo, bem pertinho da FAU e da FEA.
+          </p>
+        </div>
+        <div class="flex gap-4">
+          <i class="fa fa-bus text-red-600 text-lg mt-1 w-5 text-center" aria-hidden="true"></i>
+          <p class="text-gray-700 m-0">
+            <strong>Como Chegar:</strong> Há pontos de parada bem em frente ao prédio para os ônibus circulares da Cidade Universitária/Butantã (linhas <strong>8082-10</strong>, <strong>8084-10</strong> e <strong>8085-10</strong>).
+          </p>
+        </div>
       </div>
 
-      <div class="w-full h-80 lg:h-96 rounded-2xl overflow-hidden shadow-md border border-gray-200">
-        <iframe 
-          src="https://maps.google.com/maps?q=Instituto%20de%20Matematica%20e%20Estatistica%20da%20USP&t=m&z=16&output=embed&iwloc=near" 
-          width="100%" 
-          height="100%" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
+      <div class="w-full h-80 lg:h-auto min-h-[20rem] rounded-3xl overflow-hidden shadow-md border border-gray-200">
+        <iframe
+          src="https://maps.google.com/maps?q=Instituto%20de%20Matematica%20e%20Estatistica%20da%20USP&t=m&z=16&output=embed&iwloc=near"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
@@ -789,6 +948,22 @@
         navbar.classList.remove('bg-gradient-to-r', 'from-red-900', 'to-red-600', 'shadow-md');
       }
     });
+  </script>
+
+  <script>
+    // Revela suavemente os blocos marcados com .reveal conforme entram na tela.
+    const revealEls = document.querySelectorAll('.reveal');
+    if (revealEls.length) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach((el) => revealObserver.observe(el));
+    }
   </script>
 </body>
 

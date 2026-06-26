@@ -7,7 +7,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <script src="../styles/brand.js"></script>
+
   <link rel="stylesheet" href="../styles/style.css" />
   <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css" />
   <script src="../script.js" defer></script>
@@ -22,49 +23,97 @@
       transition: height 0.3s ease-out, opacity 0.2s ease, padding 0.2s ease;
       will-change: height, opacity;
     }
+
+    /* Trama sutil sobre o gradiente do hero */
+    .hero-grid {
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, .06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 35%, #000 30%, transparent 78%);
+      mask-image: radial-gradient(ellipse at 50% 35%, #000 30%, transparent 78%);
+    }
+
+    /* Link da navbar com filete dourado pontual no hover */
+    .nav-link { position: relative; padding: .25rem .35rem; transition: color .2s ease; }
+    .nav-link::after {
+      content: ""; position: absolute; left: .35rem; right: .35rem; bottom: -3px; height: 2px;
+      border-radius: 2px; background: #E1B868; transform: scaleX(0); transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .nav-link.active { color: #fff; }
+
+    /* Revelar ao rolar */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none; } }
   </style>
 </head>
 
 <body class="bg-gray-50 flex flex-col min-h-screen">
   
-  <!-- NAVEGAÇÃO ORIGINAL -->
+  <!-- NAVEGAÇÃO PADRONIZADA -->
   <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200">
-    <div class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 bg-opacity-95 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4 shadow-sm">
+    <div class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4 shadow-md">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="../index.html"><span class="font-semibold text-xl tracking-tight">aMostra XIX</span></a>
+        <a href="../index.html" class="group flex items-center gap-2.5">
+          <img src="../styles/logo_branco_isolado.png" alt="aMostra de Estatística"
+            class="h-8 w-auto drop-shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+          <span class="font-montserrat font-semibold text-lg tracking-tight">aMostra <span class="text-gold">XIX</span></span>
+        </a>
       </div>
       <button onclick="toggleMenu()" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition-colors"
         aria-controls="menu" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Abrir menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
         </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="menu">
-        <ul class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
-          <li><a href="../pages/faq.html" class="block py-2 px-3 md:p-0 border-b-2 border-white pb-1">FAQ</a></li>
-          <li><a href="../index.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">Início</a></li>
-          <li><a href="../pages/amostra.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">aMostra</a></li>
-          <li><a href="../pages/blog/hub.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">Blog</a></li>
-          <li><a href="../pages/comissao.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">Comissão</a></li>
+        <ul class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0">
+          <li><a href="../index.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Início</a></li>
+          <li><a href="../pages/galeria.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Galeria</a></li>
+          <li><a href="../pages/blog/hub.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Blog</a></li>
+          <li><a href="../pages/comissao.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Comissão</a></li>
+          <li><a href="../pages/faq.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition">FAQ</a></li>
           <div id="parceiros" class="hidden">
-            <li><a href="../pages/patrocinadores.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">Parceiros</a></li>
+            <li><a href="../pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Parceiros</a></li>
           </div>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- CONTEÚDO PRINCIPAL DO FAQ (NOVO DESIGN) -->
-  <main class="flex-grow mx-auto w-full max-w-3xl px-4 sm:px-6 pt-32 pb-24">
-    <div class="text-center mb-12">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800">Perguntas Frequentes</h1>
+  <!-- CABEÇALHO DO FAQ (claro, com acentos de marca) -->
+  <header class="relative pt-32 pb-10 overflow-hidden">
+    <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[520px] h-[300px] bg-red-600/10 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center reveal">
+      <span class="eyebrow inline-flex items-center gap-3 text-red-700 mb-4">
+        <span class="h-px w-8 bg-gold"></span> Tire suas dúvidas <span class="h-px w-8 bg-gold"></span>
+      </span>
+      <h1 class="font-spartan text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 mb-5">
+        Perguntas <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-500">Frequentes</span>
+      </h1>
+      <p class="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto">
+        Reunimos as principais dúvidas sobre inscrições, local, formato e estrutura da aMostra. Não achou o que procurava? Fale com a gente nas redes sociais.
+      </p>
+      <div class="accent-bar mx-auto mt-6"></div>
     </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL DO FAQ -->
+  <main class="flex-grow mx-auto w-full max-w-3xl px-4 sm:px-6 py-16 lg:py-20">
 
     <!-- SEÇÃO: Inscrições -->
-    <div class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Inscrições</h2>
+    <div class="reveal mb-10">
+      <h2 class="font-spartan text-xl sm:text-2xl font-bold text-gray-900 mb-5 flex items-center gap-3">
+        <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20 shrink-0">
+          <i class="fa fa-pencil-square-o"></i>
+        </span>
+        Inscrições
+      </h2>
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
         <!-- Item 1 -->
         <div class="border-b border-gray-100 last:border-0">
@@ -120,8 +169,13 @@
     </div>
 
     <!-- SEÇÃO: Local e Formato -->
-    <div class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Local e Formato</h2>
+    <div class="reveal mb-10">
+      <h2 class="font-spartan text-xl sm:text-2xl font-bold text-gray-900 mb-5 flex items-center gap-3">
+        <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20 shrink-0">
+          <i class="fa fa-map-marker"></i>
+        </span>
+        Local e Formato
+      </h2>
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
         <!-- Item 9 -->
         <div class="border-b border-gray-100 last:border-0">
@@ -157,8 +211,13 @@
     </div>
 
     <!-- SEÇÃO: O que levar -->
-    <div class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">O que levar / Como se preparar</h2>
+    <div class="reveal mb-10">
+      <h2 class="font-spartan text-xl sm:text-2xl font-bold text-gray-900 mb-5 flex items-center gap-3">
+        <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20 shrink-0">
+          <i class="fa fa-suitcase"></i>
+        </span>
+        O que levar / Como se preparar
+      </h2>
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
         <!-- Item 12 -->
         <div class="border-b border-gray-100 last:border-0">
@@ -184,8 +243,13 @@
     </div>
 
     <!-- SEÇÃO: Alimentação -->
-    <div class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Alimentação e Conforto</h2>
+    <div class="reveal mb-10">
+      <h2 class="font-spartan text-xl sm:text-2xl font-bold text-gray-900 mb-5 flex items-center gap-3">
+        <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20 shrink-0">
+          <i class="fa fa-coffee"></i>
+        </span>
+        Alimentação e Conforto
+      </h2>
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
         <!-- Item 14 -->
         <div class="border-b border-gray-100 last:border-0">
@@ -221,8 +285,13 @@
     </div>
 
     <!-- SEÇÃO: Acompanhantes e Contato -->
-    <div class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-bold text-red-700 mb-4 border-b border-gray-200 pb-2">Acompanhantes e Contato</h2>
+    <div class="reveal mb-10">
+      <h2 class="font-spartan text-xl sm:text-2xl font-bold text-gray-900 mb-5 flex items-center gap-3">
+        <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20 shrink-0">
+          <i class="fa fa-users"></i>
+        </span>
+        Acompanhantes e Contato
+      </h2>
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
         <!-- Item 17 -->
         <div class="border-b border-gray-100 last:border-0">
@@ -339,6 +408,22 @@
           const activeChevron = btnElement.querySelector('.chevron');
           if(activeChevron) activeChevron.classList.add("rotate-180", "text-red-600");
       }
+    }
+  </script>
+
+  <script>
+    // Revela suavemente os blocos marcados com .reveal conforme entram na tela.
+    const revealEls = document.querySelectorAll('.reveal');
+    if (revealEls.length) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach((el) => revealObserver.observe(el));
     }
   </script>
 </body>

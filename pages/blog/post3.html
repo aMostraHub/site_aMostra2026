@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Título do Post | Blog aNormal</title>
+  <title>Estatística nos esportes | Blog aNormal</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,33 +22,40 @@
 </head>
 <body class="bg-brand-6 text-brand-5 min-h-screen flex flex-col font-poppins">
 
+  <!-- Barra de progresso de leitura -->
+  <div class="reading-progress"><div id="reading-bar" class="reading-progress__bar"></div></div>
+
   <!-- Navigation Menu -->
   <nav class="bg-gradient-to-r from-[#821114] via-[#940714] to-[#BC2020] border-b border-[#821114] relative">
-    <div class="fixed w-full bg-gradient-to-r from-[#821114] via-[#940714] to-[#BC2020] bg-opacity-95 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4 shadow-sm">
+    <div class="fixed w-full bg-gradient-to-r from-[#821114] via-[#940714] to-[#BC2020] backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4 shadow-md">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="../../index.html" class="font-semibold text-xl tracking-tight font-spartan">aMostra XIX</a>
+        <a href="../../index.html" class="group flex items-center gap-2.5">
+          <img src="../../styles/logo_branco_isolado.png" alt="aMostra de Estatística"
+            class="h-8 w-auto drop-shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+          <span class="font-montserrat font-semibold text-lg tracking-tight">aMostra <span class="text-gold">XIX</span></span>
+        </a>
       </div>
       <button
         onclick="toggleMenu()"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-[#940714] focus:outline-none"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition-colors"
         aria-controls="menu"
         aria-expanded="false"
       >
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Abrir menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
         </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="menu">
-        <ul class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
-          <li><a href="../../pages/faq.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">FAQ</a></li>
-          <li><a href="../../index.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">Início</a></li>
-          <li><a href="../../pages/galeria.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">Galeria</a></li>
-          <li><a href="hub.html" class="block py-2 px-3 md:p-0 border-b-2 border-[#E1B868] pb-1">Blog</a></li>
-          <li><a href="../../pages/comissao.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">Comissão</a></li>
+        <ul class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0">
+          <li><a href="../../index.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Início</a></li>
+          <li><a href="../../pages/galeria.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Galeria</a></li>
+          <li><a href="hub.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition">Blog</a></li>
+          <li><a href="../../pages/comissao.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Comissão</a></li>
+          <li><a href="../../pages/faq.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">FAQ</a></li>
           <div id="parceiros" class="hidden">
-            <li><a href="../../pages/patrocinadores.html" class="block py-2 px-3 md:p-0 hover:text-[#E3E4DE] transition">Parceiros</a></li>
+            <li><a href="../../pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Parceiros</a></li>
           </div>
         </ul>
       </div>
@@ -57,130 +64,118 @@
 
   <!-- Main layout wrapper -->
   <main class="flex-grow pt-28 pb-20 blog-post-wrapper">
-    
+
     <!-- Breadcrumbs -->
     <nav class="flex text-sm text-[#000000]/60 mb-6 items-center gap-2" aria-label="Breadcrumb">
       <a href="../../index.html" class="hover:text-[#821114] transition">Início</a>
       <span><i class="fa fa-angle-right text-xs"></i></span>
       <a href="hub.html" class="hover:text-[#821114] transition">Blog</a>
       <span><i class="fa fa-angle-right text-xs"></i></span>
-      <span class="text-[#821114] font-semibold">Nome Curto do Post</span>
+      <span class="text-[#821114] font-semibold">Estatística nos Esportes</span>
     </nav>
 
     <!-- Post Info Header -->
     <header class="mb-8">
+      <span class="eyebrow inline-flex items-center gap-2 text-[#BC2020] mb-3">
+        <span class="h-px w-6 bg-[#E1B868]"></span> aNormal · Divulgação Científica
+      </span>
       <div class="flex gap-2 mb-4">
-        <span class="bg-[#BC2020] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Categoria 1</span>
-        <span class="bg-black/10 text-black/80 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Categoria 2</span>
+        <span class="bg-[#BC2020] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Esporte</span>
+        <span class="bg-black/10 text-black/80 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Ciência de Dados</span>
       </div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#821114] tracking-tight leading-tight mb-4 font-spartan">
-        Título do Post
+        Como a Estatística venceu os milhões do beisebol
       </h1>
-      
+
       <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-black/60 border-b border-black/10 pb-6">
         <div class="flex items-center gap-2">
           <i class="fa fa-calendar text-[#BC2020]"></i>
-          <span>Publicado em Data de Publicação</span>
+          <span>Publicado em 23 de Junho, 2026</span>
         </div>
         <div class="flex items-center gap-2">
           <i class="fa fa-user text-[#BC2020]"></i>
-          <span>Por Autor</span>
+          <span>Por Akira Iwai</span>
         </div>
       </div>
     </header>
 
-    <!-- Featured Image -->
+    <!-- Featured Cover (Imagem do Post em formato AVIF) -->
+     <!-- Featured Image -->
     <div class="w-full h-[240px] sm:h-[320px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg mb-10 bg-cover bg-center" 
-         style="background-image: url('../../styles/caminho_da_imagem.avif');">
+         style="background-image: url('../../styles/post3.jpg');">
     </div>
+
 
     <!-- Layout Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-12 items-start">
-      
+
       <!-- Table of Contents Sidebar -->
       <aside class="sticky top-24 hidden lg:block border-r border-black/10 pr-6">
         <h4 class="text-xs uppercase font-bold tracking-widest text-[#940714] mb-4 font-spartan">Neste artigo</h4>
         <ul class="space-y-3 text-sm">
-          <li>
-            <a href="#secao1" class="toc-link block text-black/75 hover:text-[#821114] active">Título da Seção 1</a>
-          </li>
-          <li>
-            <a href="#secao2" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 2</a>
-          </li>
-          <li>
-            <a href="#secao3" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 3</a>
-          </li>
-          <li>
-            <a href="#secao4" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 4</a>
-          </li>
-          <li>
-            <a href="#secao5" class="toc-link block text-black/75 hover:text-[#821114]">Título da Seção 5</a>
-          </li>
+          <li><a href="#problema" class="toc-link block text-black/75 hover:text-[#821114] active">Um jogo injusto</a></li>
+          <li><a href="#sabermetria" class="toc-link block text-black/75 hover:text-[#821114]">O que é Sabermetria?</a></li>
+          <li><a href="#resultado" class="toc-link block text-black/75 hover:text-[#821114]">O resultado que chocou o mundo</a></li>
+          <li><a href="#legado" class="toc-link block text-black/75 hover:text-[#821114]">O legado de Moneyball hoje</a></li>
         </ul>
       </aside>
 
       <!-- Article Body -->
       <article class="article-content bg-white p-6 sm:p-8 md:p-12 rounded-2xl shadow-sm border border-black/5">
-        <section id="secao1">
-          <h2>Título da Seção 1</h2>
+        <section id="problema">
+          <h2>Um jogo injusto</h2>
           <p>
-            Parágrafo 1 da Seção 1. Este é um parágrafo de exemplo contendo explicações ou introdução ao tema abordado no post.
+            O filme <strong>Moneyball</strong> (lançado no Brasil como <i>O Homem que Mudou o Jogo</i>), estrelado por Brad Pitt, conta a história real de como o Oakland Athletics redefiniu as regras do beisebol em 2002. Mas, longe das telas, o verdadeiro herói dessa história não usava boné ou uniforme: ele usava planilhas e equações matemáticas.
           </p>
           <p>
-            Parágrafo 2 da Seção 1. Aqui você pode continuar a dissertar sobre o assunto, citar dados ou introduzir a citação abaixo.
+            No início dos anos 2000, o Oakland Athletics enfrentava um abismo financeiro. Enquanto times gigantes como o New York Yankees tinham um orçamento de quase US$ 125 milhões para gastar com salários, o Oakland tinha apenas US$ 40 milhões. Como competir quando os seus rivais podem simplesmente comprar os melhores e mais famosos jogadores do mercado?
           </p>
-          <div class="editorial-quote">
-            "Citação ou Destaque Editorial importante relacionado à Seção 1."
-          </div>
+          <p>
+            A resposta de Billy Beane (gerente geral do time) e Peter Brand (um jovem economista formado em Harvard) foi brilhante: parar de ouvir os olheiros tradicionais e passar a ouvir os dados.
+          </p>
         </section>
 
-        <section id="secao2" class="mt-8">
-          <h2>Título da Seção 2</h2>
+        <section id="sabermetria" class="mt-8">
+          <h2>A solução: o que é Sabermetria?</h2>
           <p>
-            Parágrafo 1 da Seção 2. Este parágrafo introduz uma fórmula, equação ou um bloco destacado em formato mono.
+            Os olheiros antigos avaliavam os atletas com base em critérios subjetivos e ultrapassados: a velocidade da rebatida, a aparência física do jogador e até se ele tinha uma namorada bonita — acreditava-se que isso demonstrava autoconfiança!
           </p>
-          <div class="bg-[#E3E4DE]/40 p-4 rounded-lg text-center font-mono my-6 text-[#821114] text-lg font-bold">
-            Fórmula / Equação / Bloco Destacado
-          </div>
           <p>
-            Parágrafo 2 da Seção 2. Este parágrafo serve para explicar a fórmula ou a informação apresentada acima, introduzindo uma lista de itens a seguir.
+            O Oakland abraçou a <strong>Sabermetria</strong> — o termo técnico para a análise estatística aplicada ao beisebol. Eles perceberam que o mercado estava precificando os jogadores de forma totalmente errada e focaram em métricas ignoradas por quase todo mundo:
           </p>
           <ul class="list-disc pl-5 space-y-1">
-            <li><strong>Item de Lista 1 (Negrito)</strong>: Descrição ou detalhamento do Item 1 da lista.</li>
-            <li><strong>Item de Lista 2 (Negrito)</strong>: Descrição ou detalhamento do Item 2 da lista.</li>
-            <li><strong>Item de Lista 3 (Negrito)</strong>: Descrição ou detalhamento do Item 3 da lista.</li>
+            <li><strong>OBP (On-Base Percentage)</strong>: mede a frequência com que um jogador consegue chegar a uma base, não importa como — rebatendo ou até por um erro do lançador adversário.</li>
+            <li><strong>SLG (Slugging Percentage)</strong>: mede a produtividade de poder de um rebatedor.</li>
           </ul>
+          <p>
+            Eles descobriram que o segredo para vencer não era comprar "estrelas", mas sim comprar <strong>corridas</strong>. E, para conseguir corridas, você precisa de jogadores que cheguem à base.
+          </p>
+          <div class="editorial-quote">
+            "Se ele chega à base, não importa se ele rebate feio, se é velho ou se está acima do peso. Ele ajuda o time a vencer."
+          </div>
         </section>
 
-        <section id="secao3" class="mt-8">
-          <h2>Título da Seção 3</h2>
+        <section id="resultado" class="mt-8">
+          <h2>O resultado que chocou o mundo</h2>
           <p>
-            Parágrafo 1 da Seção 3. Este parágrafo pode conter mais explicações, análises ou discussões teóricas do post.
+            Ao focar nos dados estruturados, o Oakland Athletics comprou jogadores baratos, cheios de defeitos visuais, mas que eram monstros estatísticos escondidos.
           </p>
-          <ol class="list-decimal pl-5 space-y-2">
-            <li><strong>Item Ordenado 1</strong>: Explicação detalhada do primeiro ponto ordenado.</li>
-            <li><strong>Item Ordenado 2</strong>: Explicação detalhada do segundo ponto ordenado.</li>
-            <li><strong>Item Ordenado 3</strong>: Explicação detalhada do terceiro ponto ordenado.</li>
-          </ol>
           <p>
-            Parágrafo 2 da Seção 3. Conclusão da análise da Seção 3.
-          </p>
-        </section>
-
-        <section id="secao4" class="mt-8">
-          <h2>Título da Seção 4</h2>
-          <p>
-            Parágrafo 1 da Seção 4. Texto explicativo sobre a Seção 4.
+            Esse time de "rejeitados" conseguiu quebrar o recorde histórico da liga americana, conquistando <strong>20 vitórias consecutivas</strong> e chegando aos playoffs gastando uma fração do que seus adversários gastaram.
           </p>
         </section>
 
-        <section id="secao5" class="mt-8">
-          <h2>Título da Seção 5</h2>
+        <section id="legado" class="mt-8">
+          <h2>O legado de Moneyball hoje</h2>
           <p>
-            Parágrafo 1 da Seção 5. Este parágrafo costuma ser a conclusão do post ou a discussão das aplicações práticas do assunto no mundo real.
+            O que começou no beisebol engoliu o mundo dos esportes. Hoje, nenhum clube sério de futebol, basquete (NBA) ou equipe de Fórmula 1 toma decisões baseadas apenas no "olho" do treinador.
           </p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>No <strong>futebol</strong>, usamos o <i>xG (Expected Goals)</i> para calcular estatisticamente a probabilidade de um chute virar gol.</li>
+            <li>Nas <strong>empresas</strong>, essa mesma lógica deu origem ao movimento de <i>People Analytics</i>, em que algoritmos ajudam a recrutar os melhores talentos ignorando os vieses subjetivos dos entrevistadores.</li>
+          </ul>
           <p>
-            Parágrafo 2 da Seção 5. Considerações finais do post.
+            Moneyball nos ensina que, em um mundo saturado de opiniões e achismos, quem domina os dados e entende o que realmente gera valor sai na frente — não importa o tamanho do seu orçamento.
           </p>
         </section>
       </article>
@@ -188,27 +183,27 @@
     </div>
 
     <!-- Authors Bio Card -->
-    <section class="mt-12 bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-black/5">
+    <section class="reveal mt-12 bg-white rounded-2xl p-6 md:p-10 shadow-sm border border-black/5">
       <h4 class="text-xs uppercase font-bold tracking-widest text-[#940714] mb-6 font-spartan">Sobre os Autores</h4>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="flex gap-4 items-start">
           <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#821114] to-[#E1B868] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-            Sigla Autor 1
+            CO
           </div>
           <div>
-            <h5 class="font-bold text-gray-900">Nome do Autor 1 / Comissão Organizadora</h5>
-            <p class="text-xs text-[#BC2020] mb-2 font-spartan font-medium">Subtítulo/Afiliação do Autor 1</p>
-            <p class="text-sm text-gray-600 leading-relaxed">Biografia ou descrição curta do Autor 1.</p>
+            <h5 class="font-bold text-gray-900">Comissão Organizadora</h5>
+            <p class="text-xs text-[#BC2020] mb-2 font-spartan font-medium">aMostra de Estatística 2026</p>
+            <p class="text-sm text-gray-600 leading-relaxed">Alunos do Bacharelado em Estatística do IME-USP, empenhados na divulgação científica e no desenvolvimento da estatística pública no Brasil.</p>
           </div>
         </div>
         <div class="flex gap-4 items-start">
           <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#940714] to-[#E1B868] flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-            Sigla Autor 2
+            AI
           </div>
           <div>
-            <h5 class="font-bold text-gray-900">Nome do Autor 2 / Orientador</h5>
-            <p class="text-xs text-[#BC2020] mb-2 font-spartan font-medium">Subtítulo/Afiliação do Autor 2</p>
-            <p class="text-sm text-gray-600 leading-relaxed">Biografia ou descrição curta do Autor 2.</p>
+            <h5 class="font-bold text-gray-900">Akira Iwai</h5>
+            <p class="text-xs text-[#BC2020] mb-2 font-spartan font-medium">Autor</p>
+            <p class="text-sm text-gray-600 leading-relaxed">Aluno do Bacharelado em Estatística do IME-USP e integrante da comissão organizadora da aMostra de Estatística.</p>
           </div>
         </div>
       </div>
@@ -292,6 +287,36 @@
 
       sections.forEach(s => observer.observe(s));
     });
+  </script>
+
+  <!-- Barra de progresso de leitura + revelar ao rolar -->
+  <script>
+    (function () {
+      const bar = document.getElementById('reading-bar');
+      if (bar) {
+        const update = () => {
+          const h = document.documentElement;
+          const max = h.scrollHeight - h.clientHeight;
+          bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+        };
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      }
+
+      const revealEls = document.querySelectorAll('.reveal');
+      if (revealEls.length) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        revealEls.forEach((el) => revealObserver.observe(el));
+      }
+    })();
   </script>
 </body>
 </html>

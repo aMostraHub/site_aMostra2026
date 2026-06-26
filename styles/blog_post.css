@@ -11,7 +11,7 @@
 
 /* Custom Typography & Editorial styles */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Questrial', sans-serif;
   background-color: var(--color-brand-6);
   color: var(--color-brand-5);
 }
@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6, .font-spartan {
 
 /* Article inner formatting */
 .article-content {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Questrial', sans-serif;
   line-height: 1.8;
   font-size: 1.05rem;
   color: #1a1a1a;
@@ -74,6 +74,7 @@ h1, h2, h3, h4, h5, h6, .font-spartan {
 }
 
 .article-content strong {
+  font-family: 'Montserrat', sans-serif;
   color: var(--color-brand-5);
   font-weight: 700;
 }
@@ -142,6 +143,11 @@ h1, h2, h3, h4, h5, h6, .font-spartan {
   padding-left: 0.75rem;
 }
 
+/* Filete dourado no topo do rodapé (acento pontual de marca) */
+footer {
+  border-top: 3px solid var(--color-brand-7) !important;
+}
+
 /* Custom scrollbar to match aesthetics */
 ::-webkit-scrollbar {
   width: 8px;
@@ -156,4 +162,78 @@ h1, h2, h3, h4, h5, h6, .font-spartan {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-brand-1);
+}
+
+/* =====================================================================
+   Helpers de marca compartilhados (os posts não carregam style.css)
+   ===================================================================== */
+
+/* Rótulo "eyebrow" em Montserrat */
+.eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+/* Filete de destaque (dourado pontual) abaixo de títulos */
+.accent-bar {
+  display: inline-block;
+  width: 3.5rem;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: var(--color-brand-7);
+}
+
+/* Link da navbar com filete dourado pontual no hover */
+.nav-link {
+  position: relative;
+  padding: 0.25rem 0.35rem;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  right: 0.35rem;
+  bottom: -3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-brand-7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after { transform: scaleX(1); }
+.nav-link.active { color: #fff; }
+
+/* Barra de progresso de leitura (topo da página) */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: transparent;
+  z-index: 50;
+  pointer-events: none;
+}
+.reading-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-brand-7), var(--color-brand-3));
+  transition: width 0.1s linear;
+}
+
+/* Revelar suavemente ao rolar */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
 }

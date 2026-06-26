@@ -3,22 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog</title>
+    <title>Blog - aMostra XIX</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../styles/brand.js"></script>
 
     <link rel="stylesheet" href="../../styles/style.css" />
     <link
       rel="stylesheet"
       href="../../styles/font-awesome/css/font-awesome.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
     />
 
     <link
@@ -26,17 +19,14 @@
       href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
     />
 
-    <link 
-      rel="stylesheet"
-      href="../../styles/blog_hub.css"
-    />
+    <link rel="stylesheet" href="../../styles/blog_hub.css" />
 
     <script src="../script.js" defer></script>
 
     <style>
-      /* Aplicando as fontes customizadas */
+      /* Fontes de marca: corpo em Questrial, títulos em League Spartan. */
       body {
-        font-family: "Poppins", sans-serif;
+        font-family: "Questrial", sans-serif;
       }
       h1,
       h2,
@@ -53,31 +43,83 @@
       .rotate-180 {
         transform: rotate(180deg);
       }
+
+      /* Link da navbar com filete dourado pontual no hover */
+      .nav-link {
+        position: relative;
+        padding: 0.25rem 0.35rem;
+        transition: color 0.2s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0.35rem;
+        right: 0.35rem;
+        bottom: -3px;
+        height: 2px;
+        border-radius: 2px;
+        background: #E1B868;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        transform: scaleX(1);
+      }
+      .nav-link.active {
+        color: #fff;
+      }
+
+      /* Revelar ao rolar */
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none;
+        }
+      }
     </style>
   </head>
 
   <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
-    <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200">
+    <nav class="bg-transparent">
       <div
-        class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 bg-opacity-95 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4 shadow-sm"
+        class="fixed top-0 left-0 w-full bg-gradient-to-r from-red-900 to-red-600 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4"
       >
         <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <a href="../index.html"
-            ><span class="font-semibold text-xl tracking-tight"
-              >aMostra XIX</span
-            ></a
-          >
+          <a href="../../index.html" class="group flex items-center gap-2.5">
+            <img
+              src="../../styles/logo_branco_isolado.png"
+              alt="aMostra de Estatística"
+              class="h-8 w-auto drop-shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5"
+            />
+            <span class="font-montserrat font-semibold text-lg tracking-tight"
+              >aMostra <span class="text-gold">XIX</span></span
+            >
+          </a>
         </div>
         <button
           onclick="toggleMenu()"
           type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-800 focus:outline-none"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition-colors"
           aria-controls="menu"
           aria-expanded="false"
         >
-          <span class="sr-only">Open main menu</span>
+          <span class="sr-only">Abrir menu</span>
           <svg
             class="w-5 h-5"
             aria-hidden="true"
@@ -96,48 +138,48 @@
         </button>
         <div class="hidden w-full md:block md:w-auto" id="menu">
           <ul
-            class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0"
+            class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0"
           >
             <li>
               <a
-                href="../../pages/faq.html"
-                class="block py-2 px-3 md:p-0 hover:text-red-200 transition"
-                >FAQ</a
-              >
-            </li>
-            <li>
-              <a
                 href="../../index.html"
-                class="block py-2 px-3 md:p-0 hover:text-red-200 transition"
+                class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
                 >Início</a
               >
             </li>
             <li>
               <a
-                href="../../pages/amostra.html"
-                class="block py-2 px-3 md:p-0 hover:text-red-200 transition"
-                >aMostra</a
+                href="../../pages/galeria.html"
+                class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
+                >Galeria</a
               >
             </li>
             <li>
               <a
                 href="hub.html"
-                class="block py-2 px-3 md:p-0 border-b-2 border-white pb-1"
+                class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition-colors"
                 >Blog</a
               >
             </li>
             <li>
               <a
                 href="../../pages/comissao.html"
-                class="block py-2 px-3 md:p-0 hover:text-red-200 transition"
+                class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
                 >Comissão</a
+              >
+            </li>
+            <li>
+              <a
+                href="../../pages/faq.html"
+                class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
+                >FAQ</a
               >
             </li>
             <div id="parceiros" class="hidden">
               <li>
                 <a
                   href="../../pages/patrocinadores.html"
-                  class="block py-2 px-3 md:p-0 hover:text-red-200 transition"
+                  class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
                   >Parceiros</a
                 >
               </li>
@@ -147,102 +189,310 @@
       </div>
     </nav>
 
-    <!-- Seção Hero com Animação de Mistura de Gaussianas -->
-    <section id="hero-section" class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-red-900 to-red-600 text-white pt-32 shadow-inner">
-      <!-- Canvas da Animação (fundo do Hero) -->
-      <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-30"></canvas>
-      
-      <!-- Conteúdo do Hero -->
-      <div class="relative z-10 max-w-4xl px-6 flex flex-col items-center justify-center text-center select-none">
-        <h1 class="text-white font-black tracking-tight leading-none text-5xl md:text-6xl lg:text-7xl drop-shadow-md mb-3 font-spartan">
+    <section
+      id="hero-section"
+      class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-red-900 to-red-600 text-white pt-32"
+    >
+      <canvas
+        id="hero-canvas"
+        class="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+      ></canvas>
+
+      <div
+        class="relative z-10 max-w-4xl px-6 flex flex-col items-center justify-center text-center select-none"
+      >
+        <span class="eyebrow inline-flex items-center gap-3 text-gold mb-4 drop-shadow">
+          <span class="h-px w-8 bg-gold/70"></span> Divulgação Científica
+          <span class="h-px w-8 bg-gold/70"></span>
+        </span>
+        <h1
+          class="text-white font-black tracking-tight leading-none text-5xl md:text-6xl lg:text-7xl drop-shadow-md mb-3 font-spartan"
+        >
           aNormal
         </h1>
-        <p class="text-white/80 text-base md:text-lg lg:text-xl font-light tracking-wide max-w-xl mx-auto drop-shadow-md text-center">
+        <p
+          class="text-white/80 text-base md:text-lg lg:text-xl font-light tracking-wide max-w-xl mx-auto drop-shadow-md text-center"
+        >
           O blog oficial de divulgação científica da aMostra de Estatística da USP
         </p>
-        <div class="w-16 h-1 bg-white/20 rounded-full mt-5"></div>
+        <div class="w-16 h-1 bg-gold/70 rounded-full mt-5"></div>
       </div>
 
-      <!-- Indicador de Scroll -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20">
-        <svg id="scroll-arrow" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white/70 hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20"
+      >
+        <svg
+          id="scroll-arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-8 h-8 text-white/70 hover:text-white transition-colors"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </div>
     </section>
 
-    <!-- Conteúdo Principal -->
-    <div class="container blog-container">
-      <!-- Área dos Posts -->
-      <main class="posts-container">
-
-        <!-- Post 1 -->
-        <article class="post">
-          <div
-            class="post-img"
-            style="background-image: url(../../styles/personality_test.avif); height: 400px"
-          ></div>
-          <div class="post-content">
-            <span class="category">Psicometria</span>
-            <h2>Testes de personalidade e suas bases teóricas</h2>
-            <p class="date">Publicado em 30 de Junho, 2026</p>
-            <p class="excerpt">
-              Quem nunca fez um teste do tipo "Descubra qual herói da DC você é"? Apesar de amplamente
-              conhecidos, esses testes ainda são como uma caixa-preta para muitas pessoas. Descubra os fundamentos estatísticos que 
-              dão razão aos testes de personalidade!
-            </p>
-            <a href="./post1.html" class="read-more">Ler Mais</a>
-          </div>
-        </article>
-
-        <!-- Post 2 -->
-        <article class="post">
-          <div
-            class="post-img"
-            style="background-image: url(../../styles/movie_catalogue.avif); height: 400px"
-          ></div>
-          <div class="post-content">
-            <span class="category">Análise Multivariada</span>
-            <span class="category">Algoritmo</span>
-            <h2>Como a Netflix recomenda filmes para os seus assinantes?</h2>
-            <p class="date">Publicado em 8 de Junho, 2026</p>
-            <p class="excerpt">
-              Entenda como um dos maiores streamings utiliza técnicas estatísticas de classificação 
-              na sua plataforma e como isso gerou impacto positivo nas suas receitas. 
-            </p>
-            <a href="./post2.html" class="read-more">Ler Mais</a>
-          </div>
-        </article>
-
-      </main>
-
-      <!-- Barra Lateral (Sidebar) -->
-      <aside class="sidebar">
-        <div class="sidebar-widget">
-          <h3>Sobre os autores</h3>
-          <p>
-            Somos alunos do curso de Bacharelado em Estatística, cujo principal interesse por 
-            meio deste espaço é divulgar, em linguagem acessível, alguns conhecimentos adquiridos ao longo 
-            do nosso aprendizado e tornar conhecidas as técnicas estatísticas utilizadas em diversos processos
-            no mundo ao nosso redor.
-          </p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50 blog-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-12 reveal">
+          <span class="eyebrow inline-flex items-center gap-2 text-red-700">
+            <span class="h-px w-6 bg-gold"></span> aNormal
+          </span>
+          <h2 class="font-spartan text-3xl md:text-4xl font-black text-gray-900 mt-2">
+            Últimos Artigos
+          </h2>
+          <div class="accent-bar mt-4"></div>
         </div>
 
-      </aside>
+        <main class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+          <article
+            onclick="window.location.href='./post1.html'"
+            class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer border border-gray-100"
+          >
+            <div class="overflow-hidden h-56 relative bg-gray-200">
+              <div
+                class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                style="background-image: url('../../styles/post1.avif');"
+              ></div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex gap-2 mb-3">
+                <span
+                  class="bg-red-50 text-red-800 text-xs font-bold px-3 py-1 rounded-full font-spartan uppercase tracking-wider border border-red-100"
+                  >Psicometria</span
+                >
+              </div>
+              <h2
+                class="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-spartan group-hover:text-red-700 transition-colors"
+              >
+                Testes de personalidade e suas bases teóricas
+              </h2>
+              <p class="text-sm text-gray-400 mb-4 font-light">30 de Junho, 2026</p>
+              <p class="text-gray-600 mb-6 flex-grow line-clamp-3">
+                Quem nunca fez um teste do tipo "Descubra qual herói da DC você é"?
+                Apesar de amplamente conhecidos, esses testes ainda são como uma
+                caixa-preta para muitas pessoas. Descubra os fundamentos
+                estatísticos que dão razão aos testes de personalidade!
+              </p>
+              <a
+                href="./post1.html"
+                class="text-red-600 font-bold hover:text-red-800 flex items-center gap-1 transition-colors mt-auto pointer-events-none"
+              >
+                Ler Mais
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article
+            onclick="window.location.href='./post4.html'"
+            class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer border border-gray-100"
+          >
+            <div class="overflow-hidden h-56 relative bg-gray-200">
+              <div
+                class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                style="background-image: url('../../styles/post4.avif');"
+              ></div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span
+                  class="bg-red-50 text-red-800 text-xs font-bold px-3 py-1 rounded-full font-spartan uppercase tracking-wider border border-red-100"
+                  >Estatística</span
+                >
+                <span
+                  class="bg-gray-100 text-gray-800 text-xs font-bold px-3 py-1 rounded-full font-spartan uppercase tracking-wider border border-gray-200"
+                  >Análise de Dados</span
+                >
+              </div>
+              <h2
+                class="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-spartan group-hover:text-red-700 transition-colors"
+              >
+                Paradoxo de Simpson: quando os números mentem
+              </h2>
+              <p class="text-sm text-gray-400 mb-4 font-light">25 de Junho, 2026</p>
+              <p class="text-gray-600 mb-6 flex-grow line-clamp-3">
+                Uma tendência pode se inverter completamente quando os dados são
+                agregados. Entenda o paradoxo, o caso de Berkeley e como não ser
+                enganado pelos números.
+              </p>
+              <a
+                href="./post4.html"
+                class="text-red-600 font-bold hover:text-red-800 flex items-center gap-1 transition-colors mt-auto pointer-events-none"
+              >
+                Ler Mais
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article
+            onclick="window.location.href='./post3.html'"
+            class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer border border-gray-100"
+          >
+            <div class="overflow-hidden h-56 relative bg-gray-200">
+              <div
+                class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                style="background-image: url('../../styles/post3.jpg');"
+              ></div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span
+                  class="bg-red-50 text-red-800 text-xs font-bold px-3 py-1 rounded-full font-spartan uppercase tracking-wider border border-red-100"
+                  >Esporte</span
+                >
+                <span
+                  class="bg-gray-100 text-gray-800 text-xs font-bold px-3 py-1 rounded-full font-spartan uppercase tracking-wider border border-gray-200"
+                  >Ciência de Dados</span
+                >
+              </div>
+              <h2
+                class="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-spartan group-hover:text-red-700 transition-colors"
+              >
+                Como a Estatística venceu os milhões do beisebol
+              </h2>
+              <p class="text-sm text-gray-400 mb-4 font-light">23 de Junho, 2026</p>
+              <p class="text-gray-600 mb-6 flex-grow line-clamp-3">
+                A história real por trás de Moneyball: como o Oakland Athletics
+                trocou o "olho" dos olheiros por planilhas e equações, e
+                revolucionou o esporte com a Sabermetria.
+              </p>
+              <a
+                href="./post3.html"
+                class="text-red-600 font-bold hover:text-red-800 flex items-center gap-1 transition-colors mt-auto pointer-events-none"
+              >
+                Ler Mais
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article
+            onclick="window.location.href='./post2.html'"
+            class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer border border-gray-100"
+          >
+            <div class="overflow-hidden h-56 relative bg-gray-200">
+              <div
+                class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                style="background-image: url('../../styles/post2.avif');"
+              ></div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span
+                  class="bg-red-50 text-red-800 text-xs font-bold px-3 py-1 rounded-full font-spartan uppercase tracking-wider border border-red-100"
+                  >Análise Multivariada</span
+                >
+                <span
+                  class="bg-gray-100 text-gray-800 text-xs font-bold px-3 py-1 rounded-full font-spartan uppercase tracking-wider border border-gray-200"
+                  >Algoritmo</span
+                >
+              </div>
+              <h2
+                class="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-spartan group-hover:text-red-700 transition-colors"
+              >
+                Como a Netflix recomenda filmes para os seus assinantes?
+              </h2>
+              <p class="text-sm text-gray-400 mb-4 font-light">8 de Junho, 2026</p>
+              <p class="text-gray-600 mb-6 flex-grow line-clamp-3">
+                Entenda como um dos maiores streamings utiliza técnicas estatísticas
+                de classificação na sua plataforma e como isso gerou impacto positivo
+                nas suas receitas.
+              </p>
+              <a
+                href="./post2.html"
+                class="text-red-600 font-bold hover:text-red-800 flex items-center gap-1 transition-colors mt-auto pointer-events-none"
+              >
+                Ler Mais
+                <svg
+                  class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+        </main>
+
+        <aside class="lg:col-span-4 relative reveal">
+          <div
+            class="sticky top-28 bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-red-900 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl shadow-inner"
+            >
+              <i class="fa fa-users"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4 font-spartan">
+              Sobre os autores
+            </h3>
+            <p class="text-gray-600 leading-relaxed text-sm">
+              Somos alunos do curso de Bacharelado em Estatística, cujo principal
+              interesse por meio deste espaço é divulgar, em linguagem acessível,
+              alguns conhecimentos adquiridos ao longo do nosso aprendizado e
+              tornar conhecidas as técnicas estatísticas utilizadas em diversos
+              processos no mundo ao nosso redor.
+            </p>
+          </div>
+        </aside>
+      </div>
     </div>
 
-    <footer
-      class="bg-gray-100 text-gray-600 py-12 border-t border-gray-200 mt-auto w-full block clear-both"
-      style="display: block; float: none"
-    >
-      <div
-        class="mx-auto max-w-5xl px-4 flex flex-col items-center justify-center text-center"
-        style="display: flex; flex-direction: column"
-      >
-        <div
-          class="flex items-center justify-center gap-2 mb-4 w-full"
-          style="display: flex; justify-content: center"
-        >
+    <footer class="bg-gray-100 text-gray-600 py-12 border-t border-gray-200 mt-auto w-full">
+      <div class="mx-auto max-w-5xl px-4 flex flex-col items-center justify-center text-center">
+        <div class="flex items-center justify-center gap-2 mb-4 w-full">
           <img
             src="../../styles/Logo.png"
             alt="Logo da Amostra"
@@ -253,23 +503,15 @@
           </h6>
         </div>
 
-        <p
-          class="text-sm leading-relaxed text-gray-500 mb-6 w-full text-center"
-          style="text-align: center"
-        >
+        <p class="text-sm leading-relaxed text-gray-500 mb-6 w-full text-center">
           aMostra de Estatística 2026 <br />
           © 2026 Todos os direitos reservados <br />
-          <a
-            href="../pages/faq.html"
-            class="underline hover:text-gray-700 transition"
+          <a href="../pages/faq.html" class="underline hover:text-gray-700 transition"
             >FAQ</a
           >
         </p>
 
-        <ul
-          class="flex justify-center gap-6 w-full p-0 m-0"
-          style="display: flex; justify-content: center; list-style: none"
-        >
+        <ul class="flex justify-center gap-6 w-full p-0 m-0" style="list-style: none;">
           <li>
             <a
               href="https://www.facebook.com/aMostra.de.Estatistica/"
@@ -351,42 +593,55 @@
 
     <script>
       /* ── script do fundo animado: Mistura de Gaussianas (Hero Section) ── */
-      (function() {
-        const canvas = document.getElementById('hero-canvas');
-        const container = document.getElementById('hero-section');
+      (function () {
+        const canvas = document.getElementById("hero-canvas");
+        const container = document.getElementById("hero-section");
         if (!canvas || !container) return;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext("2d");
 
-        // Cores vibrantes de alto contraste para o fundo escuro do hero
         const COMPS = [
-          { mu: -2, sigma: 0.8, pi: 0.3, color: '#f43f5e' }, // Rosa vibrante
-          { mu:  1, sigma: 0.5, pi: 0.5, color: '#fb923c' }, // Laranja quente
-          { mu:  4, sigma: 1.2, pi: 0.2, color: '#facc15' }, // Amarelo ouro
+          { mu: -2, sigma: 0.8, pi: 0.3, color: "#F2292F" },
+          { mu: 1, sigma: 0.5, pi: 0.5, color: "#F2A0A2" },
+          { mu: 4, sigma: 1.2, pi: 0.2, color: "#E1B868" },
         ];
 
-        const XMIN = -6, XMAX = 8;
-        const R    = 7; // Aumentado o raio das bolinhas de 5 para 7 para maior visibilidade
-        const COL  = R * 2 + 2;
-        
-        // Margens para o canvas em tela cheia (h-screen)
-        // t: 100px (onde as bolinhas começam a nascer)
-        // b: 0px (eixo x desenhado exatamente no fundo da tela, sem espaçamento)
-        const PAD  = { l: 0, r: 0, t: 100, b: 0 };
-        const yOffset = 90; // Início superior da área de densidade (libera espaço para o navbar fixo)
+        const XMIN = -6,
+          XMAX = 8;
+        const R = 7;
+        const COL = R * 2 + 2;
+
+        const PAD = { l: 0, r: 0, t: 100, b: 0 };
+        const yOffset = 90;
+
+        const STEPS = 120;
+        const xs = Array.from(
+          { length: STEPS + 1 },
+          (_, i) => XMIN + (i * (XMAX - XMIN)) / STEPS
+        );
+
+        let cachedKDE = new Array(STEPS + 1).fill(0);
+        let targetKDE = new Array(STEPS + 1).fill(0);
+        let framesSinceLastKDEUpdate = 0;
 
         let speed = 3;
-        let running = true, lastT = null, accumMs = 0;
-        let falling = [], stacks = {}, samples = [];
+        let running = true,
+          lastT = null,
+          accumMs = 0;
+        let falling = [],
+          stacks = {},
+          samples = [];
 
         function randn() {
-          let u = 0, v = 0;
+          let u = 0,
+            v = 0;
           while (!u) u = Math.random();
           while (!v) v = Math.random();
           return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
         }
 
         function sample() {
-          const r = Math.random(); let acc = 0;
+          const r = Math.random();
+          let acc = 0;
           for (const c of COMPS) {
             acc += c.pi;
             if (r < acc) return { val: c.mu + c.sigma * randn(), comp: c };
@@ -402,23 +657,36 @@
 
         function resize() {
           const dpr = window.devicePixelRatio || 1;
-          canvas.width  = container.clientWidth * dpr;
+          canvas.width = container.clientWidth * dpr;
           canvas.height = container.clientHeight * dpr;
           ctx.scale(dpr, dpr);
           updatePaddings();
-          
-          // Limpa o estado ao redimensionar para evitar inconsistências nos bins
+
           falling = [];
           stacks = {};
           samples = [];
+          cachedKDE.fill(0);
+          targetKDE.fill(0);
         }
 
-        function cw()     { return container.clientWidth - PAD.l - PAD.r; }
-        function axisY()  { return container.clientHeight - PAD.b; }
-        function xToPixel(x)   { return PAD.l + (x - XMIN) / (XMAX - XMIN) * cw(); }
-        function xToBin(x)     { return Math.round((xToPixel(x) - PAD.l) / COL); }
-        function binToPixel(b) { return PAD.l + b * COL; }
-        function groundY(bin)  { return axisY() - R - (stacks[bin] || 0) * COL; }
+        function cw() {
+          return container.clientWidth - PAD.l - PAD.r;
+        }
+        function axisY() {
+          return container.clientHeight - PAD.b;
+        }
+        function xToPixel(x) {
+          return PAD.l + ((x - XMIN) / (XMAX - XMIN)) * cw();
+        }
+        function xToBin(x) {
+          return Math.round((xToPixel(x) - PAD.l) / COL);
+        }
+        function binToPixel(b) {
+          return PAD.l + b * COL;
+        }
+        function groundY(bin) {
+          return axisY() - R - (stacks[bin] || 0) * COL;
+        }
 
         function spawnDot() {
           const { val, comp } = sample();
@@ -426,27 +694,31 @@
           falling.push({ bin, px: binToPixel(bin), py: PAD.t, vy: 0, comp });
           samples.push(val);
           if (samples.length > 1000) {
-            samples.shift(); // Evita gargalo de performance no cálculo de KDE com muitas bolinhas
+            samples.shift();
           }
         }
 
         function stepPhysics() {
           for (let i = falling.length - 1; i >= 0; i--) {
             const d = falling[i];
-            d.vy += 0.6;
+
+            d.vy += 0.15;
+            if (d.vy > 6) d.vy = 6;
+
             d.py += d.vy;
+
             const gy = groundY(d.bin);
             if (d.py >= gy) {
               d.py = gy;
               stacks[d.bin] = (stacks[d.bin] || 0) + 1;
               falling.splice(i, 1);
 
-              // Equilíbrio dinâmico aumentado para 2000 pontos
               let totalStacked = Object.values(stacks).reduce((a, b) => a + b, 0);
               if (totalStacked > 2000) {
-                const activeBins = Object.keys(stacks).filter(b => stacks[b] > 0);
+                const activeBins = Object.keys(stacks).filter((b) => stacks[b] > 0);
                 if (activeBins.length > 0) {
-                  const randomBin = activeBins[Math.floor(Math.random() * activeBins.length)];
+                  const randomBin =
+                    activeBins[Math.floor(Math.random() * activeBins.length)];
                   stacks[randomBin]--;
                 }
               }
@@ -458,7 +730,9 @@
           const n = samples.length;
           if (n < 2) return 1;
           const mean = samples.reduce((a, b) => a + b, 0) / n;
-          const std  = Math.sqrt(samples.reduce((s, x) => s + (x - mean) ** 2, 0) / (n - 1));
+          const std = Math.sqrt(
+            samples.reduce((s, x) => s + (x - mean) ** 2, 0) / (n - 1)
+          );
           const sorted = [...samples].sort((a, b) => a - b);
           const q1 = sorted[Math.floor(n * 0.25)];
           const q3 = sorted[Math.floor(n * 0.75)];
@@ -470,142 +744,194 @@
         function kde(x) {
           if (!samples.length) return 0;
           const h = silvermanBW();
-          return samples.reduce((s, xi) => {
-            const z = (x - xi) / h;
-            return s + Math.exp(-0.5 * z * z) / (h * Math.sqrt(2 * Math.PI));
-          }, 0) / samples.length;
+          return (
+            samples.reduce((s, xi) => {
+              const z = (x - xi) / h;
+              return s + Math.exp(-0.5 * z * z) / (h * Math.sqrt(2 * Math.PI));
+            }, 0) / samples.length
+          );
         }
 
         function theoreticalPDF(x) {
           return COMPS.reduce((s, c) => {
             const z = (x - c.mu) / c.sigma;
-            return s + c.pi / (c.sigma * Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * z * z);
+            return (
+              s +
+              (c.pi / (c.sigma * Math.sqrt(2 * Math.PI))) *
+                Math.exp(-0.5 * z * z)
+            );
           }, 0);
         }
 
+        function updateTargetKDE() {
+          if (samples.length >= 3) {
+            targetKDE = xs.map((x) => kde(x));
+          }
+        }
+
         function draw() {
-          const W = container.clientWidth, H = container.clientHeight;
+          const W = container.clientWidth,
+            H = container.clientHeight;
           const ay = axisY();
 
-          // Tons de branco e semitransparente para se destacar no fundo Borgonha
-          const gridC  = 'rgba(255, 255, 255, 0.03)';
-          const axC    = 'rgba(255, 255, 255, 0.15)';
-          const txtC   = 'rgba(255, 255, 255, 0.4)';
-          const stackC = 'rgba(255, 255, 255, 0.28)'; // Aumentada a opacidade das bolinhas empilhadas (0.12 -> 0.28)
-          const theoC  = 'rgba(255, 255, 255, 0.2)';
-          const kdeC   = '#ffffff'; // Linha KDE branca
-          const divC   = 'rgba(255, 255, 255, 0.08)';
+          const gridC = "rgba(255, 255, 255, 0.03)";
+          const axC = "rgba(255, 255, 255, 0.15)";
+          const stackC = "rgba(255, 255, 255, 0.28)";
+          const theoC = "rgba(255, 255, 255, 0.2)";
+          const kdeC = "#ffffff";
 
           ctx.clearRect(0, 0, W, H);
 
-          /* grade e eixo x */
-          const STEPS = 120;
-          const xs = Array.from({ length: STEPS + 1 }, (_, i) => XMIN + i * (XMAX - XMIN) / STEPS);
-          const kdeH = ay - yOffset; // A curva agora ocupa toda a altura útil do Hero Section
+          const kdeH = ay - yOffset;
           const maxPDF = Math.max(...xs.map(theoreticalPDF)) * 1.2;
-          const densityY = v => ay - (v / maxPDF) * kdeH; // Base da curva alinhada ao eixo y (ay)
+          const densityY = (v) => ay - (v / maxPDF) * kdeH;
 
-          ctx.font = '11px "Poppins", sans-serif';
-          ctx.textAlign = 'center';
+          ctx.font = '11px "Montserrat", sans-serif';
+          ctx.textAlign = "center";
           for (let x = Math.ceil(XMIN); x <= Math.floor(XMAX); x++) {
             const px = xToPixel(x);
-            ctx.strokeStyle = gridC; ctx.lineWidth = 0.5;
-            ctx.beginPath(); ctx.moveTo(px, yOffset); ctx.lineTo(px, ay); ctx.stroke();
-            // Removido o fillText do índice numérico para limpar o visual do fundo
+            ctx.strokeStyle = gridC;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(px, yOffset);
+            ctx.lineTo(px, ay);
+            ctx.stroke();
           }
-          ctx.strokeStyle = axC; ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.moveTo(PAD.l, ay); ctx.lineTo(W - PAD.r, ay); ctx.stroke();
+          ctx.strokeStyle = axC;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(PAD.l, ay);
+          ctx.lineTo(W - PAD.r, ay);
+          ctx.stroke();
 
-          /* curva teórica tracejada */
           ctx.setLineDash([4, 3]);
-          ctx.strokeStyle = theoC; ctx.lineWidth = 1.5;
+          ctx.strokeStyle = theoC;
+          ctx.lineWidth = 1.5;
           ctx.beginPath();
           let first = true;
           for (const x of xs) {
-            const px = xToPixel(x), py = densityY(theoreticalPDF(x));
+            const px = xToPixel(x),
+              py = densityY(theoreticalPDF(x));
             first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
             first = false;
           }
           ctx.stroke();
           ctx.setLineDash([]);
 
-          /* KDE */
           if (samples.length >= 3) {
-            const kdeVals = xs.map(x => kde(x));
-            const maxKDE  = Math.max(...kdeVals);
-            const scale   = maxKDE > 0 ? maxPDF / maxKDE : 1;
-
-            /* área preenchida */
-            ctx.fillStyle = kdeC + '1a'; // ~10% de opacidade (mais visível sobre o Borgonha)
-            ctx.beginPath(); first = true;
             for (let i = 0; i < xs.length; i++) {
-              const px = xToPixel(xs[i]), py = densityY(kdeVals[i] * scale);
+              cachedKDE[i] += (targetKDE[i] - cachedKDE[i]) * 0.08;
+            }
+
+            const maxKDE = Math.max(...cachedKDE);
+            const scale = maxKDE > 0 ? maxPDF / maxKDE : 1;
+
+            ctx.fillStyle = kdeC + "1a";
+            ctx.beginPath();
+            first = true;
+            for (let i = 0; i < xs.length; i++) {
+              const px = xToPixel(xs[i]),
+                py = densityY(cachedKDE[i] * scale);
               first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
               first = false;
             }
-            ctx.lineTo(xToPixel(XMAX), ay); // Fecha o polígono exatamente no eixo X (ay)
+            ctx.lineTo(xToPixel(XMAX), ay);
             ctx.lineTo(xToPixel(XMIN), ay);
-            ctx.closePath(); ctx.fill();
+            ctx.closePath();
+            ctx.fill();
 
-            /* linha KDE */
-            ctx.strokeStyle = kdeC; ctx.lineWidth = 3.5; // Linha mais espessa para maior destaque visual
-            ctx.beginPath(); first = true;
+            ctx.strokeStyle = kdeC;
+            ctx.lineWidth = 3.5;
+            ctx.beginPath();
+            first = true;
             for (let i = 0; i < xs.length; i++) {
-              const px = xToPixel(xs[i]), py = densityY(kdeVals[i] * scale);
+              const px = xToPixel(xs[i]),
+                py = densityY(cachedKDE[i] * scale);
               first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
               first = false;
             }
             ctx.stroke();
           }
 
-          /* pilhas de pontos já assentados */
           for (const [bin, count] of Object.entries(stacks)) {
             const px = binToPixel(parseInt(bin));
             if (px < PAD.l || px > W - PAD.r) continue;
             for (let i = 0; i < count; i++) {
               const cy = ay - R - i * COL;
               if (cy - R < PAD.t) break;
-              ctx.beginPath(); ctx.arc(px, cy, R, 0, 2 * Math.PI);
-              ctx.fillStyle = stackC; ctx.fill();
+              ctx.beginPath();
+              ctx.arc(px, cy, R, 0, 2 * Math.PI);
+              ctx.fillStyle = stackC;
+              ctx.fill();
             }
           }
 
-          /* pontos em queda */
           for (const d of falling) {
             if (d.px < PAD.l || d.px > W - PAD.r) continue;
-            ctx.beginPath(); ctx.arc(d.px, d.py, R, 0, 2 * Math.PI);
-            ctx.fillStyle = d.comp.color; ctx.fill(); // Bolinhas em queda agora com cor 100% sólida/opaca
+            ctx.beginPath();
+            ctx.arc(d.px, d.py, R, 0, 2 * Math.PI);
+            ctx.fillStyle = d.comp.color;
+            ctx.fill();
           }
         }
 
         function loop(ts) {
           if (!lastT) lastT = ts;
-          const dt = Math.min(ts - lastT, 80); lastT = ts;
+          const dt = Math.min(ts - lastT, 80);
+          lastT = ts;
           if (running) {
             accumMs += dt;
             const interval = 1100 / speed;
-            while (accumMs >= interval) { accumMs -= interval; spawnDot(); }
+            while (accumMs >= interval) {
+              accumMs -= interval;
+              spawnDot();
+            }
+
             stepPhysics();
+
+            framesSinceLastKDEUpdate++;
+            if (framesSinceLastKDEUpdate > 10) {
+              updateTargetKDE();
+              framesSinceLastKDEUpdate = 0;
+            }
           }
           draw();
           requestAnimationFrame(loop);
         }
 
-        // Clique na seta para rolar a tela suavemente até o conteúdo do blog
-        const scrollArrow = document.getElementById('scroll-arrow');
+        const scrollArrow = document.getElementById("scroll-arrow");
         if (scrollArrow) {
-          scrollArrow.addEventListener('click', () => {
-            const blogContainer = document.querySelector('.blog-container');
+          scrollArrow.addEventListener("click", () => {
+            const blogContainer = document.querySelector(".blog-container");
             if (blogContainer) {
-              blogContainer.scrollIntoView({ behavior: 'smooth' });
+              blogContainer.scrollIntoView({ behavior: "smooth" });
             }
           });
         }
 
         resize();
-        window.addEventListener('resize', resize);
+        window.addEventListener("resize", resize);
         requestAnimationFrame(loop);
       })();
+    </script>
+
+    <script>
+      // Revela suavemente os blocos marcados com .reveal conforme entram na tela.
+      const revealEls = document.querySelectorAll(".reveal");
+      if (revealEls.length) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        revealEls.forEach((el) => revealObserver.observe(el));
+      }
     </script>
   </body>
 </html>

@@ -1,29 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* =====================================================================
+   aMostra de Estatística — Núcleo do Design System
+   Carregado por todas as páginas. Define tipografia, paleta e detalhes
+   de marca de forma centralizada.
+   ===================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Questrial&display=swap');
+
+:root {
+  /* Paleta da marca */
+  --c-red-1: #821114; /* vermelho escuro primário */
+  --c-red-2: #940714; /* vermelho escuro secundário */
+  --c-red-3: #bc2020; /* vermelho médio */
+  --c-red-4: #f2292f; /* vermelho vibrante */
+  --c-ink: #000000; /* preto */
+  --c-cream: #e3e4de; /* off-white */
+  --c-paper: #ecede8; /* canvas levemente mais claro */
+  --c-gold: #e1b868; /* dourado (uso pontual) */
+  --c-gold-deep: #c99a4a;
+
+  /* Tipografia (ordem de hierarquia) */
+  --font-display: 'League Spartan', sans-serif; /* 1. títulos */
+  --font-ui: 'Montserrat', sans-serif;          /* 2. UI / ênfase */
+  --font-body: 'Questrial', sans-serif;         /* 3. corpo */
+}
+
+/* --- Base tipográfica ------------------------------------------------ */
+body {
+  font-family: var(--font-body);
+  background-color: var(--c-paper);
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 1. Display — títulos */
+h1, h2, h3, h4, h5, h6,
+.titulo, .font-spartan {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* 3. Corpo — texto corrido */
+p, a, td, li, .excerpt {
+  font-family: var(--font-body);
+}
+
+/* 2. UI / ênfase — navegação, botões, rótulos, destaques.
+   Declarado por último para vencer a regra de corpo em <a> da navbar. */
+nav a, button, label, th, strong, b,
+.eyebrow, .category, .read-more, .font-montserrat {
+  font-family: var(--font-ui);
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* --- Acentos de marca (uso pontual do dourado) ---------------------- */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+/* Barrinha de destaque para colocar abaixo de títulos de seção */
+.accent-bar {
+  display: inline-block;
+  width: 3.5rem;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: var(--c-gold);
+}
+
+/* --- Rodapé de marca (preto, com filete dourado pontual) ------------- */
+/* Os rodapés usam classes utilitárias claras (bg-gray-100 etc.).
+   Reescrevemos aqui para um acabamento escuro e coeso em todas as páginas. */
+footer {
+  background-color: var(--c-ink) !important;
+  color: rgba(227, 228, 222, 0.68) !important;
+  border-top: 3px solid var(--c-gold) !important;
+}
+footer h6 {
+  color: var(--c-cream) !important;
+}
+footer p,
+footer .text-gray-500 {
+  color: rgba(227, 228, 222, 0.6) !important;
+}
+footer a {
+  color: rgba(227, 228, 222, 0.75) !important;
+  transition: color 0.2s ease;
+}
+footer a:hover,
+footer a.underline:hover {
+  color: var(--c-gold) !important;
+}
+footer .text-gray-400 {
+  color: rgba(227, 228, 222, 0.5) !important;
+}
+footer .text-gray-400:hover {
+  color: var(--c-gold) !important;
+}
+/* Logo do rodapé era escuro sobre fundo claro; clareia sobre o preto. */
+footer img {
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+/* --- Componentes legados (mantidos para compatibilidade) ------------- */
 .content {
-    padding: 14vh 0;
-    height: 100vh;
-    text-align: center;
-    max-width: 80vw;
-    margin: auto;
+  padding: 14vh 0;
+  height: 100vh;
+  text-align: center;
+  max-width: 80vw;
+  margin: auto;
+}
+@media (min-width: 600px) {
+  .content {
+    max-width: 60vw;
   }
-  
-  .titulo, h1, h2, h3, h4, h5, h6   {
-    font-family: "League Spartan";
-    font-weight: 600;
-  }
-  @media (min-width: 600px) {
-    .content{
-      max-width: 60vw;
-    }
-  }
-  p,a,td,strong,th {
-    font-family: "Poppins";
+}
 
+.count {
+  font-weight: 900;
+  font-size: 2rem;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .count {
+    font-size: 2.5rem;
   }
-  p {
-    font-size: 18px;
-    color: #333;
-    text-align: justify;
-  }
-  
+}

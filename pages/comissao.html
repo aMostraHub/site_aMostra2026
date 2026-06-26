@@ -6,63 +6,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>aMostra de Estatística - Comissão</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../styles/brand.js"></script>
   <link rel="stylesheet" href="../styles/style.css">
   <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css">
   <script src="../script.js" defer></script>
+
+  <style>
+    /* Trama sutil sobre o gradiente do hero */
+    .hero-grid {
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, .06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 35%, #000 30%, transparent 78%);
+      mask-image: radial-gradient(ellipse at 50% 35%, #000 30%, transparent 78%);
+    }
+
+    /* Link da navbar com filete dourado pontual no hover */
+    .nav-link { position: relative; padding: .25rem .35rem; transition: color .2s ease; }
+    .nav-link::after {
+      content: ""; position: absolute; left: .35rem; right: .35rem; bottom: -3px; height: 2px;
+      border-radius: 2px; background: #E1B868; transform: scaleX(0); transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .nav-link.active { color: #fff; }
+
+    /* Revelar ao rolar */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none; } }
+  </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
   <nav class="bg-gradient-to-r from-red-900 to-red-600 border-gray-200">
-    <div class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 bg-opacity-95 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto p-4 shadow-sm">
+    <div class="fixed w-full bg-gradient-to-r from-red-900 to-red-600 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4 shadow-md">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a href="../index.html"><span class="font-semibold text-xl tracking-tight">aMostra XIX</span></a>
+        <a href="../index.html" class="group flex items-center gap-2.5">
+          <img src="../styles/logo_branco_isolado.png" alt="aMostra de Estatística"
+            class="h-8 w-auto drop-shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+          <span class="font-montserrat font-semibold text-lg tracking-tight">aMostra <span class="text-gold">XIX</span></span>
+        </a>
       </div>
       <button onclick="toggleMenu()" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition-colors"
         aria-controls="menu" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Abrir menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
         </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="menu">
-        <ul class="font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 text-white bg-transparent border-0">
-          <li><a href="../pages/faq.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">FAQ</a></li>
-          <li><a href="../index.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">Início</a></li>
-          <li><a href="../pages/amostra.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">aMostra</a></li>
-          <li><a href="../pages/blog/hub.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">Blog</a></li>
-          <li><a href="../pages/comissao.html" class="block py-2 px-3 md:p-0 border-b-2 border-white pb-1">Comissão</a></li>
+        <ul class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0">
+          <li><a href="../index.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Início</a></li>
+          <li><a href="../pages/galeria.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Galeria</a></li>
+          <li><a href="../pages/blog/hub.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Blog</a></li>
+          <li><a href="../pages/comissao.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition">Comissão</a></li>
+          <li><a href="../pages/faq.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">FAQ</a></li>
           <div id="parceiros" class="hidden">
-            <li><a href="../pages/patrocinadores.html" class="block py-2 px-3 md:p-0 hover:text-red-200 transition">Parceiros</a></li>
+            <li><a href="../pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Parceiros</a></li>
           </div>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="flex-grow pt-32 pb-20 px-6 max-w-7xl mx-auto w-full">
-    
-    <div class="text-center max-w-4xl mx-auto mb-16">
-      <h1 class="text-4xl font-black text-gray-900 tracking-tight sm:text-5xl mb-6">
-        Nossa <span class="text-red-700">Comissão</span>
+  <!-- Cabeçalho da Comissão (claro, com acentos de marca) -->
+  <header class="relative pt-32 pb-10 overflow-hidden">
+    <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[560px] h-[300px] bg-red-600/10 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center reveal">
+      <span class="eyebrow inline-flex items-center gap-3 text-red-700 mb-4">
+        <span class="h-px w-8 bg-gold"></span> Quem faz acontecer <span class="h-px w-8 bg-gold"></span>
+      </span>
+      <h1 class="font-spartan text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 mb-6">
+        Nossa <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-500">Comissão</span>
       </h1>
       <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 text-justify sm:text-center">
         A comissão organizadora da aMostra é composta por um grupo dedicado de estudantes do curso de Estatística do Instituto de Matemática e Estatística da Universidade de São Paulo (IME-USP). Comprometidos com o sucesso do evento, são responsáveis por planejar, coordenar e executar todas as atividades, garantindo uma experiência valiosa para participantes e organizadores.
       </p>
-      
-      <div class="inline-flex items-center justify-center bg-white border border-red-100 shadow-sm px-6 py-3 rounded-full">
-        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mr-3">Presidência</span>
-        <span class="text-red-800 font-semibold text-lg">Carolina Paixão</span>
+
+      <div class="inline-flex items-center justify-center bg-white border-2 border-gold/50 shadow-sm px-6 py-3 rounded-full">
+        <span class="eyebrow text-gray-400 mr-3">Presidência</span>
+        <span class="font-montserrat text-red-800 font-semibold text-lg">Carolina Paixão</span>
       </div>
     </div>
+  </header>
+
+  <main class="flex-grow py-16 lg:py-24 px-6 max-w-7xl mx-auto w-full">
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
       
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3 flex items-center gap-3">
-          <span class="w-2 h-6 bg-red-600 rounded-full"></span> 
-          <i class="fa fa-bullhorn text-red-600"></i> Marketing
+      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
+          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+            <i class="fa fa-bullhorn"></i>
+          </span>
+          Marketing
         </h2>
         <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
           Responsável pela identidade visual e divulgação da aMostra. Cria logotipos, canecas, camisetas, cartazes, crachás e vídeos promocionais, buscando fortalecer a imagem do evento e ampliar seu alcance.
@@ -79,10 +120,12 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3 flex items-center gap-3">
-          <span class="w-2 h-6 bg-red-600 rounded-full"></span> 
-          <i class="fa fa-code text-red-600"></i> Sistemas Informatizados
+      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
+          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+            <i class="fa fa-code"></i>
+          </span>
+          Sistemas Informatizados
         </h2>
         <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
           Cuida da criação, manutenção e atualização da plataforma oficial do evento, garantindo que participantes tenham acesso às informações, inscrições e programação de forma organizada e acessível.
@@ -99,10 +142,12 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3 flex items-center gap-3">
-          <span class="w-2 h-6 bg-red-600 rounded-full"></span> 
-          <i class="fa fa-briefcase text-red-600"></i> Negócios
+      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
+          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+            <i class="fa fa-briefcase"></i>
+          </span>
+          Negócios
         </h2>
         <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
           Atua na busca por empresas parceiras e palestrantes. Sua função é estabelecer parcerias, conquistar patrocínios e trazer profissionais qualificados para enriquecer o evento.
@@ -119,10 +164,12 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3 flex items-center gap-3">
-          <span class="w-2 h-6 bg-red-600 rounded-full"></span> 
-          <i class="fa fa-line-chart text-red-600"></i> Financeiro
+      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
+          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+            <i class="fa fa-line-chart"></i>
+          </span>
+          Financeiro
         </h2>
         <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
           Responsável pelo controle e gerenciamento dos recursos obtidos. Organiza os gastos, administra o orçamento e libera verbas para materiais de marketing e despesas da realização da aMostra.
@@ -139,10 +186,12 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 md:col-span-2 md:w-2/3 md:mx-auto">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3 flex items-center gap-3">
-          <span class="w-2 h-6 bg-red-600 rounded-full"></span> 
-          <i class="fa fa-clipboard text-red-600"></i> Secretaria
+      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 md:col-span-2 md:w-2/3 md:mx-auto">
+        <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
+          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+            <i class="fa fa-clipboard"></i>
+          </span>
+          Secretaria
         </h2>
         <p class="text-gray-600 text-sm leading-relaxed mb-6">
           Desempenha um papel fundamental na comunicação interna. É responsável por registrar as atividades e decisões, além de promover a integração e o alinhamento entre todos os setores.
@@ -210,6 +259,22 @@
       </ul>
     </div>
   </footer>
+
+  <script>
+    // Revela suavemente os blocos marcados com .reveal conforme entram na tela.
+    const revealEls = document.querySelectorAll('.reveal');
+    if (revealEls.length) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach((el) => revealObserver.observe(el));
+    }
+  </script>
 </body>
 
 </html>
