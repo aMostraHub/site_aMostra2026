@@ -1,8 +1,7 @@
 name: Deploy
 
 # Publica o site automaticamente sempre que a branch main recebe um push.
-# Requer os secrets do repositório: DEPLOY_HOST, DEPLOY_USER, DEPLOY_KEY.
-# Veja instruções de configuração em README.md.
+# Requer os secrets do repositório: DEPLOY_HOST, DEPLOY_USER, DEPLOY_PASSWORD.
 
 on:
   push:
@@ -18,7 +17,7 @@ jobs:
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          password: ${{ secrets.DEPLOY_PASSWORD }}
           script: |
             set -e
             cd ~/www
