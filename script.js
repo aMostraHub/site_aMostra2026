@@ -1,11 +1,11 @@
 function toggleMenu() {
     var menu = document.getElementById("menu");
-    if (menu.style.display === "flex") {
-        menu.style.display = "none";
-    } else {
-        menu.style.display = "flex";
-        
-    }
+    if (!menu) return;
+    // Alterna a classe 'hidden' (em vez de style.display inline): assim o
+    // 'md:block' do Tailwind volta a valer ao redimensionar para desktop.
+    var isHidden = menu.classList.toggle("hidden");
+    var btn = document.querySelector('[onclick="toggleMenu()"]');
+    if (btn) btn.setAttribute("aria-expanded", String(!isHidden));
 }
 
 // Atualizando a data para 28 de setembro de 2026, às 08:00
@@ -13,6 +13,12 @@ const targetDate = new Date("September 28, 2026 08:00:00").getTime();
 
 // Atualiza a contagem regressiva a cada segundo
 const countdownFunction = setInterval(() => {
+    // O contador só existe na tela inicial. Nas demais páginas (loja, galeria,
+    // blog...) os elementos não estão no DOM — sai sem erro em vez de estourar
+    // uma exceção a cada segundo.
+    const elDays = document.getElementById("days");
+    if (!elDays) return;
+
     const now = new Date().getTime();
     const timeRemaining = targetDate - now;
 
@@ -23,7 +29,7 @@ const countdownFunction = setInterval(() => {
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
     // Exibe os valores no HTML
-    document.getElementById("days").innerHTML = days;
+    elDays.innerHTML = days;
     document.getElementById("hours").innerHTML = hours;
     document.getElementById("minutes").innerHTML = minutes;
     document.getElementById("seconds").innerHTML = seconds;

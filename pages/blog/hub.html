@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog - aMostra XIX</title>
+  <link rel="icon" type="image/png" href="../../styles/favicon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../../styles/brand.js"></script>
@@ -21,7 +22,7 @@
 
     <link rel="stylesheet" href="../../styles/blog_hub.css" />
 
-    <script src="../script.js" defer></script>
+    <script src="../../script.js" defer></script>
 
     <style>
       /* Fontes de marca: corpo em Questrial, títulos em League Spartan. */
@@ -36,12 +37,37 @@
         font-family: "League Spartan", sans-serif;
       }
 
+      /* Trama sutil sobre o gradiente do hero (mesma da tela inicial) */
+      .hero-grid {
+        background-image:
+          linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 46px 46px;
+        -webkit-mask-image: radial-gradient(ellipse at 50% 38%, #000 28%, transparent 75%);
+        mask-image: radial-gradient(ellipse at 50% 38%, #000 28%, transparent 75%);
+      }
+
       /* Transição suave para a setinha do acordeão */
       .seta-icon {
         transition: transform 0.3s ease;
       }
       .rotate-180 {
         transform: rotate(180deg);
+      }
+
+      /* Barra de navegação: transparente sobre o banner (sem emenda com o
+         gradiente do cabeçalho) e sólida assim que a página rola. */
+      #topbar {
+        transition:
+          background-image 0.35s ease,
+          box-shadow 0.35s ease,
+          backdrop-filter 0.35s ease;
+      }
+      #topbar.solido {
+        background-image: linear-gradient(to right, #5E0C0E, #BC2020);
+        box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
       }
 
       /* Link da navbar com filete dourado pontual no hover */
@@ -96,9 +122,17 @@
   <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
+    <!-- Marcador do topo: some de vista assim que a página rola (ver #topbar) -->
+    <div
+      id="topo-sentinela"
+      aria-hidden="true"
+      class="absolute top-0 left-0 w-px h-8 pointer-events-none"
+    ></div>
+
     <nav class="bg-transparent">
       <div
-        class="fixed top-0 left-0 w-full bg-gradient-to-r from-red-900 to-red-600 backdrop-blur-sm z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4"
+        id="topbar"
+        class="fixed top-0 left-0 w-full z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4"
       >
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <a href="../../index.html" class="group flex items-center gap-2.5">
@@ -136,7 +170,12 @@
             />
           </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="menu">
+        <!-- No celular o menu precisa de fundo próprio: a barra é transparente
+             no topo, então sem isso os itens ficariam sobre o banner. -->
+        <div
+          class="hidden w-full md:block md:w-auto bg-red-900/95 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none rounded-xl md:rounded-none shadow-lg md:shadow-none ring-1 ring-white/10 md:ring-0 mt-3 md:mt-0"
+          id="menu"
+        >
           <ul
             class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0"
           >
@@ -163,6 +202,13 @@
             </li>
             <li>
               <a
+                href="../../pages/loja.html"
+                class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
+                >Loja</a
+              >
+            </li>
+            <li>
+              <a
                 href="../../pages/comissao.html"
                 class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
                 >Comissão</a
@@ -175,15 +221,22 @@
                 >FAQ</a
               >
             </li>
-            <div id="parceiros" class="hidden">
-              <li>
-                <a
-                  href="../../pages/patrocinadores.html"
-                  class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
-                  >Parceiros</a
-                >
-              </li>
-            </div>
+            <li id="parceiros" class="hidden">
+              <a
+                href="../../pages/patrocinadores.html"
+                class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors"
+                >Parceiros</a
+              >
+            </li>
+            <li class="md:ml-3">
+              <a
+                href="https://amostra-estatistica.fly.dev/"
+                target="_blank"
+                rel="noopener"
+                class="btn-inscricao block mt-3 md:mt-0 text-center bg-gold hover:bg-white text-red-900 font-montserrat font-bold text-sm px-5 py-2 rounded-lg shadow-md shadow-black/25 transition-all hover:-translate-y-0.5"
+                >Inscreva-se</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -191,8 +244,16 @@
 
     <section
       id="hero-section"
-      class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-r from-red-900 to-red-600 text-white pt-32"
+      class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-red-600 text-white pt-32"
     >
+      <!-- Camadas de fundo iguais às da tela inicial -->
+      <div class="absolute -top-24 -right-24 w-[520px] h-[520px] bg-white/15 blur-3xl rounded-full pointer-events-none"></div>
+      <div class="absolute bottom-0 -left-24 w-[440px] h-[440px] bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
+      <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+      <div class="absolute inset-0 opacity-[0.15] pointer-events-none">
+        <img src="../../styles/bg-vector.svg" alt="" class="absolute bottom-0 left-0 w-full h-full object-cover scale-110" />
+      </div>
+
       <canvas
         id="hero-canvas"
         class="absolute inset-0 w-full h-full pointer-events-none opacity-30"
@@ -490,106 +551,54 @@
       </div>
     </div>
 
-    <footer class="bg-gray-100 text-gray-600 py-12 border-t border-gray-200 mt-auto w-full">
-      <div class="mx-auto max-w-5xl px-4 flex flex-col items-center justify-center text-center">
-        <div class="flex items-center justify-center gap-2 mb-4 w-full">
-          <img
-            src="../../styles/Logo.png"
-            alt="Logo da Amostra"
-            class="w-8 h-auto filter brightness-90"
-          />
-          <h6 class="font-semibold text-gray-800 m-0 font-spartan">
-            aMostra de Estatística
-          </h6>
-        </div>
+    <footer class="bg-gray-100 text-gray-600 py-12 border-t border-gray-200 mt-auto w-full block clear-both" style="display: block; float: none;">
+    <div class="mx-auto max-w-5xl px-4 flex flex-col items-center justify-center text-center" style="display: flex; flex-direction: column;">
 
-        <p class="text-sm leading-relaxed text-gray-500 mb-6 w-full text-center">
-          aMostra de Estatística 2026 <br />
-          © 2026 Todos os direitos reservados <br />
-          <a href="../pages/faq.html" class="underline hover:text-gray-700 transition"
-            >FAQ</a
-          >
-        </p>
-
-        <ul class="flex justify-center gap-6 w-full p-0 m-0" style="list-style: none;">
-          <li>
-            <a
-              href="https://www.facebook.com/aMostra.de.Estatistica/"
-              target="_blank"
-              rel="noreferrer"
-              class="text-gray-400 hover:text-gray-600 transition"
-            >
-              <span class="sr-only">Facebook</span>
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path
-                  d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8.02 9.71v-6.86H7.56v-2.85h2.46V9.81c0-2.42 1.44-3.76 3.65-3.76 1.06 0 2.16.19 2.16.19v2.37h-1.21c-1.2 0-1.57.74-1.57 1.51v1.8h2.67l-.43 2.85h-2.24v6.86C18.56 20.87 22 16.84 22 12z"
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.instagram.com/amostraestatistica/"
-              target="_blank"
-              rel="noreferrer"
-              class="text-gray-400 hover:text-gray-600 transition"
-            >
-              <span class="sr-only">Instagram</span>
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.youtube.com/@aMostra-de-Estatistica"
-              target="_blank"
-              rel="noreferrer"
-              class="text-gray-400 hover:text-gray-600 transition"
-            >
-              <span class="sr-only">Youtube</span>
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path
-                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/company/amostraestatistica/"
-              target="_blank"
-              rel="noreferrer"
-              class="text-gray-400 hover:text-gray-600 transition"
-            >
-              <span class="sr-only">Linkedin</span>
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path
-                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.tiktok.com/@amostra.usp"
-              target="_blank"
-              rel="noreferrer"
-              class="text-gray-400 hover:text-gray-600 transition"
-            >
-              <span class="sr-only">Tiktok</span>
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path
-                  d="M12.525.02c1.31.027 2.595.361 3.75 1.01a7.46 7.46 0 0 1 2.522 2.611 7.426 7.426 0 0 0-3.413-.85c-.173 0-.342.008-.513.022V6.66c.17-.008.34-.014.513-.014 2.446 0 4.542 1.547 5.347 3.72a7.48 7.48 0 0 1 .53 2.705V.02h-8.75zm-7.462 7.5c-2.446 0-4.542 1.547-5.347 3.72a7.48 7.48 0 0 0-.53 2.705c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5V0h-4.204v13.945c0 2.404-1.948 4.352-4.352 4.352-2.404 0-4.352-1.948-4.352-4.352 0-2.404 1.948-4.352 4.352-4.352.174 0 .343.01.513.027V7.547a4.42 4.42 0 0 0-.513-.027z"
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
+      <div class="flex items-center justify-center gap-2 mb-4 w-full" style="display: flex; justify-content: center;">
+        <img src="../../styles/Logo.png" alt="Logo da Amostra" class="w-8 h-auto filter brightness-90">
+        <h6 class="font-semibold text-gray-800 m-0 font-spartan">aMostra de Estatística</h6>
       </div>
-    </footer>
+
+      <p class="text-sm leading-relaxed text-gray-500 mb-6 w-full text-center" style="text-align: center;">
+        aMostra de Estatística 2026 <br>
+        © 2026 Todos os direitos reservados <br>
+        <a href="../faq.html" class="underline hover:text-gray-700 transition">FAQ</a>
+      </p>
+
+      <ul class="flex justify-center gap-6 w-full p-0 m-0" style="display: flex; justify-content: center; list-style: none;">
+        <li>
+          <a href="https://www.facebook.com/aMostra.de.Estatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Facebook</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8.02 9.71v-6.86H7.56v-2.85h2.46V9.81c0-2.42 1.44-3.76 3.65-3.76 1.06 0 2.16.19 2.16.19v2.37h-1.21c-1.2 0-1.57.74-1.57 1.51v1.8h2.67l-.43 2.85h-2.24v6.86C18.56 20.87 22 16.84 22 12z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/amostraestatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Instagram</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@aMostra-de-Estatistica" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Youtube</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/amostraestatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Linkedin</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@amostra.usp" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Tiktok</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31.027 2.595.361 3.75 1.01a7.46 7.46 0 0 1 2.522 2.611 7.426 7.426 0 0 0-3.413-.85c-.173 0-.342.008-.513.022V6.66c.17-.008.34-.014.513-.014 2.446 0 4.542 1.547 5.347 3.72a7.48 7.48 0 0 1 .53 2.705V.02h-8.75zm-7.462 7.5c-2.446 0-4.542 1.547-5.347 3.72a7.48 7.48 0 0 0-.53 2.705c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5V0h-4.204v13.945c0 2.404-1.948 4.352-4.352 4.352-2.404 0-4.352-1.948-4.352-4.352 0-2.404 1.948-4.352 4.352-4.352.174 0 .343.01.513.027V7.547a4.42 4.42 0 0 0-.513-.027z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 
     <script>
       /* ── script do fundo animado: Mistura de Gaussianas (Hero Section) ── */
@@ -932,6 +941,27 @@
         );
         revealEls.forEach((el) => revealObserver.observe(el));
       }
+
+      /* Barra de navegação: transparente no topo, sólida ao rolar.
+         A sentinela é um marcador invisível nos primeiros 32px da página. */
+      (function () {
+        const topbar = document.getElementById("topbar");
+        const sentinela = document.getElementById("topo-sentinela");
+        if (!topbar) return;
+
+        function atualizarTopbar() {
+          topbar.classList.toggle("solido", window.scrollY > 24);
+        }
+
+        if (sentinela && "IntersectionObserver" in window) {
+          new IntersectionObserver(function (entradas) {
+            topbar.classList.toggle("solido", !entradas[0].isIntersecting);
+          }).observe(sentinela);
+        }
+
+        atualizarTopbar();
+        window.addEventListener("scroll", atualizarTopbar, { passive: true });
+      })();
     </script>
   </body>
 </html>

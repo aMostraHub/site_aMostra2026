@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aMostra de Estatística - Loja</title>
+  <link rel="icon" type="image/png" href="../styles/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../styles/brand.js"></script>
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css">
+  <script src="../script.js" defer></script>
+
+  <style>
+    body { font-family: "Questrial", sans-serif; }
+    h1, h2, h3, h4, .font-spartan { font-family: "League Spartan", sans-serif; }
+
+    .nav-link { position: relative; padding: .25rem .35rem; transition: color .2s ease; }
+    .nav-link::after {
+      content: ""; position: absolute; left: .35rem; right: .35rem; bottom: -3px; height: 2px;
+      border-radius: 2px; background: #E1B868; transform: scaleX(0); transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+    .nav-link.active { color: #fff; }
+
+    /* Barra de navegação: transparente sobre o banner (sem emenda com o
+       gradiente do cabeçalho) e sólida assim que a página rola. */
+    #topbar {
+      transition: background-image .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
+    }
+    #topbar.solido {
+      background-image: linear-gradient(to right, #5E0C0E, #BC2020);
+      box-shadow: 0 4px 12px -4px rgba(0, 0, 0, .35);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Trama sutil sobre o gradiente do cabeçalho (mesma da tela inicial) */
+    .hero-grid {
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, .06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, .06) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+      mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+    }
+
+    /* Mockups vêm em fundo branco: contêm a arte inteira, sem cortar. */
+    .produto-foto { object-fit: contain; }
+
+    /* Linha de destaque das tabelas de medidas */
+    .medidas tbody tr:nth-child(odd) { background: #FCEEEE55; }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Marcador do topo: some de vista assim que a página rola (ver #topbar) -->
+  <div id="topo-sentinela" aria-hidden="true" class="absolute top-0 left-0 w-px h-8 pointer-events-none"></div>
+
+  <!-- Navbar padrão do site -->
+  <nav class="border-gray-200">
+    <div id="topbar" class="fixed w-full z-40 flex flex-wrap items-center justify-between mx-auto px-5 py-4">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <a href="../index.html" class="group flex items-center gap-2.5">
+          <img src="../styles/logo_branco_isolado.png" alt="aMostra de Estatística"
+            class="h-8 w-auto drop-shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+          <span class="font-montserrat font-semibold text-lg tracking-tight">aMostra <span class="text-gold">XIX</span></span>
+        </a>
+      </div>
+      <button onclick="toggleMenu()" type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 transition-colors"
+        aria-controls="menu" aria-expanded="false">
+        <span class="sr-only">Abrir menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+      <!-- No celular o menu precisa de fundo próprio: a barra é transparente
+           no topo, então sem isso os itens ficariam sobre o banner. -->
+      <div class="hidden w-full md:block md:w-auto bg-red-900/95 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none rounded-xl md:rounded-none shadow-lg md:shadow-none ring-1 ring-white/10 md:ring-0 mt-3 md:mt-0" id="menu">
+        <ul class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0">
+          <li><a href="../index.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Início</a></li>
+          <li><a href="../pages/galeria.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Galeria</a></li>
+          <li><a href="../pages/blog/hub.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Blog</a></li>
+          <li><a href="../pages/loja.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition">Loja</a></li>
+          <li><a href="../pages/comissao.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Comissão</a></li>
+          <li><a href="../pages/faq.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">FAQ</a></li>
+          <li class="md:ml-3"><a href="https://amostra-estatistica.fly.dev/" target="_blank" rel="noopener" class="btn-inscricao block mt-3 md:mt-0 text-center bg-gold hover:bg-white text-red-900 font-montserrat font-bold text-sm px-5 py-2 rounded-lg shadow-md shadow-black/25 transition-all hover:-translate-y-0.5">Inscreva-se</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cabeçalho com o fundo estilo tela inicial -->
+  <header class="relative overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-red-600 text-white pt-36 pb-20 px-6">
+    <div class="absolute -top-24 -right-24 w-[520px] h-[520px] bg-white/15 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 -left-24 w-[440px] h-[440px] bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+    <div class="absolute inset-0 opacity-[0.15] pointer-events-none">
+      <img src="../styles/bg-vector.svg" alt="" class="absolute bottom-0 left-0 w-full h-full object-cover scale-110">
+    </div>
+
+    <div class="relative z-10 max-w-3xl mx-auto text-center">
+      <span class="eyebrow inline-flex items-center gap-3 text-gold mb-4">
+        <span class="h-px w-8 bg-gold/70"></span> Produtos Oficiais
+        <span class="h-px w-8 bg-gold/70"></span>
+      </span>
+      <h1 class="font-spartan text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4">
+        Loja da aMostra
+      </h1>
+      <div class="w-16 h-1 bg-gold rounded-full mx-auto mb-6"></div>
+      <p class="text-white/85 text-lg leading-relaxed max-w-xl mx-auto">
+        Camiseta, caneca e adesivos com a arte da XIX edição. As camisetas e canecas
+        são <strong class="text-white">feitas sob encomenda</strong> — garanta a sua pelo formulário.
+      </p>
+      <a href="#" class="btn-encomendar mt-8 inline-flex items-center justify-center gap-2.5 bg-white text-red-800 hover:bg-gold hover:text-red-900 font-montserrat font-bold px-8 py-3.5 rounded-xl shadow-xl shadow-black/20 transition-all hover:-translate-y-0.5"
+        target="_blank" rel="noopener">
+        <i class="fa fa-shopping-bag"></i> Fazer minha encomenda
+      </a>
+      <p class="mt-4 text-xs font-montserrat uppercase tracking-wider text-white/60">
+        Formas de pagamento no formulário
+      </p>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="flex-grow py-16 px-6 max-w-7xl mx-auto w-full">
+
+    <!-- ============ PRODUTOS SOB ENCOMENDA ============ -->
+    <section aria-labelledby="titulo-encomenda">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="inline-flex items-center gap-2 text-[11px] font-montserrat font-bold uppercase tracking-widest text-red-600 mb-2">
+            <i class="fa fa-clock-o"></i> Encomenda antecipada
+          </span>
+          <h2 id="titulo-encomenda" class="font-spartan text-3xl md:text-4xl font-black text-gray-900">
+            Camisetas &amp; Caneca
+          </h2>
+          <p class="text-gray-500 mt-1 max-w-xl">
+            Quatro opções de camiseta e a caneca oficial, produzidas por demanda a partir
+            dos pedidos. Tudo no <strong class="text-red-700">mesmo formulário</strong>.
+          </p>
+        </div>
+        <a href="#" class="btn-encomendar hidden sm:inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold px-6 py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:-translate-y-0.5"
+          target="_blank" rel="noopener">
+          Encomendar <i class="fa fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Bloco 2x2 de camisetas + caneca como card alto ao lado: os cinco
+           produtos ficam com o mesmo peso visual e a mesma altura total. -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- ---------- AS 4 CAMISETAS (2x2) ---------- -->
+        <div class="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <!-- Unissex Preta -->
+        <article class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border border-gray-100">
+          <div class="relative aspect-[12/7] bg-white overflow-hidden">
+            <img src="../styles/produtos/camiseta_unissex_preta.avif?v=2"
+              alt="Camiseta unissex preta da aMostra XIX: dadinhos no peito na frente e estampa grande nas costas"
+              loading="lazy" decoding="async"
+              class="produto-foto absolute inset-0 w-full h-full"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden flex-col items-center justify-center text-red-300">
+              <i class="fa fa-picture-o" style="font-size:3rem" aria-hidden="true"></i>
+              <span class="mt-2 text-[10px] font-montserrat uppercase tracking-widest">Foto do produto</span>
+            </div>
+            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Unissex</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3.5 h-3.5 rounded-full bg-black ring-1 ring-gray-200 flex-shrink-0" aria-hidden="true"></span>
+                <h3 class="font-spartan text-xl font-bold text-gray-900">Unissex Preta</h3>
+              </div>
+              <span class="font-spartan text-lg font-black text-red-700 whitespace-nowrap">R$ 50</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-5 flex-grow">
+              Corte reto. Tamanhos P a GG, mais a linha oversized XP, XM e XG.
+            </p>
+            <div class="space-y-2.5">
+              <button type="button" onclick="abrirMedidas('unissex')"
+                class="w-full inline-flex items-center justify-center gap-2 text-red-700 border border-red-200 hover:bg-red-50 font-montserrat font-semibold text-sm py-2.5 rounded-xl transition-colors">
+                <i class="fa fa-arrows-alt"></i> Medidas
+              </button>
+              <a href="#" class="btn-encomendar w-full inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-sm py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:-translate-y-0.5"
+                target="_blank" rel="noopener">
+                Encomendar <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Unissex Branca -->
+        <article class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border border-gray-100">
+          <div class="relative aspect-[12/7] bg-white overflow-hidden">
+            <img src="../styles/produtos/camiseta_unissex_branca.avif?v=3"
+              alt="Camiseta unissex branca da aMostra XIX: dadinhos no peito na frente e estampa grande nas costas"
+              loading="lazy" decoding="async"
+              class="produto-foto absolute inset-0 w-full h-full"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden flex-col items-center justify-center text-red-300">
+              <i class="fa fa-picture-o" style="font-size:3rem" aria-hidden="true"></i>
+              <span class="mt-2 text-[10px] font-montserrat uppercase tracking-widest">Foto do produto</span>
+            </div>
+            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Unissex</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3.5 h-3.5 rounded-full bg-white ring-1 ring-gray-300 flex-shrink-0" aria-hidden="true"></span>
+                <h3 class="font-spartan text-xl font-bold text-gray-900">Unissex Branca</h3>
+              </div>
+              <span class="font-spartan text-lg font-black text-red-700 whitespace-nowrap">R$ 50</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-5 flex-grow">
+              Corte reto. Tamanhos P a GG, mais a linha oversized XP, XM e XG.
+            </p>
+            <div class="space-y-2.5">
+              <button type="button" onclick="abrirMedidas('unissex')"
+                class="w-full inline-flex items-center justify-center gap-2 text-red-700 border border-red-200 hover:bg-red-50 font-montserrat font-semibold text-sm py-2.5 rounded-xl transition-colors">
+                <i class="fa fa-arrows-alt"></i> Medidas
+              </button>
+              <a href="#" class="btn-encomendar w-full inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-sm py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:-translate-y-0.5"
+                target="_blank" rel="noopener">
+                Encomendar <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Baby Look Preta -->
+        <article class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border border-gray-100">
+          <div class="relative aspect-[12/7] bg-white overflow-hidden">
+            <img src="../styles/produtos/camiseta_babylook_preta.avif?v=2"
+              alt="Camiseta baby look preta da aMostra XIX: estampa grande nas costas e dadinhos no peito"
+              loading="lazy" decoding="async"
+              class="produto-foto absolute inset-0 w-full h-full"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden flex-col items-center justify-center text-red-300">
+              <i class="fa fa-picture-o" style="font-size:3rem" aria-hidden="true"></i>
+              <span class="mt-2 text-[10px] font-montserrat uppercase tracking-widest">Foto do produto</span>
+            </div>
+            <span class="absolute top-3 left-3 bg-red-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Baby Look</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3.5 h-3.5 rounded-full bg-black ring-1 ring-gray-200 flex-shrink-0" aria-hidden="true"></span>
+                <h3 class="font-spartan text-xl font-bold text-gray-900">Baby Look Preta</h3>
+              </div>
+              <span class="font-spartan text-lg font-black text-red-700 whitespace-nowrap">R$ 50</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-5 flex-grow">
+              Modelagem feminina ajustada. Tamanhos P a GG.
+            </p>
+            <div class="space-y-2.5">
+              <button type="button" onclick="abrirMedidas('babylook')"
+                class="w-full inline-flex items-center justify-center gap-2 text-red-700 border border-red-200 hover:bg-red-50 font-montserrat font-semibold text-sm py-2.5 rounded-xl transition-colors">
+                <i class="fa fa-arrows-alt"></i> Medidas
+              </button>
+              <a href="#" class="btn-encomendar w-full inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-sm py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:-translate-y-0.5"
+                target="_blank" rel="noopener">
+                Encomendar <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Baby Look Branca -->
+        <article class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border border-gray-100">
+          <div class="relative aspect-[12/7] bg-white overflow-hidden">
+            <img src="../styles/produtos/camiseta_babylook_branca.avif?v=2"
+              alt="Camiseta baby look branca da aMostra XIX: estampa grande nas costas e dadinhos no peito"
+              loading="lazy" decoding="async"
+              class="produto-foto absolute inset-0 w-full h-full"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden flex-col items-center justify-center text-red-300">
+              <i class="fa fa-picture-o" style="font-size:3rem" aria-hidden="true"></i>
+              <span class="mt-2 text-[10px] font-montserrat uppercase tracking-widest">Foto do produto</span>
+            </div>
+            <span class="absolute top-3 left-3 bg-red-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Baby Look</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3.5 h-3.5 rounded-full bg-white ring-1 ring-gray-300 flex-shrink-0" aria-hidden="true"></span>
+                <h3 class="font-spartan text-xl font-bold text-gray-900">Baby Look Branca</h3>
+              </div>
+              <span class="font-spartan text-lg font-black text-red-700 whitespace-nowrap">R$ 50</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-5 flex-grow">
+              Modelagem feminina ajustada. Tamanhos P a GG.
+            </p>
+            <div class="space-y-2.5">
+              <button type="button" onclick="abrirMedidas('babylook')"
+                class="w-full inline-flex items-center justify-center gap-2 text-red-700 border border-red-200 hover:bg-red-50 font-montserrat font-semibold text-sm py-2.5 rounded-xl transition-colors">
+                <i class="fa fa-arrows-alt"></i> Medidas
+              </button>
+              <a href="#" class="btn-encomendar w-full inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-sm py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:-translate-y-0.5"
+                target="_blank" rel="noopener">
+                Encomendar <i class="fa fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        </div>
+
+        <!-- ---------- CANECA ---------- -->
+        <article class="sm:col-span-2 lg:col-span-1 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col border border-gray-100">
+          <div class="relative aspect-[16/11] lg:aspect-square bg-white overflow-hidden flex-shrink-0">
+            <img src="../styles/produtos/caneca.avif"
+              alt="Caneca preta da 19ª aMostra de Estatística, coberta de fórmulas estatísticas manuscritas"
+              loading="lazy" decoding="async"
+              class="produto-foto absolute inset-0 w-full h-full p-4"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden flex-col items-center justify-center text-red-300">
+              <i class="fa fa-coffee" style="font-size:3rem" aria-hidden="true"></i>
+              <span class="mt-2 text-[10px] font-montserrat uppercase tracking-widest">Foto do produto</span>
+            </div>
+            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Caneca</span>
+          </div>
+
+          <div class="p-5 sm:p-6 flex flex-col flex-grow">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3.5 h-3.5 rounded-full bg-black ring-1 ring-gray-200 flex-shrink-0" aria-hidden="true"></span>
+                <h3 class="font-spartan text-xl font-bold text-gray-900">Caneca Oficial</h3>
+              </div>
+              <span class="font-spartan text-lg font-black text-red-700 whitespace-nowrap">R$ 30</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-5 leading-relaxed">
+              Cerâmica preta estampada com fórmulas escritas à mão — variância, Bayes, mínimos
+              quadrados — e a assinatura da <strong class="text-gray-700">19ª aMostra de
+              Estatística</strong>. O café do plantão de TCC agradece.
+            </p>
+
+            <ul class="text-sm text-gray-500 space-y-2.5 mb-6 flex-grow">
+              <li class="flex items-start gap-2.5"><i class="fa fa-check text-red-600 w-4 mt-1"></i> Cerâmica preta, tamanho único</li>
+              <li class="flex items-start gap-2.5"><i class="fa fa-check text-red-600 w-4 mt-1"></i> Estampa dando a volta completa</li>
+              <li class="flex items-start gap-2.5"><i class="fa fa-check text-red-600 w-4 mt-1"></i> Logo da 19ª edição em destaque</li>
+            </ul>
+
+            <a href="#" class="btn-encomendar w-full inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-sm py-3 rounded-xl shadow-lg shadow-red-600/30 transition-all hover:-translate-y-0.5"
+              target="_blank" rel="noopener">
+              Encomendar <i class="fa fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Combo camiseta + caneca -->
+      <div class="mt-8 flex justify-center">
+        <span class="inline-flex items-center gap-2.5 bg-red-50 text-red-700 border border-red-200 font-montserrat font-bold text-sm sm:text-base px-5 py-2.5 rounded-full shadow-sm">
+          <i class="fa fa-tags"></i> Combo: qualquer camiseta + caneca por <strong class="font-black">R$ 70</strong>
+        </span>
+      </div>
+    </section>
+
+    <!-- ============ ADESIVOS ============ -->
+    <section aria-labelledby="titulo-adesivos" class="mt-20">
+      <div class="mb-8">
+        <span class="inline-flex items-center gap-2 text-[11px] font-montserrat font-bold uppercase tracking-widest text-gold-deep mb-2">
+          <i class="fa fa-star"></i> Coleção mascote
+        </span>
+        <div class="flex flex-wrap items-center gap-3">
+          <h2 id="titulo-adesivos" class="font-spartan text-3xl md:text-4xl font-black text-gray-900">
+            Adesivos
+          </h2>
+          <span class="inline-flex items-center gap-1.5 bg-gold/15 text-gold-deep border border-gold/30 font-montserrat font-bold text-sm px-3.5 py-1.5 rounded-full">
+            <i class="fa fa-tag"></i> R$ 4 cada
+          </span>
+        </div>
+        <p class="text-gray-500 mt-2 max-w-2xl">
+          Cinco versões da nossa capivara mascote, cada uma em homenagem a um clássico do anime.
+          Vendidos avulsos no estande da aMostra durante o evento — sem necessidade de encomenda.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+
+        <button type="button" onclick="abrirAdesivo(1)"
+          class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left">
+          <div class="aspect-square bg-gradient-to-br from-red-50 to-gray-50 p-3">
+            <img src="../styles/produtos/adesivo_1.avif" alt="Adesivo da capivara mascote de uniforme marinheiro e longas tranças douradas"
+              loading="lazy" decoding="async"
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="px-3 py-3 border-t border-gray-100">
+            <span class="block font-montserrat font-semibold text-sm text-gray-800">Capivara Marinheira</span>
+            <span class="block text-[11px] text-gray-500 mt-0.5">Homenagem a Sailor Moon</span>
+            <span class="mt-1.5 inline-flex items-center gap-1.5 text-red-700 font-bold text-xs">R$ 4 <span class="text-gray-300 font-normal">· ver maior</span></span>
+          </div>
+        </button>
+
+        <button type="button" onclick="abrirAdesivo(2)"
+          class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left">
+          <div class="aspect-square bg-gradient-to-br from-red-50 to-gray-50 p-3">
+            <img src="../styles/produtos/adesivo_2.avif" alt="Adesivo da capivara mascote pirata de chapéu de palha e colete vermelho"
+              loading="lazy" decoding="async"
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="px-3 py-3 border-t border-gray-100">
+            <span class="block font-montserrat font-semibold text-sm text-gray-800">Capivara Pirata</span>
+            <span class="block text-[11px] text-gray-500 mt-0.5">Homenagem a One Piece</span>
+            <span class="mt-1.5 inline-flex items-center gap-1.5 text-red-700 font-bold text-xs">R$ 4 <span class="text-gray-300 font-normal">· ver maior</span></span>
+          </div>
+        </button>
+
+        <button type="button" onclick="abrirAdesivo(3)"
+          class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left">
+          <div class="aspect-square bg-gradient-to-br from-red-50 to-gray-50 p-3">
+            <img src="../styles/produtos/adesivo_3.avif" alt="Adesivo da capivara mascote espadachim com haori xadrez verde e onda de água"
+              loading="lazy" decoding="async"
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="px-3 py-3 border-t border-gray-100">
+            <span class="block font-montserrat font-semibold text-sm text-gray-800">Capivara Espadachim</span>
+            <span class="block text-[11px] text-gray-500 mt-0.5">Homenagem a Demon Slayer</span>
+            <span class="mt-1.5 inline-flex items-center gap-1.5 text-red-700 font-bold text-xs">R$ 4 <span class="text-gray-300 font-normal">· ver maior</span></span>
+          </div>
+        </button>
+
+        <button type="button" onclick="abrirAdesivo(4)"
+          class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left">
+          <div class="aspect-square bg-gradient-to-br from-red-50 to-gray-50 p-3">
+            <img src="../styles/produtos/adesivo_4.avif" alt="Adesivo da capivara mascote de chapéu e casaco longo, em fundo rosa"
+              loading="lazy" decoding="async"
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="px-3 py-3 border-t border-gray-100">
+            <span class="block font-montserrat font-semibold text-sm text-gray-800">Capivara Bizarra</span>
+            <span class="block text-[11px] text-gray-500 mt-0.5">Homenagem a JoJo's Bizarre Adventure</span>
+            <span class="mt-1.5 inline-flex items-center gap-1.5 text-red-700 font-bold text-xs">R$ 4 <span class="text-gray-300 font-normal">· ver maior</span></span>
+          </div>
+        </button>
+
+        <button type="button" onclick="abrirAdesivo(5)"
+          class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left">
+          <div class="aspect-square bg-gradient-to-br from-red-50 to-gray-50 p-3">
+            <img src="../styles/produtos/adesivo_5.avif" alt="Adesivo da capivara mascote com colete azul e correntes douradas"
+              loading="lazy" decoding="async"
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="px-3 py-3 border-t border-gray-100">
+            <span class="block font-montserrat font-semibold text-sm text-gray-800">Capivara Corrente</span>
+            <span class="block text-[11px] text-gray-500 mt-0.5">Homenagem a Hunter x Hunter</span>
+            <span class="mt-1.5 inline-flex items-center gap-1.5 text-red-700 font-bold text-xs">R$ 4 <span class="text-gray-300 font-normal">· ver maior</span></span>
+          </div>
+        </button>
+
+      </div>
+
+      <!-- Kit de adesivos -->
+      <div class="mt-8 flex justify-center">
+        <span class="inline-flex items-center gap-2.5 bg-gold/15 text-gold-deep border border-gold/30 font-montserrat font-bold text-sm sm:text-base px-5 py-2.5 rounded-full shadow-sm">
+          <i class="fa fa-star"></i> Kit: quaisquer 3 adesivos por <strong class="font-black">R$ 10</strong>
+        </span>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA ============ -->
+    <section aria-labelledby="titulo-como" class="mt-20">
+      <div class="bg-white border border-gray-100 rounded-3xl shadow-sm overflow-hidden">
+        <div class="grid md:grid-cols-5">
+
+          <div class="md:col-span-3 p-8 sm:p-10">
+            <h2 id="titulo-como" class="font-spartan text-2xl sm:text-3xl font-black text-gray-900 mb-6">
+              Como funciona a encomenda
+            </h2>
+
+            <ol class="space-y-6">
+              <li class="flex gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-full bg-red-600 text-white font-spartan font-black flex items-center justify-center shadow-md shadow-red-600/30">1</span>
+                <div>
+                  <h3 class="font-montserrat font-bold text-gray-900 mb-1">Escolha os produtos</h3>
+                  <p class="text-gray-500 text-sm leading-relaxed">
+                    Camiseta e caneca ficam no mesmo formulário. Confira a tabela de medidas
+                    antes de escolher o tamanho.
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-full bg-red-600 text-white font-spartan font-black flex items-center justify-center shadow-md shadow-red-600/30">2</span>
+                <div>
+                  <h3 class="font-montserrat font-bold text-gray-900 mb-1">Preencha o formulário</h3>
+                  <p class="text-gray-500 text-sm leading-relaxed">
+                    É lá que ficam as <strong class="text-gray-700">formas de pagamento
+                    e o prazo</strong> de entrega de cada item.
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-full bg-red-600 text-white font-spartan font-black flex items-center justify-center shadow-md shadow-red-600/30">3</span>
+                <div>
+                  <h3 class="font-montserrat font-bold text-gray-900 mb-1">Retire na aMostra</h3>
+                  <p class="text-gray-500 text-sm leading-relaxed">
+                    A comissão confirma o pedido e combina a retirada. Os adesivos você
+                    compra direto no estande, sem encomendar.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="md:col-span-2 bg-gradient-to-br from-red-900 via-red-800 to-red-600 text-white p-8 sm:p-10 flex flex-col justify-center relative overflow-hidden">
+            <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+            <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
+            <div class="relative z-10 text-center">
+              <i class="fa fa-shopping-bag text-gold text-4xl mb-4"></i>
+              <h3 class="font-spartan text-2xl font-black mb-2">Um formulário só</h3>
+              <p class="text-white/80 text-sm leading-relaxed mb-6">
+                Camiseta e caneca, tamanhos e pagamento — tudo em um lugar.
+              </p>
+              <a href="#" class="btn-encomendar w-full inline-flex items-center justify-center gap-2 bg-white text-red-800 hover:bg-gold hover:text-red-900 font-montserrat font-bold py-3.5 rounded-xl shadow-xl shadow-black/25 transition-all hover:-translate-y-0.5"
+                target="_blank" rel="noopener">
+                Abrir formulário <i class="fa fa-external-link"></i>
+              </a>
+              <p class="mt-4 text-[11px] text-white/50 font-montserrat uppercase tracking-wider">Google Forms</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Barra fixa de encomenda (só no mobile) -->
+  <div class="sm:hidden fixed bottom-0 inset-x-0 z-30 p-3 bg-white/95 backdrop-blur border-t border-gray-200 shadow-[0_-4px_20px_-6px_rgba(0,0,0,.15)]">
+    <a href="#" class="btn-encomendar w-full inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold py-3 rounded-xl shadow-lg shadow-red-600/30"
+      target="_blank" rel="noopener">
+      <i class="fa fa-shopping-bag"></i> Encomendar camiseta ou caneca
+    </a>
+  </div>
+
+  <!-- ============ MODAL: MEDIDAS ============ -->
+  <div id="modal-medidas" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4 overflow-y-auto"
+    role="dialog" aria-modal="true" aria-labelledby="titulo-modal-medidas"
+    onclick="if(event.target===this)fecharModais()">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden my-8">
+      <div class="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-red-900 to-red-600 text-white">
+        <h3 id="titulo-modal-medidas" class="font-spartan text-xl font-bold">Tabela de medidas</h3>
+        <button onclick="fecharModais()" class="text-white/80 hover:text-white text-3xl leading-none px-1" aria-label="Fechar">&times;</button>
+      </div>
+
+      <!-- Abas -->
+      <div class="flex border-b border-gray-100">
+        <button type="button" data-tab="unissex" onclick="abrirMedidas('unissex')"
+          class="tab-medidas flex-1 py-3 text-sm font-montserrat font-semibold text-gray-500 border-b-2 border-transparent transition-colors">
+          Básica Unissex
+        </button>
+        <button type="button" data-tab="babylook" onclick="abrirMedidas('babylook')"
+          class="tab-medidas flex-1 py-3 text-sm font-montserrat font-semibold text-gray-500 border-b-2 border-transparent transition-colors">
+          Baby Look
+        </button>
+      </div>
+
+      <div class="p-6">
+        <!-- Legenda C / L -->
+        <div class="flex items-center justify-center gap-6 mb-5 text-xs font-montserrat text-gray-500">
+          <span class="inline-flex items-center gap-1.5"><i class="fa fa-arrows-v text-red-600"></i> <strong class="text-gray-700">C</strong> = comprimento</span>
+          <span class="inline-flex items-center gap-1.5"><i class="fa fa-arrows-h text-red-600"></i> <strong class="text-gray-700">L</strong> = largura</span>
+        </div>
+
+        <!-- Tabela: Unissex -->
+        <div id="tabela-unissex">
+          <table class="medidas w-full text-center border-collapse text-sm">
+            <thead>
+              <tr class="text-[11px] font-montserrat uppercase tracking-wider text-gray-400">
+                <th class="py-2.5 text-left pl-3">Tamanho</th>
+                <th class="py-2.5">C / cm</th>
+                <th class="py-2.5">L / cm</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">P</td><td>66</td><td>48</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">M</td><td>70</td><td>52</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">G</td><td>72</td><td>54</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">GG</td><td>77</td><td>56</td></tr>
+              <tr class="bg-red-50">
+                <td colspan="3" class="py-1.5 text-[10px] font-montserrat font-bold uppercase tracking-widest text-red-700 text-left pl-3">Oversized</td>
+              </tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">XP</td><td>81</td><td>63</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">XM</td><td>86</td><td>73</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">XG</td><td>91</td><td>81</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tabela: Baby Look -->
+        <div id="tabela-babylook" class="hidden">
+          <table class="medidas w-full text-center border-collapse text-sm">
+            <thead>
+              <tr class="text-[11px] font-montserrat uppercase tracking-wider text-gray-400">
+                <th class="py-2.5 text-left pl-3">Tamanho</th>
+                <th class="py-2.5">C / cm</th>
+                <th class="py-2.5">L / cm</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">P</td><td>56</td><td>37</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">M</td><td>57</td><td>38</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">G</td><td>60</td><td>41</td></tr>
+              <tr class="border-t border-gray-100"><td class="py-2.5 font-bold text-red-700 text-left pl-3">GG</td><td>63</td><td>44</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Avisos do fornecedor -->
+        <div class="mt-6 rounded-2xl bg-gray-50 border border-gray-100 p-4 space-y-2.5">
+          <p class="flex gap-2.5 text-xs text-gray-500 leading-relaxed">
+            <i class="fa fa-exclamation-triangle text-gold-deep mt-0.5"></i>
+            <span><strong class="text-gray-700">Medida:</strong> margem de erro estimada em 2 cm para
+            mais ou para menos, devido à costura e outros fatores.</span>
+          </p>
+          <p class="flex gap-2.5 text-xs text-gray-500 leading-relaxed">
+            <i class="fa fa-tint text-gold-deep mt-0.5"></i>
+            <span><strong class="text-gray-700">Encolhimento:</strong> todo produto composto de
+            algodão é passível de encolhimento.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: ADESIVO AMPLIADO ============ -->
+  <div id="modal-adesivo" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4"
+    role="dialog" aria-modal="true" onclick="if(event.target===this)fecharModais()">
+    <div class="relative w-full max-w-lg">
+      <button onclick="fecharModais()" class="absolute -top-11 right-0 text-white/70 hover:text-white text-4xl leading-none" aria-label="Fechar">&times;</button>
+      <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div class="bg-gradient-to-br from-red-50 to-gray-50 p-6">
+          <img id="adesivo-ampliado" src="" alt="" class="w-full h-auto max-h-[70vh] object-contain mx-auto">
+        </div>
+        <p id="adesivo-legenda" class="text-center font-montserrat font-semibold text-gray-800 py-4 border-t border-gray-100"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-gray-600 py-12 pb-24 sm:pb-12 border-t border-gray-200 mt-auto w-full block clear-both" style="display: block; float: none;">
+    <div class="mx-auto max-w-5xl px-4 flex flex-col items-center justify-center text-center" style="display: flex; flex-direction: column;">
+
+      <div class="flex items-center justify-center gap-2 mb-4 w-full" style="display: flex; justify-content: center;">
+        <img src="../styles/Logo.png" alt="Logo da Amostra" class="w-8 h-auto filter brightness-90">
+        <h6 class="font-semibold text-gray-800 m-0 font-spartan">aMostra de Estatística</h6>
+      </div>
+
+      <p class="text-sm leading-relaxed text-gray-500 mb-6 w-full text-center" style="text-align: center;">
+        aMostra de Estatística 2026 <br>
+        © 2026 Todos os direitos reservados <br>
+        <a href="faq.html" class="underline hover:text-gray-700 transition">FAQ</a>
+      </p>
+
+      <ul class="flex justify-center gap-6 w-full p-0 m-0" style="display: flex; justify-content: center; list-style: none;">
+        <li>
+          <a href="https://www.facebook.com/aMostra.de.Estatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Facebook</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8.02 9.71v-6.86H7.56v-2.85h2.46V9.81c0-2.42 1.44-3.76 3.65-3.76 1.06 0 2.16.19 2.16.19v2.37h-1.21c-1.2 0-1.57.74-1.57 1.51v1.8h2.67l-.43 2.85h-2.24v6.86C18.56 20.87 22 16.84 22 12z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/amostraestatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Instagram</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@aMostra-de-Estatistica" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Youtube</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/amostraestatistica/" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Linkedin</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@amostra.usp" target="_blank" rel="noreferrer" class="text-gray-400 hover:text-gray-600 transition">
+            <span class="sr-only">Tiktok</span>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31.027 2.595.361 3.75 1.01a7.46 7.46 0 0 1 2.522 2.611 7.426 7.426 0 0 0-3.413-.85c-.173 0-.342.008-.513.022V6.66c.17-.008.34-.014.513-.014 2.446 0 4.542 1.547 5.347 3.72a7.48 7.48 0 0 1 .53 2.705V.02h-8.75zm-7.462 7.5c-2.446 0-4.542 1.547-5.347 3.72a7.48 7.48 0 0 0-.53 2.705c0 4.142 3.358 7.5 7.5 7.5 4.142 0 7.5-3.358 7.5-7.5V0h-4.204v13.945c0 2.404-1.948 4.352-4.352 4.352-2.404 0-4.352-1.948-4.352-4.352 0-2.404 1.948-4.352 4.352-4.352.174 0 .343.01.513.027V7.547a4.42 4.42 0 0 0-.513-.027z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================================================================
+       LINK DO FORMULÁRIO DE ENCOMENDA (Google Forms)
+       ▸ Um único formulário atende camiseta E caneca. O link abaixo é aplicado
+         a TODOS os botões "Encomendar" da página automaticamente.
+       ========================================================================= */
+    const FORMULARIO_URL = "https://forms.gle/x2HLf3tJWwec12xY9";
+
+    document.querySelectorAll(".btn-encomendar").forEach(function (a) {
+      a.setAttribute("href", FORMULARIO_URL);
+    });
+
+    /* ---------- Barra de navegação ----------
+       No topo ela fica transparente, deixando o gradiente do banner correr
+       inteiro; ao rolar, ganha fundo sólido para o texto continuar legível. */
+    (function () {
+      const topbar = document.getElementById("topbar");
+      const sentinela = document.getElementById("topo-sentinela");
+
+      function atualizarTopbar() {
+        topbar.classList.toggle("solido", window.scrollY > 24);
+      }
+
+      // A sentinela é um marcador invisível nos primeiros 32px da página:
+      // quando ela sai de vista, a barra ganha fundo. Mais confiável que
+      // depender só do evento de scroll.
+      if (sentinela && "IntersectionObserver" in window) {
+        new IntersectionObserver(function (entradas) {
+          topbar.classList.toggle("solido", !entradas[0].isIntersecting);
+        }).observe(sentinela);
+      }
+
+      atualizarTopbar();
+      window.addEventListener("scroll", atualizarTopbar, { passive: true });
+    })();
+
+    /* ---------- Modal das tabelas de medidas ---------- */
+    function abrirMedidas(modelo) {
+      const modal = document.getElementById("modal-medidas");
+
+      document.getElementById("tabela-unissex").classList.toggle("hidden", modelo !== "unissex");
+      document.getElementById("tabela-babylook").classList.toggle("hidden", modelo !== "babylook");
+
+      document.querySelectorAll(".tab-medidas").forEach(function (t) {
+        const ativa = t.dataset.tab === modelo;
+        t.classList.toggle("border-red-600", ativa);
+        t.classList.toggle("text-red-700", ativa);
+        t.classList.toggle("border-transparent", !ativa);
+        t.classList.toggle("text-gray-500", !ativa);
+      });
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    /* ---------- Modal do adesivo ampliado ---------- */
+    function abrirAdesivo(n) {
+      const card = document.querySelector('[onclick="abrirAdesivo(' + n + ')"]');
+      const img = card.querySelector("img");
+      const nome = card.querySelector("span").textContent;
+
+      const ampliado = document.getElementById("adesivo-ampliado");
+      ampliado.src = img.src;
+      ampliado.alt = img.alt;
+      document.getElementById("adesivo-legenda").textContent = nome;
+
+      const modal = document.getElementById("modal-adesivo");
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    }
+
+    /* ---------- Fechar ---------- */
+    function fecharModais() {
+      document.querySelectorAll('[id^="modal-"]').forEach(function (m) {
+        m.classList.add("hidden");
+        m.classList.remove("flex");
+      });
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") fecharModais();
+    });
+  </script>
+
+</body>
+</html>

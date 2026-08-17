@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>aMostra de Estatística - Comissão</title>
+  <link rel="icon" type="image/png" href="../styles/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="../styles/brand.js"></script>
   <link rel="stylesheet" href="../styles/style.css">
@@ -63,11 +64,11 @@
           <li><a href="../index.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Início</a></li>
           <li><a href="../pages/galeria.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Galeria</a></li>
           <li><a href="../pages/blog/hub.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Blog</a></li>
+          <li><a href="../pages/loja.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Loja</a></li>
           <li><a href="../pages/comissao.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition">Comissão</a></li>
           <li><a href="../pages/faq.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">FAQ</a></li>
-          <div id="parceiros" class="hidden">
-            <li><a href="../pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Parceiros</a></li>
-          </div>
+          <li class="md:ml-3"><a href="https://amostra-estatistica.fly.dev/" target="_blank" rel="noopener" class="btn-inscricao block mt-3 md:mt-0 text-center bg-gold hover:bg-white text-red-900 font-montserrat font-bold text-sm px-5 py-2 rounded-lg shadow-md shadow-black/25 transition-all hover:-translate-y-0.5">Inscreva-se</a></li>
+          <li id="parceiros" class="hidden"><a href="../pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Parceiros</a></li>
         </ul>
       </div>
     </div>
@@ -87,124 +88,390 @@
         A comissão organizadora da aMostra é composta por um grupo dedicado de estudantes do curso de Estatística do Instituto de Matemática e Estatística da Universidade de São Paulo (IME-USP). Comprometidos com o sucesso do evento, são responsáveis por planejar, coordenar e executar todas as atividades, garantindo uma experiência valiosa para participantes e organizadores.
       </p>
 
-      <div class="inline-flex items-center justify-center bg-white border-2 border-gold/50 shadow-sm px-6 py-3 rounded-full">
-        <span class="eyebrow text-gray-400 mr-3">Presidência</span>
-        <span class="font-montserrat text-red-800 font-semibold text-lg">Carolina Paixão</span>
+      <div class="inline-flex items-center bg-white border-2 border-gold/50 shadow-sm pl-2 pr-6 py-2 rounded-full">
+        <div class="w-12 h-12 rounded-full overflow-hidden ring-2 ring-gold shadow-sm bg-gray-100 mr-3 flex-shrink-0">
+          <img src="../styles/comissao/IMG-20260119-WA0008%20-%20Carolina%20Paixao%20Oliveira.avif" alt="Carolina Paixão" loading="lazy" class="w-full h-full object-cover">
+        </div>
+        <div class="text-left">
+          <span class="eyebrow text-gray-400 block leading-none mb-0.5">Presidência</span>
+          <span class="font-montserrat text-red-800 font-semibold text-lg leading-none">Carolina Paixão</span>
+        </div>
       </div>
     </div>
   </header>
 
-  <main class="flex-grow py-16 lg:py-24 px-6 max-w-7xl mx-auto w-full">
+  <main class="flex-grow pt-4 pb-16 lg:pb-24 px-6 max-w-7xl mx-auto w-full">
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-      
+
       <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
         <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
-          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+          <span class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
             <i class="fa fa-bullhorn"></i>
           </span>
           Marketing
         </h2>
-        <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
-          Responsável pela identidade visual e divulgação da aMostra. Cria logotipos, canecas, camisetas, cartazes, crachás e vídeos promocionais, buscando fortalecer a imagem do evento e ampliar seu alcance.
-        </p>
-        <div class="mb-4">
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Diretoria</span>
-          <span class="font-semibold text-gray-800">Ana Julia Jaquini</span>
-        </div>
-        <div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Membros</span>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Amanda Shin Zhu Yeh, Ana Beatriz Alves Ferreira, Beatriz Mari Uchida Yoshioka, Bianca Santos, Espedito Gomes Mendes Junior, Isabella Fernandes Leitão de Oliveira, Jonathan Higa Quartier, Mariana Pedreira Santos Silva, Paola Hoepers Gonzales, Zou Yi Chen
-          </p>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">Responsável pela identidade visual e divulgação da aMostra. Cria logotipos, canecas, camisetas, cartazes, crachás e vídeos promocionais, buscando fortalecer a imagem do evento e ampliar seu alcance.</p>
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-x-4 gap-y-6">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_7528%20-%20Ana%20Julia%20Jaquini.avif" alt="Ana Julia Jaquini" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Ana Julia Jaquini</span>
+              <span class="mt-1 text-[10px] font-bold uppercase tracking-wider text-red-700">Diretoria</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20250628_194227%20-%20Amanda%20Shin%20Zhu%20Yeh.avif" alt="Amanda Yeh" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Amanda Yeh</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/9147b295-4ac1-4fd8-a70c-32c39bc4277d%20-%20Ana%20Beatriz%20Alves%20Ferreira.avif" alt="Ana Beatriz Alves Ferreira" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Ana Beatriz Alves Ferreira</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20260212_175230%20-%20Beatriz%20Mari%20Uchida%20Yoshioka.avif" alt="Beatriz Mari Uchida Yoshioka" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Beatriz Mari Uchida Yoshioka</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_7029%20-%20Bianca%20Santos%20Oliveira.avif" alt="Bianca Santos Oliveira" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Bianca Santos Oliveira</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/DSCF8176_Original%20-%20Cindy%20Hanna%20Martins%20Rodrigues.avif" alt="Cindy Hanna Martins Rodrigues" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Cindy Hanna Martins Rodrigues</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20260603_211500%20-%20Espedito%20Gomes%20Mendes%20Junior.avif" alt="Espedito Gomes Mendes Junior" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Espedito Gomes Mendes Junior</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_20260522_202809652%20-%20Gabriel%20Heitor%20Milanese%20Gon%C3%A7alves.avif" alt="Gabriel Heitor Milanese Gonçalves" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Gabriel Heitor Milanese Gonçalves</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/Screenshot_20260609_161344_Gallery%20-%20Isabella%20Fernandes%20Leitao%20de%20Oliveira.avif" alt="Isabella Fernandes Leitão de Oliveira" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Isabella Fernandes Leitão de Oliveira</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20260315_181808%20-%20Jonathan%20Higa%20Quartier.avif" alt="Jonathan Higa Quartier" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Jonathan Higa Quartier</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/61%20Sem%20Ti%CC%81tulo_20251206195701%20-%20Paola%20Hoepers%20Gonzales.avif" alt="Paola Hoepers Gonzales" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Paola Hoepers Gonzales</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_1568%20-%20Zou%20Yi%20Chen.avif" alt="Zou Yi Chen" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Zou Yi Chen</span>
+            </div>
         </div>
       </div>
 
       <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
         <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
-          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+          <span class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
             <i class="fa fa-code"></i>
           </span>
           Sistemas Informatizados
         </h2>
-        <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
-          Cuida da criação, manutenção e atualização da plataforma oficial do evento, garantindo que participantes tenham acesso às informações, inscrições e programação de forma organizada e acessível.
-        </p>
-        <div class="mb-4">
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Diretoria</span>
-          <span class="font-semibold text-gray-800">Julia Isabelly Silva</span>
-        </div>
-        <div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Membros</span>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Akira Iwai, Bruno Henrique Alves Santos, Fernanda Alexandre Mancini, Gabriel Rodrigues Martins Sanches, José Fernando Viana, Kayo Candido Pereira, Olavo Bier Lopes Barbosa
-          </p>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">Cuida da criação, manutenção e atualização da plataforma oficial do evento, garantindo que participantes tenham acesso às informações, inscrições e programação de forma organizada e acessível.</p>
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-x-4 gap-y-6">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_20260221_221119_145%20-%20Julia%20Isabelly%20Silva.avif" alt="Julia Isabelly Silva" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Julia Isabelly Silva</span>
+              <span class="mt-1 text-[10px] font-bold uppercase tracking-wider text-red-700">Diretoria</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/Akira%20-%20Akira%20Iwai.avif" alt="Akira Iwai" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Akira Iwai</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/bruno%20-%20Bruno%20Henrique%20Alves%20Santos%281%29.avif" alt="Bruno Henrique Alves Santos" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Bruno Henrique Alves Santos</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/FotoSimples%20-%20Fernanda%20Alexandre%20Mancini.avif" alt="Fernanda Alexandre Mancini" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Fernanda Alexandre Mancini</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/Screenshot_20260610-081252-952%20-%20Gabriel%20Rodrigues%20Martins%20Sanches.avif" alt="Gabriel Rodrigues Martins Sanches" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Gabriel Rodrigues Martins Sanches</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/2026-06-0913.19.074665608045383442444%20-%20Kayo%20Candido%20Pereira.avif" alt="Kayo Candido Pereira" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Kayo Candido Pereira</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_20260531_143317%20-%20Olavo%20Bier%20Lopes%20Barbosa.avif" alt="Olavo Bier Lopes Barbosa" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Olavo Bier Lopes Barbosa</span>
+            </div>
         </div>
       </div>
 
       <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
         <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
-          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+          <span class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
             <i class="fa fa-briefcase"></i>
           </span>
           Negócios
         </h2>
-        <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
-          Atua na busca por empresas parceiras e palestrantes. Sua função é estabelecer parcerias, conquistar patrocínios e trazer profissionais qualificados para enriquecer o evento.
-        </p>
-        <div class="mb-4">
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Diretoria</span>
-          <span class="font-semibold text-gray-800">João Vitor Vasconcelos Lima</span>
-        </div>
-        <div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Membros</span>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Ana Carolina Campos Feitoza, Augusto Henrique Nogueira Braga, Diego Silva Dias, Enzo Rodrigues Bessegato, Gabriel Graciano Dias, Gabriela Rodrigues Cruz, Giovanni Baraldi Grego, Heitor Pastorelli Silva, Marcelo Sodré da Silva, Miguel de Souza Queiroz Tosi, Sarah Lima Santos
-          </p>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">Atua na busca por empresas parceiras e palestrantes. Sua função é estabelecer parcerias, conquistar patrocínios e trazer profissionais qualificados para enriquecer o evento.</p>
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-x-4 gap-y-6">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20251228_150242%20-%20Joao%20Vitor%20Vasconcelos%20Lima.avif" alt="João Vitor Vasconcelos Lima" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">João Vitor Vasconcelos Lima</span>
+              <span class="mt-1 text-[10px] font-bold uppercase tracking-wider text-red-700">Diretoria</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20260603_163506%20-%20Ana%20Carolina%20Campos%20Feitoza.avif" alt="Ana Carolina Campos Feitoza" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Ana Carolina Campos Feitoza</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_2515%20-%20Augusto%20Henrique%20Nogueira%20Braga.avif" alt="Augusto Henrique Nogueira Braga" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Augusto Henrique Nogueira Braga</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20260609_120825%20-%20Diego%20Silva%20Dias.avif" alt="Diego Silva Dias" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Diego Silva Dias</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_5467%20-%20Enzo%20Rodrigues%20Bessegato.avif" alt="Enzo Rodrigues Bessegato" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Enzo Rodrigues Bessegato</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20260530_105549%20-%20Gabriel%20Graciano%20Dias.avif" alt="Gabriel Graciano Dias" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Gabriel Graciano Dias</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/foto_gabriela%20-%20Gabriela%20Rodrigues%20Cruz.avif" alt="Gabriela Rodrigues Cruz" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Gabriela Rodrigues Cruz</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/c449e321-3230-4618-9046-b8f917426298~1%20-%20Giovanni%20Baraldi%20Grego.avif" alt="Giovanni Baraldi Grego" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Giovanni Baraldi Grego</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/f4325c3c-8aa9-4482-9888-689f0ad25572%20-%20Heitor%20Pastorelli%20Silva.avif" alt="Heitor Pastorelli Silva" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Heitor Pastorelli Silva</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/c1119415-07d7-4b13-a4b8-dddaa3261ed3%20-%20Marcelo%20Sodre%20da%20Silva.avif" alt="Marcelo Sodré da Silva" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Marcelo Sodré da Silva</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20260512_074822%20-%20Miguel%20de%20Souza%20Queiroz%20Tosi.avif" alt="Miguel Tosi" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Miguel Tosi</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_3651%20-%20Sofia%20Pelegrino.avif" alt="Sofia Vieira Pelegrino" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Sofia Vieira Pelegrino</span>
+            </div>
         </div>
       </div>
 
       <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
         <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
-          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+          <span class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
             <i class="fa fa-line-chart"></i>
           </span>
           Financeiro
         </h2>
-        <p class="text-gray-600 text-sm leading-relaxed mb-6 h-auto md:h-20">
-          Responsável pelo controle e gerenciamento dos recursos obtidos. Organiza os gastos, administra o orçamento e libera verbas para materiais de marketing e despesas da realização da aMostra.
-        </p>
-        <div class="mb-4">
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Diretoria</span>
-          <span class="font-semibold text-gray-800">Marina dos Santos Murilla</span>
-        </div>
-        <div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Membros</span>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Isabela da Silva Leite, Thierry Valderrama Ferreira Alves
-          </p>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">Responsável pelo controle e gerenciamento dos recursos obtidos. Organiza os gastos, administra o orçamento e libera verbas para materiais de marketing e despesas da realização da aMostra.</p>
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-x-4 gap-y-6">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/Screenshot_20260527_214318_Gallery%20-%20Marina%20dos%20Santos%20Murilla.avif" alt="Marina dos Santos Murilla" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Marina dos Santos Murilla</span>
+              <span class="mt-1 text-[10px] font-bold uppercase tracking-wider text-red-700">Diretoria</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_20260524_193715%20-%20Erick%20Mateus%20Pereira%20dos%20Santos.avif" alt="Erick Mateus Pereira dos Santos" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Erick Mateus Pereira dos Santos</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_1751%20-%20Isabela%20da%20Silva%20Leite.avif" alt="Isabela da Silva Leite" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Isabela da Silva Leite</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/2C4300E9-47D9-4F62-A137-5782829B365D%20-%20Thierry%20Valderrama%20Ferreira%20Alves.avif" alt="Thierry Valderrama Ferreira Alves" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Thierry Valderrama Ferreira Alves</span>
+            </div>
         </div>
       </div>
 
-      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 md:col-span-2 md:w-2/3 md:mx-auto">
+      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
         <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
-          <span class="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+          <span class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
             <i class="fa fa-clipboard"></i>
           </span>
           Secretaria
         </h2>
-        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-          Desempenha um papel fundamental na comunicação interna. É responsável por registrar as atividades e decisões, além de promover a integração e o alinhamento entre todos os setores.
-        </p>
-        <div class="mb-4">
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Diretoria</span>
-          <span class="font-semibold text-gray-800">Vinicius Garcia Santos</span>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">Desempenha um papel fundamental na comunicação interna. É responsável por registrar as atividades e decisões, além de promover a integração e o alinhamento entre todos os setores.</p>
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-x-4 gap-y-6">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_9325%20-%20Vinicius%20Garcia.avif" alt="Vinicius Garcia" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Vinicius Garcia</span>
+              <span class="mt-1 text-[10px] font-bold uppercase tracking-wider text-red-700">Diretoria</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/Akira%20-%20Akira%20Iwai.avif" alt="Akira Iwai" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Akira Iwai</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20250628_194227%20-%20Amanda%20Shin%20Zhu%20Yeh.avif" alt="Amanda Yeh" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Amanda Yeh</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_20260609_134528%20-%20Caio%20Weiss%20Ricieri.avif" alt="Caio Weiss Ricieri" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Caio Weiss Ricieri</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_5467%20-%20Enzo%20Rodrigues%20Bessegato.avif" alt="Enzo Rodrigues Bessegato" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Enzo Rodrigues Bessegato</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/c449e321-3230-4618-9046-b8f917426298~1%20-%20Giovanni%20Baraldi%20Grego.avif" alt="Giovanni Baraldi Grego" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Giovanni Baraldi Grego</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_1751%20-%20Isabela%20da%20Silva%20Leite.avif" alt="Isabela da Silva Leite" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Isabela da Silva Leite</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_20260531_143317%20-%20Olavo%20Bier%20Lopes%20Barbosa.avif" alt="Olavo Bier Lopes Barbosa" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Olavo Bier Lopes Barbosa</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/2C4300E9-47D9-4F62-A137-5782829B365D%20-%20Thierry%20Valderrama%20Ferreira%20Alves.avif" alt="Thierry Valderrama Ferreira Alves" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Thierry Valderrama Ferreira Alves</span>
+            </div>
         </div>
-        <div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-1">Membros</span>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Akira Iwai, Amanda Shin Zhu Yeh, Enzo Rodrigues Bessegato, Giovanni Baraldi Grego, Isabela da Silva Leite, Olavo Bier Lopes Barbosa, Thierry Valderrama Ferreira Alves
-          </p>
+      </div>
+
+      <div class="reveal bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <h2 class="font-spartan text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-4 flex items-center gap-3">
+          <span class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-red-800 to-red-600 text-white shadow-md shadow-red-900/20">
+            <i class="fa fa-compass"></i>
+          </span>
+          Conselheiros
+        </h2>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">Membros experientes que acompanham a organização de perto, oferecem orientação estratégica e compartilham a memória e a experiência de edições anteriores da aMostra.</p>
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-x-4 gap-y-6">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/Bruno%20Andrade%20-%20Bruno%20Souza%20Andrade.avif" alt="Bruno Andrade" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Bruno Andrade</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG_20260609_134528%20-%20Caio%20Weiss%20Ricieri.avif" alt="Caio Weiss Ricieri" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Caio Weiss Ricieri</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/SAVE_20260602_121458%20-%20Jose%20Fernando%20Viana%20Lima.avif" alt="José Fernando Viana Lima" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">José Fernando Viana Lima</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/20251226_174323%20-%20Mariana%20Pedreira%20Santos%20Silva.avif" alt="Mariana Pedreira Santos Silva" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Mariana Pedreira Santos Silva</span>
+            </div>
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold/30 shadow-md shadow-red-900/10 bg-gray-100">
+                <img src="../styles/comissao/IMG-20260601-WA0013%20-%20Sarah%20Santos.avif" alt="Sarah Lima Santos" loading="lazy" class="w-full h-full object-cover">
+              </div>
+              <span class="mt-2 text-xs sm:text-sm font-semibold text-gray-800 leading-tight">Sarah Lima Santos</span>
+            </div>
         </div>
       </div>
 
@@ -213,16 +480,16 @@
 
 <footer class="bg-gray-100 text-gray-600 py-12 border-t border-gray-200 mt-auto w-full block clear-both" style="display: block; float: none;">
     <div class="mx-auto max-w-5xl px-4 flex flex-col items-center justify-center text-center" style="display: flex; flex-direction: column;">
-      
+
       <div class="flex items-center justify-center gap-2 mb-4 w-full" style="display: flex; justify-content: center;">
-        <img src="./../styles/Logo.png" alt="Logo da Amostra" class="w-8 h-auto filter brightness-90">
-        <h6 class="font-semibold text-gray-800 m-0">aMostra de Estatística</h6>
+        <img src="../styles/Logo.png" alt="Logo da Amostra" class="w-8 h-auto filter brightness-90">
+        <h6 class="font-semibold text-gray-800 m-0 font-spartan">aMostra de Estatística</h6>
       </div>
 
       <p class="text-sm leading-relaxed text-gray-500 mb-6 w-full text-center" style="text-align: center;">
         aMostra de Estatística 2026 <br>
         © 2026 Todos os direitos reservados <br>
-        <a href="../pages/faq.html" class="underline hover:text-gray-700 transition">FAQ</a>
+        <a href="faq.html" class="underline hover:text-gray-700 transition">FAQ</a>
       </p>
 
       <ul class="flex justify-center gap-6 w-full p-0 m-0" style="display: flex; justify-content: center; list-style: none;">

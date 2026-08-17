@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>aMostra de Estatística</title>
+  <link rel="icon" type="image/png" href="styles/favicon.png">
 
   <script>
     // Garante a barra final em URLs de diretório (ex.: /~amostra -> /~amostra/).
@@ -24,6 +25,7 @@
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
   <script src="script.js" defer></script>
+  <script src="cronograma.js" defer></script>
 
   <style>
     /* ===== index — realces visuais (respeitando brand.js / style.css) ===== */
@@ -37,6 +39,20 @@
       -webkit-mask-image: radial-gradient(ellipse at 50% 38%, #000 28%, transparent 75%);
       mask-image: radial-gradient(ellipse at 50% 38%, #000 28%, transparent 75%);
     }
+
+    /* Brilho dourado varrendo o "XIX" do título do hero.
+       Seletor com 2 classes para vencer a utilitária .text-gold do Tailwind. */
+    .text-gold.text-gold-shine {
+      background: linear-gradient(100deg, #E1B868 32%, #FBEFCF 50%, #E1B868 68%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: goldShine 5s linear infinite;
+    }
+    @keyframes goldShine { to { background-position: -220% 0; } }
+    @media (prefers-reduced-motion: reduce) { .text-gold.text-gold-shine { animation: none; } }
 
     /* Link da navbar com filete dourado pontual no hover */
     .nav-link {
@@ -123,9 +139,9 @@
             d="M1 1h15M1 7h15M1 13h15" />
         </svg>
       </button>
-      <div class="hidden w-full md:block md:w-auto" id="menu">
+      <div class="hidden w-full md:block md:w-auto bg-red-900/95 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none rounded-xl md:rounded-none shadow-lg md:shadow-none ring-1 ring-white/10 md:ring-0 mt-3 md:mt-0" id="menu">
         <ul
-          class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 mt-4 md:flex-row md:items-center md:space-x-2 md:mt-0 text-white/90 bg-transparent border-0">
+          class="font-montserrat font-medium w-full flex flex-col p-4 md:p-0 md:flex-row md:items-center md:space-x-2 text-white/90 bg-transparent border-0">
           <li>
             <a href="./index.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition-colors">Início</a>
           </li>
@@ -136,15 +152,18 @@
             <a href="./pages/blog/hub.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Blog</a>
           </li>
           <li>
+            <a href="./pages/loja.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Loja</a>
+          </li>
+          <li>
             <a href="./pages/comissao.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Comissão</a>
           </li>
           <li>
             <a href="./pages/faq.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">FAQ</a>
           </li>
-          <div id="parceiros" class="hidden"> <li>
+          <li id="parceiros" class="hidden">
             <a href="./pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Parceiros</a>
           </li>
-          </div>
+          <li class="md:ml-3"><a href="https://amostra-estatistica.fly.dev/" target="_blank" rel="noopener" class="btn-inscricao block mt-3 md:mt-0 text-center bg-gold hover:bg-white text-red-900 font-montserrat font-bold text-sm px-5 py-2 rounded-lg shadow-md shadow-black/25 transition-all hover:-translate-y-0.5">Inscreva-se</a></li>
         </ul>
       </div>
     </div>
@@ -169,19 +188,24 @@
         class="absolute bottom-0 left-0 w-full h-full object-cover scale-110">
     </div>
 
+    <!-- Aprofunda a base do hero para uma transição suave até a contagem regressiva -->
+    <div class="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent to-red-900/40 pointer-events-none"></div>
+
     <div
       class="relative z-10 w-full max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 mt-10">
 
       <div class="grid lg:grid-cols-[1fr_0.8fr] gap-10 lg:gap-16 items-center">
 
         <div class="opacity-0 animate-fade-in-up">
+          <img src="styles/logo_branco_isolado.png" alt="aMostra de Estatística"
+            class="lg:hidden w-20 h-auto mb-6 drop-shadow-lg animate-float">
           <span class="eyebrow inline-flex items-center gap-3 text-gold mb-5">
             <span class="h-px w-8 bg-gold/70"></span>
             XIX Edição · IME-USP
           </span>
 
           <h1 class="font-spartan text-white font-black leading-[0.88] text-5xl md:text-6xl lg:text-7xl">
-            aMostra <span class="text-gold">XIX</span>
+            aMostra <span class="text-gold text-gold-shine">XIX</span>
           </h1>
           <p class="font-spartan text-white/75 text-2xl md:text-3xl font-semibold mt-2">de Estatística</p>
 
@@ -192,44 +216,43 @@
             Um evento <strong class="text-white">100% gratuito</strong>, imersivo e com uma programação espetacular.
           </p>
 
-          <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mt-8 font-montserrat text-white">
-            <span class="inline-flex items-center gap-2.5">
+          <div class="flex flex-wrap items-center gap-3 mt-8 font-montserrat text-white">
+            <span class="inline-flex items-center gap-2.5 bg-white/10 ring-1 ring-white/15 backdrop-blur-sm rounded-full pl-3.5 pr-4 py-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span class="font-bold text-lg md:text-xl tracking-wide">28/09 — 02/10</span>
+              <span class="font-bold text-base md:text-lg tracking-wide">28/09 — 02/10</span>
             </span>
-            <span class="hidden sm:inline-block w-px h-5 bg-white/30"></span>
-            <span class="inline-flex items-center gap-2.5">
+            <span class="inline-flex items-center gap-2.5 bg-white/10 ring-1 ring-white/15 backdrop-blur-sm rounded-full pl-3.5 pr-4 py-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span class="font-semibold text-base md:text-lg">IME · USP</span>
+              <span class="font-semibold text-sm md:text-base">IME · USP</span>
             </span>
           </div>
 
+          <!-- Inscrições abertas: destaque principal do hero -->
           <div class="flex flex-wrap items-center gap-x-7 gap-y-4 mt-9">
-            <a href="#sec-2"
-              class="font-montserrat inline-flex items-center gap-2 bg-white text-red-800 hover:bg-gold hover:text-red-900 font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5">
-              Conheça a aMostra
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+            <a href="https://amostra-estatistica.fly.dev/" target="_blank" rel="noopener"
+              class="font-montserrat inline-flex items-center gap-2.5 bg-gold hover:bg-white text-red-900 font-black text-base px-6 py-3 rounded-lg shadow-lg shadow-black/25 transition-all hover:-translate-y-0.5">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="absolute inline-flex h-full w-full rounded-full bg-red-700 opacity-75 animate-ping"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-800"></span>
+              </span>
+              Inscreva-se
             </a>
-            <a href="./pages/blog/hub.html"
-              class="font-montserrat inline-flex items-center gap-2 text-white/85 hover:text-gold font-semibold transition-colors group">
-              Ler o Blog
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+            <a href="#sec-2"
+              class="font-montserrat inline-flex items-center gap-2 text-white/85 hover:text-gold font-semibold transition-colors">
+              Conheça a aMostra
             </a>
           </div>
         </div>
 
-       <div class="hidden lg:flex justify-center animate-float">
+       <div class="hidden lg:flex justify-center items-center relative">
+          <div class="absolute w-[440px] h-[440px] bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
           <svg viewBox="0 0 216 113" fill="none" xmlns="http://www.w3.org/2000/svg"
-            class="w-[380px] lg:w-[460px] drop-shadow-2xl transition-all duration-300" preserveAspectRatio="xMidYMid meet">
+            class="relative w-[380px] lg:w-[460px] drop-shadow-2xl transition-all duration-300 animate-float" preserveAspectRatio="xMidYMid meet">
             <rect x="33" width="153" height="113" fill="url(#pattern0_75_3)" />
             
             <path
@@ -386,348 +409,29 @@
     </div>
 
   </section>
-  <div id="cronograma" class="hidden"> <div class="container mx-auto py-8 px-4 md:px-44" id="sec-3">
-      <div class="bg-white p-6 rounded-lg shadow-lg">
-        <div class="flex justify-between mb-4">
-          <button id="prev" class="px-2 md:px-4 md:py-1 bg-red-500 text-white rounded hover:bg-red-700 transition-colors">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-          </button>
-          <h2 id="day-title" class="text-2xl font-bold">Segunda-feira</h2>
-          <button id="next" class="px-2 md:px-4 md:py-1 bg-red-500 text-white rounded hover:bg-red-700 transition-colors">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div id="carousel" class="overflow-hidden relative">
-          <div class="flex transition-transform duration-500">
-            <div class="min-w-full md:p-4">
-              <table class="min-w-full bg-white" style="border-spacing : 0 0.8rem; border-collapse: separate;">
-                <thead>
-                  <tr>
-                    <th class="py-2 text-lg w-1/5 md:w-1/6">Hora</th>
-                    <th class="py-2 text-lg ">Atividade</th>
-                  </tr>
-                </thead>
-                <tbody class="text-sm">
-                  <tr>
-                    <td class="py-2 px-2 md:px-10 w-1/5 md:w-1/6">8:30</td>
-                    <td class="py-2 ps-6">
-                      <strong>Da Estatística ao Letramento Estatístico: uma jornada nada aleatória!</strong><br>
-                      Luciana Neves Nunes
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">9:30</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>De tédio não se morre!</strong><br>
-                      Suzi Alves Camey
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">10:30
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">11:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>O que a Estatística pode nos revelar sobre como os neurônios se comunicam?</strong><br>
-                      Ricardo Felipe Ferreira
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">12:00</td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Almoço</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">14:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Uso de conhecimentos matemáticos/estatísticos na indústria financeira</strong><br>
-                      Management Solutions
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">15:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Muito além da média - SPC Brasil</strong><br>
-                      SPC
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">16:00
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
-            
-          
-            <div class="min-w-full md:p-4">
-              <table class="min-w-full bg-white" style="border-spacing : 0 0.8rem; border-collapse: separate;">
-                <thead>
-                  <tr>
-                    <th class="py-2 text-lg w-1/5 md:w-1/6">Hora</th>
-                    <th class="py-2 text-lg ">Atividade</th>
-                  </tr>
-                </thead>
-                <tbody class="text-sm">
-                  <tr>
-                    <td class="py-2 px-2 md:px-10 w-1/5 md:w-1/6">8:30</td>
-                    <td class="py-2 ps-6">
-                      <strong>Projeto Ditadura BR: Memória, Verdade e Justiça pela construção de um banco de dados sobre graves violações de direitos humanos a partir do relatório da Comissão Nacional da Verdade</strong><br>
-                      Vinicius Pinheiro Israel
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">9:30</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Baixo número de formandos não supre o mercado em expansão. É preocupante?</strong><br>
-                      Doris Fontes
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">10:30
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">11:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Testes de hipóteses em modelos de contagem</strong><br>
-                      Daiane de Souza Santos
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">12:00</td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Almoço</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">14:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Ciência de Dados na prática: Aplicações estatisticas no Setor financeiro</strong><br>
-                      C6 Bank
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">15:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Boosted Trees: Machine Learning para Decisão de Crédito</strong><br>
-                      Santander
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">16:00
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
-
-            <div class="min-w-full md:p-4">
-              <table class="min-w-full bg-white" style="border-spacing : 0 0.8rem; border-collapse: separate;">
-                <thead>
-                  <tr>
-                    <th class="py-2 text-lg w-1/5 md:w-1/6">Hora</th>
-                    <th class="py-2 text-lg ">Atividade</th>
-                  </tr>
-                </thead>
-                <tbody class="text-sm">
-                  <tr>
-                    <td class="py-2 px-2 md:px-10 w-1/5 md:w-1/6">8:30</td>
-                    <td class="py-2 ps-6">
-                      <strong>Modelos de escore autorregressivo generalizado para o monitoramento de cultivos de soja por meio de imagens de satélite</strong><br>
-                      Renata Rojas Guerra
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">9:30</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Modelos Bayesianos Hierárquicos Aplicados à Previsão Esportiva</strong><br>
-                      Luis Ernesto Bueno Salasar
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">10:30
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">11:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Estruturando textos usando LLMs</strong><br>
-                      Julio Trecenti
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">12:00</td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Almoço</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">14:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Explorar, Modelar, Inferir: Estatística com Calculadoras na Veia</strong><br>
-                      Casio
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">15:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Bioestatística no século XXI: métodos bayesianos robustos e escaláveis em epidemiologia e ensaios clínicos</strong><br>
-                      FGV
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">16:00
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
-
-            <div class="min-w-full md:p-4">
-              <table class="min-w-full bg-white" style="border-spacing : 0 0.8rem; border-collapse: separate;">
-                <thead>
-                  <tr>
-                    <th class="py-2 text-lg w-1/5 md:w-1/6">Hora</th>
-                    <th class="py-2 text-lg ">Atividade</th>
-                  </tr>
-                </thead>
-                <tbody class="text-sm">
-                  <tr>
-                    <td class="py-2 px-2 md:px-10 w-1/5 md:w-1/6">8:30</td>
-                    <td class="py-2 ps-6">
-                      <strong>Discutindo o modelo estatístico baseado no artigo: Statistical Modeling: The Two Culture - Leo Breiman</strong><br>
-                      Camila Xavier Sá Peixoto Pinheiro
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">9:30</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Redes de Afinidade</strong><br>
-                      Denise Duarte
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">10:30
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">11:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>A Estatística Para Além dos Muros da Universidade</strong><br>
-                      Verónica Andrea González-López
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">12:00</td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Almoço</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">14:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Tópicos em Machine Learning</strong><br>
-                      Insper
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">15:00</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Conversa com a Pós-Graduação</strong><br>
-                      CEA
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">15:30</td>
-                    <td class="md:py-6 ps-6">
-                      <strong>Apresentação dos Pôsteres do CEA</strong><br>
-                      Pós-Graduação
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">16:30
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
-
-
-            <div class="min-w-full md:p-4">
-              <table class="min-w-full bg-white" style="border-spacing : 0 0.8rem; border-collapse: separate;">
-                <thead>
-                  <tr>
-                    <th class="py-2 text-lg w-1/5 md:w-1/6">Hora</th>
-                    <th class="py-2 text-lg ">Atividade</th>
-                  </tr>
-                </thead>
-                <tbody class="text-sm">
-                  <tr>
-                    <td class="py-2 px-2 md:px-10 w-1/5 md:w-1/6">8:30</td>
-                    <td class="py-2 ps-6">
-                      <strong>Palestra de abertura sobre mulheres na ciência</strong><br>
-                      Fernanda Staniscuaski + Daniele Honorato
-                    </td>
-                  </tr>
-                </tbody>
-                <tr>
-                    <td class="rounded-s-2xl bg-gray-300 py-2 md:py-6 px-2 md:px-10 w-1/5 md:w-1/6">9:30
-                    </td>
-                    <td class="rounded-e-2xl bg-gray-300 py-2 md:py-6 ps-6">
-                      <strong>Coffee Break</strong>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 px-2 md:px-10 w-1/5 md:w-1/6">10:00</td>
-                    <td class="py-2 ps-6">
-                      <strong>Mesa Redonda - Mulheres na ciência</strong><br>
-                      Fernanda Staniscuaski, Adriana Bruscato, Juliana Diniz e Daniele Honorato
-                    </td>
-                  </tr>
-                </tbody>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
-
-        </div>
-        
+  <!-- Cronograma temporariamente oculto (em atualização). Remova "hidden" para reexibir. -->
+  <section id="cronograma" class="hidden bg-white pt-4 pb-14 lg:pb-20">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10 reveal">
+        <span class="eyebrow text-red-700">Programação</span>
+        <h2 class="font-spartan text-3xl md:text-4xl font-black text-gray-900 mt-3">Cronograma</h2>
+        <div class="accent-bar mx-auto mt-5"></div>
+        <p class="text-gray-600 leading-relaxed mt-5 max-w-2xl mx-auto">
+          Prévia da grade de atividades da aMostra XIX. Selecione um dia e clique em uma palestra
+          para ver os detalhes do tema e do palestrante.
+        </p>
+        <p class="mt-4 inline-flex items-center gap-2 text-xs font-montserrat font-semibold uppercase tracking-wider text-gray-400">
+          <i class="fa fa-info-circle text-gold-deep"></i> Programação preliminar, sujeita a alterações
+        </p>
       </div>
+
+      <!-- Abas (dias) e lista de sessões são geradas por cronograma.js -->
+      <div id="cronograma-tabs" class="flex flex-wrap justify-center gap-2 mb-8"></div>
+      <div id="cronograma-lista" class="max-w-3xl mx-auto space-y-3"></div>
+      <p id="cronograma-vazio" class="hidden text-center text-gray-400 py-10">Programação em breve.</p>
     </div>
-  </div>
-  </div>  
+  </section>
+
   <!-- Seção de Destaque do Blog (aNormal) -->
   <section class="bg-gray-50 py-12 lg:py-16 border-t border-gray-200">
     <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -767,6 +471,92 @@
     </div>
   </section>
   
+  <!-- Seção: Loja (produtos oficiais) -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-red-600 py-16 lg:py-20">
+    <div class="absolute -top-24 -right-24 w-[420px] h-[420px] bg-white/10 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 -left-24 w-[380px] h-[380px] bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+
+    <div class="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow inline-flex items-center gap-3 text-gold mb-2">
+          <span class="h-px w-8 bg-gold/70"></span> Produtos Oficiais
+          <span class="h-px w-8 bg-gold/70"></span>
+        </span>
+        <h2 class="font-spartan text-3xl md:text-4xl font-black text-white mt-2">Leve a aMostra com você</h2>
+        <div class="w-16 h-1 bg-gold rounded-full mx-auto mt-5"></div>
+        <p class="text-white/85 leading-relaxed mt-5">
+          Camiseta, caneca e adesivos com a identidade da XIX edição. Camisetas e canecas
+          saem por encomenda — o pagamento fica no formulário.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto reveal">
+        <!-- Camisetas -->
+        <a href="./pages/loja.html" class="group bg-white/10 hover:bg-white/15 ring-1 ring-white/15 rounded-2xl overflow-hidden backdrop-blur-sm transition-all hover:-translate-y-1">
+          <div class="relative h-40 bg-white overflow-hidden">
+            <img src="styles/produtos/camiseta_unissex_preta.avif?v=2" alt="Camiseta oficial da aMostra XIX"
+              loading="lazy" decoding="async"
+              class="absolute inset-0 w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden items-center justify-center text-red-300">
+              <i class="fa fa-picture-o" style="font-size:2.5rem" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="p-4 text-center">
+            <h3 class="font-spartan text-lg font-bold text-white">Camisetas</h3>
+            <p class="text-white/70 font-montserrat text-sm mt-1">Unissex e baby look</p>
+            <p class="text-gold font-montserrat font-bold text-sm mt-1">R$ 50</p>
+          </div>
+        </a>
+        <!-- Caneca -->
+        <a href="./pages/loja.html" class="group bg-white/10 hover:bg-white/15 ring-1 ring-white/15 rounded-2xl overflow-hidden backdrop-blur-sm transition-all hover:-translate-y-1">
+          <div class="relative h-40 bg-white overflow-hidden">
+            <img src="styles/produtos/caneca.avif" alt="Caneca oficial da aMostra XIX"
+              loading="lazy" decoding="async"
+              class="absolute inset-0 w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden items-center justify-center text-red-300">
+              <i class="fa fa-coffee" style="font-size:2.5rem" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="p-4 text-center">
+            <h3 class="font-spartan text-lg font-bold text-white">Caneca</h3>
+            <p class="text-white/70 font-montserrat text-sm mt-1">Cerâmica preta</p>
+            <p class="text-gold font-montserrat font-bold text-sm mt-1">R$ 30</p>
+          </div>
+        </a>
+        <!-- Adesivos -->
+        <a href="./pages/loja.html" class="group bg-white/10 hover:bg-white/15 ring-1 ring-white/15 rounded-2xl overflow-hidden backdrop-blur-sm transition-all hover:-translate-y-1">
+          <div class="relative h-40 bg-white overflow-hidden">
+            <img src="styles/produtos/adesivo_5.avif" alt="Adesivos da capivara mascote da aMostra"
+              loading="lazy" decoding="async"
+              class="absolute inset-0 w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 hidden items-center justify-center text-red-300">
+              <i class="fa fa-star" style="font-size:2.5rem" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="p-4 text-center">
+            <h3 class="font-spartan text-lg font-bold text-white">Adesivos</h3>
+            <p class="text-white/70 font-montserrat text-sm mt-1">5 artes da mascote</p>
+            <p class="text-gold font-montserrat font-bold text-sm mt-1">R$ 4 cada</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-10 reveal">
+        <a href="./pages/loja.html"
+          class="font-montserrat inline-flex items-center gap-2 bg-white text-red-800 hover:bg-gold hover:text-red-900 font-bold px-8 py-3.5 rounded-xl shadow-lg shadow-black/20 transition-all hover:-translate-y-0.5">
+          Ver a Loja
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="py-12 lg:py-16 bg-white border-t border-gray-200">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-12 reveal">
@@ -864,40 +654,7 @@
       </ul>
     </div>
   </footer>
-  <script>
-    const days = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira'];
-    // Atualizei a data pra um cronograma dinamico. 
-    // ideia - cronograma dinamico que muda de acordo com a data atual.
-    // enquanto a amostra não começa ela mostra algo, durante mostra o dia atual, e depois mostra outra coisa.
-
-    let currentIndex = 0;
-    const date = new Date();
-    let dia_atual = date.getDay() - 1
-    if (dia_atual >= 5 || dia_atual == -1) dia_atual = 0
-
-    currentIndex = dia_atual
-    document.getElementById('next').addEventListener('click', () => {
-      if (currentIndex < days.length - 1) {
-        currentIndex++;
-        updateCarousel();
-      }
-    });
-
-    document.getElementById('prev').addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-      }
-    });
-
-    function updateCarousel() {
-      const carousel = document.getElementById('carousel').firstElementChild;
-      const dayTitle = document.getElementById('day-title');
-      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dayTitle.textContent = days[currentIndex];
-    }
-    updateCarousel()
-  </script>
+  
 
   <script>
     const container = document.getElementById("counterContainer");
