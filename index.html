@@ -145,22 +145,22 @@
           <li>
             <a href="./index.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition-colors">Início</a>
           </li>
-          <li>
-            <a href="./pages/galeria.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Galeria</a>
-          </li>
-          <li>
-            <a href="./pages/blog/hub.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Blog</a>
+          <li class="relative dropdown-wrap">
+            <button type="button" onclick="toggleDropdown(this)" class="dropdown-btn nav-link w-full md:w-auto flex items-center justify-between md:justify-center gap-1.5 py-2 px-3 md:py-1 hover:text-white transition-colors" aria-haspopup="true" aria-expanded="false">
+              Conheça-nos
+              <svg data-chevron class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="dropdown-panel hidden mt-1 ml-3 md:ml-0 md:absolute md:left-0 md:top-full md:mt-2 md:w-52 md:bg-red-950 md:shadow-xl md:rounded-xl md:ring-1 md:ring-white/10 md:py-2 md:z-50">
+              <a href="./pages/galeria.html" class="block py-2 px-3 md:px-4 text-sm text-white/80 hover:text-white md:hover:bg-white/10 md:rounded-lg transition">Galeria</a>
+              <a href="./pages/blog/hub.html" class="block py-2 px-3 md:px-4 text-sm text-white/80 hover:text-white md:hover:bg-white/10 md:rounded-lg transition">Blog</a>
+              <a href="./pages/comissao.html" class="block py-2 px-3 md:px-4 text-sm text-white/80 hover:text-white md:hover:bg-white/10 md:rounded-lg transition">Comissão</a>
+              <a href="./pages/faq.html" class="block py-2 px-3 md:px-4 text-sm text-white/80 hover:text-white md:hover:bg-white/10 md:rounded-lg transition">FAQ</a>
+            </div>
           </li>
           <li>
             <a href="./pages/loja.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Loja</a>
           </li>
-          <li>
-            <a href="./pages/comissao.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Comissão</a>
-          </li>
-          <li>
-            <a href="./pages/faq.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">FAQ</a>
-          </li>
-          <li id="parceiros" class="hidden">
+          <li id="parceiros">
             <a href="./pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition-colors">Parceiros</a>
           </li>
           <li class="md:ml-3"><a href="https://amostra-estatistica.fly.dev/" target="_blank" rel="noopener" class="btn-inscricao block mt-3 md:mt-0 text-center bg-gold hover:bg-white text-red-900 font-montserrat font-bold text-sm px-5 py-2 rounded-lg shadow-md shadow-black/25 transition-all hover:-translate-y-0.5">Inscreva-se</a></li>
@@ -242,9 +242,9 @@
               </span>
               Inscreva-se
             </a>
-            <a href="#sec-2"
-              class="font-montserrat inline-flex items-center gap-2 text-white/85 hover:text-gold font-semibold transition-colors">
-              Conheça a aMostra
+            <a href="#cronograma"
+              class="font-montserrat inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 ring-1 ring-white/25 text-white font-bold text-base px-6 py-3 rounded-lg backdrop-blur-sm transition-all hover:-translate-y-0.5">
+              <i class="fa fa-calendar"></i> Ver Cronograma
             </a>
           </div>
         </div>
@@ -409,19 +409,18 @@
     </div>
 
   </section>
-  <!-- Cronograma temporariamente oculto (em atualização). Remova "hidden" para reexibir. -->
-  <section id="cronograma" class="hidden bg-white pt-4 pb-14 lg:pb-20">
+  <section id="cronograma" class="bg-white pt-4 pb-14 lg:pb-20">
     <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10 reveal">
         <span class="eyebrow text-red-700">Programação</span>
         <h2 class="font-spartan text-3xl md:text-4xl font-black text-gray-900 mt-3">Cronograma</h2>
         <div class="accent-bar mx-auto mt-5"></div>
         <p class="text-gray-600 leading-relaxed mt-5 max-w-2xl mx-auto">
-          Prévia da grade de atividades da aMostra XIX. Selecione um dia e clique em uma palestra
-          para ver os detalhes do tema e do palestrante.
+          Dá uma olhada na programação da aMostra XIX! Escolha o dia e clique em qualquer
+          atividade para descobrir mais sobre o tema e quem vai palestrar.
         </p>
         <p class="mt-4 inline-flex items-center gap-2 text-xs font-montserrat font-semibold uppercase tracking-wider text-gray-400">
-          <i class="fa fa-info-circle text-gold-deep"></i> Programação preliminar, sujeita a alterações
+          <i class="fa fa-info-circle text-gold-deep"></i> Programação sujeita a pequenos ajustes
         </p>
       </div>
 

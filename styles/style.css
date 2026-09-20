@@ -138,3 +138,11 @@ footer img {
     font-size: 2.5rem;
   }
 }
+
+/* Dropdown "Conheça a aMostra" no menu principal (ver script.js:toggleDropdown) */
+.dropdown-btn [data-chevron] {
+  transition: transform 0.2s ease;
+}
+.dropdown-btn.dropdown-open [data-chevron] {
+  transform: rotate(180deg);
+}

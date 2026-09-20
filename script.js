@@ -8,6 +8,41 @@ function toggleMenu() {
     if (btn) btn.setAttribute("aria-expanded", String(!isHidden));
 }
 
+// Dropdown "Conheça a aMostra" no menu principal (clique, funciona igual no
+// mobile e no desktop). Fecha os demais dropdowns e fecha ao clicar fora.
+function toggleDropdown(btn) {
+    var panel = btn.nextElementSibling;
+    if (!panel) return;
+    var isOpen = !panel.classList.contains("hidden");
+    document.querySelectorAll(".dropdown-panel").forEach(function (p) {
+        if (p !== panel) p.classList.add("hidden");
+    });
+    document.querySelectorAll(".dropdown-btn").forEach(function (b) {
+        if (b !== btn) { b.setAttribute("aria-expanded", "false"); b.classList.remove("dropdown-open"); }
+    });
+    panel.classList.toggle("hidden", isOpen);
+    btn.setAttribute("aria-expanded", String(!isOpen));
+    btn.classList.toggle("dropdown-open", !isOpen);
+}
+document.addEventListener("click", function (e) {
+    if (!e.target.closest(".dropdown-wrap")) {
+        document.querySelectorAll(".dropdown-panel").forEach(function (p) { p.classList.add("hidden"); });
+        document.querySelectorAll(".dropdown-btn").forEach(function (b) {
+            b.setAttribute("aria-expanded", "false");
+            b.classList.remove("dropdown-open");
+        });
+    }
+});
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        document.querySelectorAll(".dropdown-panel").forEach(function (p) { p.classList.add("hidden"); });
+        document.querySelectorAll(".dropdown-btn").forEach(function (b) {
+            b.setAttribute("aria-expanded", "false");
+            b.classList.remove("dropdown-open");
+        });
+    }
+});
+
 // Atualizando a data para 28 de setembro de 2026, às 08:00
 const targetDate = new Date("September 28, 2026 08:00:00").getTime();
 
