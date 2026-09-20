@@ -22,10 +22,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="styles/brand.js"></script>
 
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/style.css?v=20260920">
   <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
-  <script src="script.js" defer></script>
-  <script src="cronograma.js" defer></script>
+  <script src="script.js?v=20260920" defer></script>
+  <script src="cronograma.js?v=20260920" defer></script>
 
   <style>
     /* ===== index — realces visuais (respeitando brand.js / style.css) ===== */
@@ -290,8 +290,8 @@
 
   <div class="bg-white pt-16 pb-12">
     <div class="mx-auto px-4 text-center max-w-2xl reveal">
-      <span class="eyebrow text-red-700">Contagem regressiva</span>
-      <h2 class="font-spartan text-2xl sm:text-3xl font-bold text-gray-900 mt-3 mb-4">Só faltam alguns dias até a aMostra!</h2>
+      <span id="countdown-eyebrow" class="eyebrow text-red-700">Contagem regressiva</span>
+      <h2 id="countdown-titulo" class="font-spartan text-2xl sm:text-3xl font-bold text-gray-900 mt-3 mb-4">Só faltam alguns dias até a aMostra!</h2>
       <div class="accent-bar mx-auto mb-10"></div>
 
       <div id="countdown" class="flex justify-center gap-3 sm:gap-5">

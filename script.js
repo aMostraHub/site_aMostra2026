@@ -69,10 +69,29 @@ const countdownFunction = setInterval(() => {
     document.getElementById("minutes").innerHTML = minutes;
     document.getElementById("seconds").innerHTML = seconds;
 
-    // Se a contagem regressiva acabar, exibe uma mensagem
+    // Se a contagem regressiva acabar, troca os cartões por uma chamada para o cronograma.
     if (timeRemaining < 0) {
         clearInterval(countdownFunction);
-        document.getElementById("countdown").innerHTML = "Chegou a data!";
+
+        const eyebrow = document.getElementById("countdown-eyebrow");
+        if (eyebrow) eyebrow.textContent = "Em andamento";
+
+        const titulo = document.getElementById("countdown-titulo");
+        if (titulo) titulo.textContent = "A aMostra chegou!";
+
+        document.getElementById("countdown").innerHTML = `
+            <div class="relative w-full overflow-hidden rounded-3xl bg-gradient-to-br from-red-900 via-red-800 to-red-600 px-8 py-10 text-center shadow-xl shadow-red-900/20">
+              <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 blur-3xl rounded-full pointer-events-none"></div>
+              <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
+              <div class="relative z-10">
+                <p class="text-3xl mb-2">🎉</p>
+                <h3 class="font-spartan text-2xl font-black text-white mb-2">Estamos na XIX edição!</h3>
+                <p class="text-white/85 max-w-md mx-auto mb-6">Confira a programação completa e não perca nenhuma atividade.</p>
+                <a href="#cronograma" class="font-montserrat inline-flex items-center gap-2.5 bg-gold hover:bg-white text-red-900 font-black text-sm px-6 py-3 rounded-lg shadow-lg shadow-black/25 transition-all hover:-translate-y-0.5">
+                  <i class="fa fa-calendar"></i> Ver Cronograma
+                </a>
+              </div>
+            </div>`;
     }
 }, 1000);
 
