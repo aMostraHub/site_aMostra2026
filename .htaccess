@@ -1,0 +1,28 @@
+# =====================================================================
+# Cabeçalhos de cache do site da aMostra
+# ---------------------------------------------------------------------
+# Sem isso, navegadores (principalmente no celular) guardam o HTML e os
+# arquivos .js/.css por dias, e quem já visitou o site não vê as
+# atualizações mesmo após um novo deploy.
+#
+# • Páginas HTML: nunca ficam em cache — cada visita busca a versão
+#   mais nova direto do servidor.
+# • CSS/JS/imagens: podem ficar em cache por um tempo curto, mas o
+#   navegador sempre revalida com o servidor antes de reusar a cópia.
+#   Os arquivos .js/.css principais (script.js, cronograma.js,
+#   style.css, patrocinadores.js, blog_post.css) usam "?v=DATA" no
+#   HTML — ao mudar essa data, o link vira uma URL nova e o cache
+#   antigo é ignorado automaticamente.
+# =====================================================================
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>
