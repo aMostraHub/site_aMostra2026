@@ -209,6 +209,14 @@ footer {
 .nav-link.active::after { transform: scaleX(1); }
 .nav-link.active { color: #fff; }
 
+/* Dropdown "Conheça a aMostra" no menu principal (ver script.js:toggleDropdown) */
+.dropdown-btn [data-chevron] {
+  transition: transform 0.2s ease;
+}
+.dropdown-btn.dropdown-open [data-chevron] {
+  transform: rotate(180deg);
+}
+
 /* Barra de progresso de leitura (topo da página) */
 .reading-progress {
   position: fixed;

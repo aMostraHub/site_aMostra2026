@@ -24,38 +24,99 @@ window.PATROCINADORES = [
         logo: "../logos/ime.png",
         descricao:
           "Instituto de Matemática e Estatística da Universidade de São Paulo, onde a aMostra é realizada. Referência nacional em ensino e pesquisa nas áreas de Matemática, Estatística e Ciência da Computação.",
-        site: "https://www.ime.usp.br",
-        redes: { instagram: "", linkedin: "", facebook: "", youtube: "", twitter: "", email: "" }
+        site: "https://www.ime.usp.br/",
+        redes: { instagram: "https://www.instagram.com/imeusp/", linkedin: "https://www.linkedin.com/school/ime-usp-br/", facebook: "", youtube: "", twitter: "", email: "" }
       },
       {
         nome: "IME Júnior",
         logo: "../logos/imejr.png",
         descricao:
           "A IME Júnior é a empresa júnior de tecnologia, estatística e matemática aplicada do Instituto de Matemática e Estatística da USP. Formada inteiramente por estudantes, desenvolve projetos reais de software, análise de dados e consultoria estatística com o suporte do corpo docente da universidade.",
-        site: "https://imejr.com.br/",
-        redes: { instagram: "", linkedin: "", facebook: "", youtube: "", twitter: "", email: "" }
+        site: "https://imejr.com/",
+        redes: { instagram: "https://www.instagram.com/imejr.usp/", linkedin: "https://www.linkedin.com/company/imejr/", facebook: "", youtube: "", twitter: "", email: "" }
       }
     ]
   },
   {
     categoria: "Patrocinadores",
     empresas: [
-      { nome: "C6 Bank",              logo: "../logos/c6.png",       descricao: "", site: "", redes: {} },
-      { nome: "Casio",               logo: "../logos/casio.png",    descricao: "", site: "", redes: {} },
-      { nome: "Management Solutions", logo: "../logos/ms.jpg",       descricao: "", site: "", redes: {} },
-      { nome: "Santander",           logo: "../logos/santander.png",descricao: "", site: "", redes: {} },
-      { nome: "Quod",                logo: "../logos/quod.png",     descricao: "", site: "", redes: {} },
-      { nome: "Insper",              logo: "../logos/insper.png",   descricao: "", site: "", redes: {} },
-      { nome: "FGV EMAp",            logo: "../logos/fgvemap.png",  descricao: "", site: "", redes: {} },
-      { nome: "SPG",                 logo: "../logos/spg.png",      descricao: "", site: "", redes: {} }
+      {
+        nome: "Management Solutions",
+        logo: "../logos/Ms.avif",
+        descricao:
+          "A Management Solutions é uma empresa internacional de consultoria especializada em assessoria empresarial, financeira, de riscos, organizacional, tecnológica e de processos. Conta com uma equipe multidisciplinar de mais de 4.000 profissionais, atuando através de 53 escritórios ao redor do mundo, em mais de 50 países.",
+        site: "https://www.managementsolutions.com/pt-br",
+        redes: { instagram: "https://www.instagram.com/management.solutions/", linkedin: "https://www.linkedin.com/company/management-solutions/" }
+      },
+      {
+        nome: "FGV EMAp",
+        logo: "../logos/FGV.avif",
+        descricao:
+          "A Escola de Matemática Aplicada da Fundação Getulio Vargas (FGV EMAp) é um centro de excelência em pesquisa e formação nas áreas de Matemática Aplicada e Ciência de Dados. Criada em 2011, desenvolve pesquisa na fronteira entre matemática, computação e suas aplicações, com atuação em controle e otimização, estatística, aprendizado de máquina e inteligência artificial, finanças e risco, epidemiologia, equações diferenciais e sistemas estocásticos.",
+        site: "https://emap.fgv.br/",
+        redes: { instagram: "https://www.instagram.com/fgv_emap/", linkedin: "https://www.linkedin.com/company/fgv-emap/" }
+      },
+      {
+        nome: "Insper",
+        logo: "../logos/Insper.avif",
+        descricao:
+          "O Insper é uma instituição independente e sem fins lucrativos, que tem como visão ser referência em educação e geração de conhecimento por meio do ensino de excelência e pesquisa nas áreas de Administração, Economia, Direito, Engenharia, Políticas Públicas, Tecnologia e Comunicação.",
+        site: "https://www.insper.edu.br/pt/home",
+        redes: { instagram: "https://www.instagram.com/insperedu/", linkedin: "https://www.linkedin.com/school/insper-edu/" }
+      },
+      {
+        nome: "Casio Educação",
+        logo: "../logos/Casio.avif",
+        descricao:
+          "A CASIO é uma empresa global de calculadoras científicas e gráficas que transforma ideias em soluções para o dia a dia. No Brasil, a CASIO Educação atua há dez anos apoiando escolas, professores e estudantes com calculadoras, formação docente e projetos que tornam a aprendizagem da Matemática mais significativa.",
+        site: "https://www.casio.com/br/",
+        redes: { instagram: "https://www.instagram.com/casiobrasil/", linkedin: "https://www.linkedin.com/company/casio-brasil/" }
+      },
+      {
+        nome: "TELUS Digital",
+        logo: "../logos/Telus.png",
+        descricao:
+          "A TELUS Digital é a divisão digital da TELUS e uma consultoria global de produtos e tecnologia que cria experiências digitais inovadoras, combinando estratégia, design, desenvolvimento, Data & AI, cloud, marketing digital e modernização de negócios para apoiar empresas em sua transformação digital.",
+        site: "https://www.telusdigital.com/",
+        redes: { instagram: "https://www.instagram.com/telus_digital/", linkedin: "https://www.linkedin.com/company/telus-digital/" }
+      },
+      {
+        nome: "Equifax",
+        logo: "../logos/Equifax.avif",
+        descricao:
+          "A Equifax é uma grande empresa global de dados, tecnologia e inteligência analítica focada em análise de crédito e proteção financeira para pessoas físicas e jurídicas.",
+        site: "https://www.equifax.com.br/",
+        redes: { instagram: "https://www.instagram.com/equifaxboavista/", linkedin: "https://www.linkedin.com/company/equifax/" }
+      }
     ]
   },
   {
     categoria: "Apoio",
     empresas: [
-      { nome: "CONRE-3",  logo: "../logos/conre.jpg", descricao: "", site: "", redes: {} },
-      { nome: "Edusp",    logo: "../logos/edusp.png", descricao: "", site: "", redes: {} },
-      { nome: "Associação Brasileira de Estatística (ABE)", logo: "../logos/abe.png", descricao: "", site: "", redes: {} }
+      {
+        nome: "CONRE-3",
+        logo: "../logos/conre.jpg",
+        descricao:
+          "O CONRE-3 (Conselho Regional de Estatística da 3ª Região, SP) é o órgão responsável por fiscalizar e regulamentar o exercício da profissão de estatístico, atuando na divulgação e no fortalecimento da estatística e do estatístico no mercado de trabalho e entre estudantes.",
+        site: "https://www.conre3.org.br/portal/",
+        redes: { instagram: "https://www.instagram.com/conre3/", linkedin: "https://www.linkedin.com/company/conre-3/" }
+      },
+      {
+        nome: "Edusp",
+        logo: "../logos/edusp.png",
+        descricao:
+          "A Edusp (Editora da Universidade de São Paulo) é uma editora universitária dedicada à publicação de obras acadêmicas e científicas em diversas áreas do conhecimento, incluindo Estatística e Matemática.",
+        site: "https://www.edusp.com.br/",
+        redes: { instagram: "https://www.instagram.com/edusp.oficial/", linkedin: "https://www.linkedin.com/company/edusp/" }
+      },
+      {
+        nome: "Associação Brasileira de Estatística (ABE)",
+        logo: "../logos/abe.png",
+        descricao:
+          "A Associação Brasileira de Estatística (ABE) é a principal sociedade científica da área no Brasil, promovendo o desenvolvimento, o ensino e a aplicação da Estatística por meio de eventos, publicações e articulação entre pesquisadores e profissionais.",
+        site: "https://www.redeabe.org.br/",
+        redes: { instagram: "https://www.instagram.com/abe.estatistica/", linkedin: "https://www.linkedin.com/in/associa%C3%A7%C3%A3o-brasileira-de-estatistica-92a330172/" }
+      }
     ]
   }
 ];
@@ -161,12 +222,12 @@ window.PATROCINADORES = [
     const b = document.createElement("button");
     b.type = "button";
     b.className =
-      "group relative bg-white border border-gray-100 rounded-2xl shadow-sm flex flex-col items-center justify-center overflow-hidden " +
-      (destaque ? "h-44 p-8 " : "h-36 p-6 ") +
+      "group relative bg-white border border-gray-100 rounded-2xl shadow-sm flex flex-col items-center justify-center overflow-hidden shrink-0 " +
+      (destaque ? "w-64 sm:w-72 h-44 p-8 " : "w-56 sm:w-64 h-36 p-6 ") +
       "hover:shadow-xl hover:-translate-y-1.5 hover:border-gold/40 transition-all duration-300 cursor-pointer";
     b.innerHTML = `
       <img src="${esc(e.logo)}" alt="${esc(e.nome)}"
-        class="${destaque ? "max-h-20" : "max-h-16"} max-w-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition duration-300">
+        class="${destaque ? "max-h-20" : "max-h-16"} max-w-full object-contain group-hover:scale-105 transition duration-300">
       <span class="absolute inset-x-0 bottom-0 py-2 text-[11px] font-montserrat font-bold uppercase tracking-wider text-red-700 bg-gradient-to-t from-white via-white/95 to-transparent opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
         Saiba mais <i class="fa fa-arrow-right ml-0.5"></i>
       </span>`;
@@ -178,7 +239,7 @@ window.PATROCINADORES = [
     mount.innerHTML = "";
     window.PATROCINADORES.forEach((grupo) => {
       if (!grupo.empresas || !grupo.empresas.length) return;
-      // Grupos pequenos (ex.: Realização) ganham cards maiores e centralizados.
+      // Grupos pequenos (ex.: Realização) ganham cards maiores.
       const destaque = grupo.empresas.length <= 2;
       const sec = document.createElement("div");
       sec.className = "mb-14";
@@ -190,10 +251,10 @@ window.PATROCINADORES = [
             <span class="h-px w-8 bg-gold"></span>
           </span>
         </div>`;
+      // Flex centralizado (em vez de grid) para que todas as fileiras, mesmo
+      // incompletas, fiquem sempre centralizadas — igual ao grupo Realização.
       const grid = document.createElement("div");
-      grid.className = destaque
-        ? "grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto"
-        : "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5";
+      grid.className = "flex flex-wrap justify-center gap-5 max-w-6xl mx-auto";
       grupo.empresas.forEach((e) => grid.appendChild(cardEmpresa(e, destaque)));
       sec.appendChild(grid);
       mount.appendChild(sec);
