@@ -25,7 +25,7 @@ window.CRONOGRAMA = [
       {
         horario: "8h30",
         tipo: "Palestra",
-        titulo: "Palestra de Thiago Dutra (a definir)",
+        titulo: "Palestra de Thiago Dutra (em breve)",
         resumo: "Detalhes da palestra em breve.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
         descricao: "Informações sobre o tema desta palestra serão divulgadas em breve.",
@@ -240,7 +240,7 @@ window.CRONOGRAMA = [
       {
         horario: "14h00",
         tipo: "Palestra",
-        titulo: "Palestra do Insper (a definir)",
+        titulo: "Palestra do Insper (em breve)",
         resumo: "Detalhes em breve.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
         descricao: "Conteúdo da palestra será divulgado em breve.",
@@ -257,7 +257,7 @@ window.CRONOGRAMA = [
       {
         horario: "15h00",
         tipo: "Palestra",
-        titulo: "Programa de Pós-graduação em Estatística (a definir)",
+        titulo: "Programa de Pós-graduação em Estatística (em breve)",
         resumo: "Detalhes em breve.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
         descricao: "Informações sobre esta atividade serão divulgadas em breve.",
@@ -337,7 +337,7 @@ window.CRONOGRAMA = [
       {
         horario: "14h00",
         tipo: "Palestra",
-        titulo: "R-Ladies (a definir)",
+        titulo: "R-Ladies (em breve)",
         resumo: "Detalhes em breve.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
         descricao: "Informações sobre esta atividade serão divulgadas em breve.",
@@ -346,7 +346,7 @@ window.CRONOGRAMA = [
       {
         horario: "15h00",
         tipo: "Palestra",
-        titulo: "Palestra da Equifax (a definir)",
+        titulo: "Palestra da Equifax (em breve)",
         resumo: "Detalhes em breve.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
         descricao: "Informações sobre a palestra serão divulgadas em breve.",
