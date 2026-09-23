@@ -84,7 +84,7 @@ window.PATROCINADORES = [
         nome: "Equifax",
         logo: "../logos/Equifax.avif",
         descricao:
-          "A Equifax é uma grande empresa global de dados, tecnologia e inteligência analítica focada em análise de crédito e proteção financeira para pessoas físicas e jurídicas.",
+          "A Equifax | Boa Vista, empresa mais inovadora do setor de serviços no Brasil (Prêmio Valor Inovação), é uma potência global de dados, analytics e tecnologia. Com mais de 100 anos de existência e mais de 15 mil funcionários, é referência no mercado de crédito no Brasil e no mundo. A Ciência de Dados é o core business da empresa: o time de Data Science gerencia mais de 150 modelos preditivos por ano, com tecnologias de fronteira que vão de AutoML a Inteligência Artificial Generativa (GenAI) e Machine Learning Explicável (XAI).",
         site: "https://www.equifax.com.br/",
         redes: { instagram: "https://www.instagram.com/equifaxboavista/", linkedin: "https://www.linkedin.com/company/equifax/" }
       }

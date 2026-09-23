@@ -3,16 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>aMostra de Estatística - Parceiros</title>
+  <title>aMostra de Estatística - Palestrantes</title>
   <link rel="icon" type="image/png" href="../styles/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="../styles/brand.js"></script>
   <link rel="stylesheet" href="../styles/style.css?v=20260920">
   <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css">
   <script src="../script.js?v=20260920" defer></script>
-  <!-- Dados + grade + pop-up dos parceiros (edite ../patrocinadores.js para atualizar) -->
-  <script src="../patrocinadores.js?v=20260920" defer></script>
+  <!-- Dados vêm do cronograma.js (edite lá para atualizar bios/fotos/palestras) -->
+  <script src="../cronograma.js?v=20260920" defer></script>
+  <script src="../palestrantes.js?v=20260920" defer></script>
 
   <style>
     .nav-link { position: relative; padding: .25rem .35rem; transition: color .2s ease; }
@@ -33,6 +37,16 @@
     .reveal.is-visible { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+    }
+
+    /* Trama sutil no cabeçalho (mesma linguagem visual do hero da home) */
+    .header-grid {
+      background-image:
+        linear-gradient(to right, rgba(130, 17, 20, .05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(130, 17, 20, .05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
+      mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%);
     }
   </style>
 </head>
@@ -73,8 +87,8 @@
             </div>
           </li>
           <li><a href="../pages/loja.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Loja</a></li>
-          <li><a href="../pages/palestrantes.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Palestrantes</a></li>
-          <li id="parceiros"><a href="../pages/patrocinadores.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition">Parceiros</a></li>
+          <li><a href="../pages/palestrantes.html" class="nav-link active block py-2 px-3 md:py-1 hover:text-white transition">Palestrantes</a></li>
+          <li id="parceiros"><a href="../pages/patrocinadores.html" class="nav-link block py-2 px-3 md:py-1 hover:text-white transition">Parceiros</a></li>
           <li class="md:ml-3"><a href="https://amostra-estatistica.fly.dev/" target="_blank" rel="noopener" class="btn-inscricao block mt-3 md:mt-0 text-center bg-gold hover:bg-white text-red-900 font-montserrat font-bold text-sm px-5 py-2 rounded-lg shadow-md shadow-black/25 transition-all hover:-translate-y-0.5">Inscreva-se</a></li>
         </ul>
       </div>
@@ -82,20 +96,22 @@
   </nav>
 
   <!-- Cabeçalho -->
-  <header class="relative pt-32 pb-14 overflow-hidden">
-    <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[560px] h-[300px] bg-red-600/10 blur-3xl rounded-full pointer-events-none"></div>
+  <header class="relative pt-32 pb-14 overflow-hidden header-grid">
+    <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[560px] h-[240px] bg-red-600/10 blur-3xl rounded-full pointer-events-none"></div>
     <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
       <span class="eyebrow inline-flex items-center gap-3 text-red-700 mb-4">
-        <span class="h-px w-8 bg-gold"></span> Parcerias Estratégicas <span class="h-px w-8 bg-gold"></span>
+        <span class="h-px w-8 bg-gold"></span> Quem vai palestrar <span class="h-px w-8 bg-gold"></span>
       </span>
       <h1 class="font-spartan text-4xl sm:text-5xl font-black tracking-tight text-gray-900 mb-6">
-        Conectando a <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-500">Academia ao Mercado</span>
+        Nossos <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-500">Palestrantes</span>
       </h1>
       <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-        Os parceiros da aMostra têm um papel essencial na viabilização do evento. Sua contribuição permite uma programação diversificada e de alta qualidade, fortalecendo a conexão entre os estudantes e as oportunidades no campo da estatística.
+        Pesquisadoras e pesquisadores de universidades de todo o Brasil trazem suas trajetórias e
+        descobertas para a XIX edição da aMostra. Conheça um pouco de cada um antes de assistir às
+        palestras.
       </p>
       <p class="relative z-10 mt-6 inline-flex items-center gap-2 text-sm font-montserrat font-bold uppercase tracking-wide text-red-800 bg-white border border-gold/40 shadow-sm rounded-full px-5 py-2.5">
-        <i class="fa fa-hand-pointer-o text-gold-deep"></i> Clique em um parceiro para saber mais
+        <i class="fa fa-hand-pointer-o text-gold-deep"></i> Clique em um palestrante para ver o perfil completo
       </p>
     </div>
   </header>
@@ -103,21 +119,21 @@
   <!-- Conteúdo Principal -->
   <main class="flex-grow pb-20 px-6 max-w-7xl mx-auto w-full">
 
-    <!-- Grade de parceiros gerada por patrocinadores.js -->
-    <div id="patrocinadores-lista"></div>
+    <!-- Grade de palestrantes gerada por palestrantes.js a partir do cronograma -->
+    <div id="palestrantes-lista"></div>
 
-    <!-- CTA: seja um parceiro -->
+    <!-- CTA: ver cronograma completo -->
     <div class="reveal mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-900 via-red-800 to-red-600 px-8 py-12 sm:px-14 sm:py-14 text-center shadow-xl shadow-red-900/20">
       <div class="absolute -top-16 -right-16 w-64 h-64 bg-white/10 blur-3xl rounded-full pointer-events-none"></div>
       <div class="absolute -bottom-16 -left-16 w-64 h-64 bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
       <div class="relative z-10 max-w-xl mx-auto">
-        <h2 class="font-spartan text-2xl sm:text-3xl font-black text-white mb-3">Quer ser um parceiro da aMostra?</h2>
+        <h2 class="font-spartan text-2xl sm:text-3xl font-black text-white mb-3">Quer ver os horários de cada palestra?</h2>
         <p class="text-white/85 leading-relaxed mb-7">
-          Empresas e instituições que apoiam a aMostra ganham visibilidade direta com centenas de estudantes e profissionais de Estatística. Fale com a gente e conheça as formas de parceria.
+          Confira o cronograma completo da aMostra XIX, com dia, horário e local de cada atividade.
         </p>
-        <a href="https://www.instagram.com/amostraestatistica/" target="_blank" rel="noreferrer"
+        <a href="../index.html#cronograma"
           class="inline-flex items-center gap-2.5 bg-gold hover:bg-white text-red-900 font-montserrat font-black text-sm px-6 py-3 rounded-lg shadow-lg shadow-black/25 transition-all hover:-translate-y-0.5">
-          <i class="fa fa-instagram"></i> Fale com a gente
+          <i class="fa fa-calendar"></i> Ver Cronograma
         </a>
       </div>
     </div>

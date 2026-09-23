@@ -12,7 +12,7 @@
    • Sessões SEM palestrante (ex.: Coffee Break, Almoço, Abertura) viram
      linhas simples, sem pop-up. Basta usar tipo: "Intervalo".
    • Tipos aceitos (definem cor/ícone): Palestra, Minicurso, Mesa-redonda,
-     Cerimônia, Intervalo, Credenciamento.  (qualquer outro cai no estilo padrão)
+     Cerimônia, Intervalo, Credenciamento, Em breve, Pôsteres.  (qualquer outro cai no estilo padrão)
    ===================================================================== */
 
 window.CRONOGRAMA = [
@@ -25,16 +25,18 @@ window.CRONOGRAMA = [
       {
         horario: "8h30",
         tipo: "Palestra",
-        titulo: "Palestra de Thiago Dutra (em breve)",
-        resumo: "Detalhes da palestra em breve.",
+        titulo: "Do risco à decisão: o papel da Estatística na pesquisa aplicada em Finanças e Atuária",
+        resumo: "Como problemas de Finanças e Atuária podem se transformar em perguntas estatísticas de pesquisa.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
-        descricao: "Informações sobre o tema desta palestra serão divulgadas em breve.",
+        descricao:
+          "Nesta palestra, serão apresentados exemplos de aplicações da Estatística em Finanças e Atuária, áreas em que decisões sobre investimentos, seguros e gestão de riscos dependem da adequada mensuração da incerteza. A partir de problemas reais, será discutido como probabilidade, distribuições, dependência, séries temporais e teoria dos valores extremos são utilizadas na pesquisa acadêmica para modelar e gerir riscos financeiros. O objetivo é mostrar como problemas de Finanças e Atuária podem se transformar em perguntas estatísticas de pesquisa e como os resultados desses modelos podem apoiar decisões em contextos de risco.",
         palestrante: {
-          nome: "Thiago Dutra",
-          cargo: "",
-          foto: "",
-          bio: "Mais informações em breve.",
-          redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
+          nome: "Thiago Dutra de Araújo",
+          cargo: "Professor Doutor · FEA-USP (Depto. de Contabilidade e Atuária)",
+          foto: "styles/palestrantes/Thiago_Dutra.avif",
+          bio:
+            "Doutor em Finanças, Risco e Atuária (FEA-USP), mestre em Educação Estatística (IME-USP) e graduado em Ciências Atuariais e em Matemática pela USP. É Professor Doutor do Departamento de Contabilidade e Atuária da FEA-USP e autor de livros e materiais didáticos. Dedica-se a pesquisas com Métodos Quantitativos aplicados à Gestão e Precificação de Riscos Financeiros e Seguros, com ênfase em Cópulas, Séries Temporais e Análise Multivariada.",
+          redes: { instagram: "", linkedin: "https://www.linkedin.com/in/thiago-dutra-de-araujo/", site: "", lattes: "", youtube: "", email: "" }
         }
       },
       {
@@ -101,7 +103,7 @@ window.CRONOGRAMA = [
     data: "29/09",
     diaSemana: "Terça-feira",
     sessoes: [
-      { horario: "8h00", tipo: "Credenciamento", titulo: "Credenciamento", palestrante: null },
+      { horario: "7h30", tipo: "Credenciamento", titulo: "Credenciamento", palestrante: null },
       {
         horario: "8h30",
         tipo: "Palestra",
@@ -156,7 +158,23 @@ window.CRONOGRAMA = [
         }
       },
       { horario: "12h00", tipo: "Intervalo", titulo: "Almoço", palestrante: null },
-      { horario: "14h00", tipo: "Em breve", titulo: "Em breve", palestrante: null },
+      {
+        horario: "14h00",
+        tipo: "Palestra",
+        titulo: "Reconstruindo a dieta de povos pré-históricos",
+        resumo: "Reconstrução da dieta de populações que viveram no passado a partir da composição dos ossos.",
+        local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
+        descricao:
+          "Será apresentado um modelo bayesiano desenvolvido em conjunto por estatísticos e bioarqueólogos para a estimação da proporção de consumo de diferentes fontes alimentares a partir de razões isotópicas de carbono e nitrogênio obtidas de amostras de ossos e dentes presentes em sambaquis do estado de São Paulo. Será discutida as técnicas para a utilização dos dados amostrais, o modelo estatístico e formas de análise exploratória para auxiliar na interpretação dos resultados.",
+        palestrante: {
+          nome: "André Americano de Freitas Fumis",
+          cargo: "Cientista de Dados Sênior · Itaú Unibanco",
+          foto: "styles/palestrantes/Andre_Americano.jpg",
+          bio:
+            "André é estatístico formado pelo IME-USP e estudante de doutorado no Programa de Probabilidade e Estatística do mesmo instituto, além de ser Cientista de Dados Sênior no Itaú Unibanco. Sua pesquisa é focada no uso de teoria de decisão bayesiana para desenho experimental e inferência causal. No mercado, atua na área de recuperação de crédito, com estatística e machine learning para auxiliar nas ofertas de renegociação para clientes em atraso.",
+          redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
+        }
+      },
       {
         horario: "15h00",
         tipo: "Palestra",
@@ -346,21 +364,30 @@ window.CRONOGRAMA = [
       {
         horario: "15h00",
         tipo: "Palestra",
-        titulo: "Palestra da Equifax (em breve)",
-        resumo: "Detalhes em breve.",
+        titulo: "Dados, Estatística e IA ajudando as pessoas a viverem sua melhor vida financeira",
+        resumo: "Como dados, estatística e IA são aplicados no mercado financeiro.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
-        descricao: "Informações sobre a palestra serão divulgadas em breve.",
+        descricao: "Na palestra abordaremos como os Dados, a Estatística e a IA estão sendo aplicadas no mercado financeiro.",
         palestrante: {
-          nome: "Equipe Equifax",
-          cargo: "Equifax",
+          nome: "Marcos Coque",
+          cargo: "Equifax | Boa Vista",
           foto: "logos/Equifax.avif",
           parceiro: true,
           bio:
-            "A Equifax é uma grande empresa global de dados, tecnologia e inteligência analítica focada em análise de crédito e proteção financeira para pessoas físicas e jurídicas.",
+            "A Equifax | Boa Vista é uma potência global de dados, analytics e tecnologia, com mais de 100 anos de existência e referência no mercado de crédito no Brasil e no mundo. Para a empresa, a Ciência de Dados é o core business: o time de Data Science gerencia mais de 150 modelos preditivos por ano, otimizando bilhões em concessões de crédito. Trabalham com tecnologias de fronteira, de AutoML a Inteligência Artificial Generativa (GenAI) e Machine Learning Explicável (XAI).",
           redes: { instagram: "", linkedin: "", site: "https://www.equifax.com.br/", lattes: "", youtube: "", email: "" }
         }
       },
-      { horario: "16h00", tipo: "Intervalo", titulo: "Coffee Break", palestrante: null }
+      {
+        horario: "16h00",
+        tipo: "Pôsteres",
+        titulo: "Coffee Break + Pôsteres do CEA",
+        resumo: "Alunos do último semestre de Estatística apresentam os pôsteres do CEA.",
+        local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
+        descricao:
+          "Durante o coffee break da tarde, os alunos do último semestre de Estatística apresentarão os pôsteres do CEA (Centro de Estatística Aplicada), com os resultados dos projetos e consultorias estatísticas desenvolvidos ao longo do curso.",
+        palestrante: null
+      }
     ]
   },
   {
@@ -428,7 +455,8 @@ window.CRONOGRAMA = [
     "Cerimônia":    { icone: "fa-star",            cor: "bg-gold-deep",clara: "bg-amber-50 text-amber-800 border-amber-100" },
     "Intervalo":    { icone: "fa-coffee",          cor: "bg-gray-300", clara: "bg-gray-100 text-gray-500 border-gray-200" },
     "Credenciamento": { icone: "fa-id-badge",      cor: "bg-gray-300", clara: "bg-gray-100 text-gray-500 border-gray-200" },
-    "Em breve":     { icone: "fa-hourglass-half",  cor: "bg-gray-300", clara: "bg-gray-100 text-gray-500 border-gray-200" }
+    "Em breve":     { icone: "fa-hourglass-half",  cor: "bg-gray-300", clara: "bg-gray-100 text-gray-500 border-gray-200" },
+    "Pôsteres":     { icone: "fa-picture-o",       cor: "bg-gold-deep",clara: "bg-amber-50 text-amber-800 border-amber-100" }
   };
   const TIPO_PADRAO = { icone: "fa-calendar", cor: "bg-red-700", clara: "bg-red-50 text-red-800 border-red-100" };
   const meta = (t) => TIPOS[t] || TIPO_PADRAO;
@@ -449,6 +477,16 @@ window.CRONOGRAMA = [
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])
     );
   }
+  // Vira um nome em slug de URL (usado para linkar direto ao perfil na página
+  // de Palestrantes). Exposta em window para a página de Palestrantes reusar.
+  function slugify(s) {
+    return String(s || "")
+      .normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+  }
+  window.slugifyNome = slugify;
   function href(rede, valor) {
     if (!valor) return "";
     if (rede === "email") return "mailto:" + valor;
@@ -468,6 +506,8 @@ window.CRONOGRAMA = [
     if (!itens.length) return "";
     return `<div class="flex flex-wrap gap-2 mt-4">${itens.join("")}</div>`;
   }
+  // Exposta em window para a página de Palestrantes reusar o mesmo mapa de ícones.
+  window.redesHTML = redesHTML;
 
   // ---- Modal (criado uma vez e reaproveitado) ----
   let modalEl = null;
@@ -495,25 +535,23 @@ window.CRONOGRAMA = [
           : `<img src="${esc(p.foto)}" alt="${esc(p.nome)}" loading="lazy" class="w-full h-full object-cover">`)
       : `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-red-800 to-red-600 text-white text-2xl"><i class="fa fa-user"></i></div>`;
 
-    // Palestrantes marcados como "parceiro" levam para a página de Parceiros.
+    // No cronograma mostramos só nome + cargo/instituição — o resumo completo
+    // fica na página de Parceiros (empresas) ou na de Palestrantes (acadêmicos).
     const cabecalho = `
         <div class="w-16 h-16 flex-shrink-0 rounded-full overflow-hidden ring-2 ring-gold/40 bg-gray-100">${foto}</div>
         <div class="min-w-0">
           <h4 class="font-spartan text-lg font-bold text-gray-900 leading-tight">${esc(p.nome)}</h4>
           ${p.cargo ? `<p class="text-sm text-red-700 font-medium">${esc(p.cargo)}</p>` : ""}
         </div>`;
-    const cabecalhoHTML = p.parceiro
-      ? `<a href="./pages/patrocinadores.html" class="flex items-start gap-4 group -m-1.5 p-1.5 rounded-xl hover:bg-gray-50 transition-colors" title="Ver na página de parceiros">
-          ${cabecalho}
-          <i class="fa fa-external-link text-gray-300 group-hover:text-red-700 transition-colors mt-1"></i>
-        </a>`
-      : `<div class="flex items-start gap-4">${cabecalho}</div>`;
+    const link = p.parceiro ? "./pages/patrocinadores.html" : "./pages/palestrantes.html#" + slugify(p.nome);
+    const titulo = p.parceiro ? "Ver na página de parceiros" : "Ver perfil completo";
 
     return `
       <div class="${ehPrimeiro ? "mt-6 pt-6 border-t border-gray-100" : "mt-6 pt-6 border-t border-gray-100"}">
-        ${cabecalhoHTML}
-        ${p.bio ? `<p class="text-sm text-gray-600 leading-relaxed mt-4">${esc(p.bio)}</p>` : ""}
-        ${redesHTML(p.redes)}
+        <a href="${link}" class="flex items-start gap-4 group -m-1.5 p-1.5 rounded-xl hover:bg-gray-50 transition-colors" title="${titulo}">
+          ${cabecalho}
+          <i class="fa fa-external-link text-gray-300 group-hover:text-red-700 transition-colors mt-1"></i>
+        </a>
       </div>`;
   }
 
