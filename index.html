@@ -360,7 +360,7 @@
     </div>
   </div>
 </section>
-  
+
   <section class="bg-white pt-12 pb-10">
     <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 text-center mb-12 reveal">
       <span class="eyebrow text-red-700">A aMostra em números</span>
@@ -431,6 +431,88 @@
       <div id="cronograma-tabs" class="flex flex-wrap justify-center gap-2 mb-8"></div>
       <div id="cronograma-lista" class="max-w-3xl mx-auto space-y-3"></div>
       <p id="cronograma-vazio" class="hidden text-center text-gray-400 py-10">Programação em breve.</p>
+    </div>
+  </section>
+
+  <!-- Seção: História da identidade visual (logo) -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-red-900 via-red-800 to-red-600 py-16 lg:py-20">
+    <div class="absolute -top-24 -right-24 w-[420px] h-[420px] bg-white/10 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 -left-24 w-[380px] h-[380px] bg-gold/20 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute inset-0 hero-grid pointer-events-none"></div>
+
+    <div class="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center reveal">
+
+        <!-- Texto -->
+        <div>
+          <span class="eyebrow inline-flex items-center gap-3 text-gold mb-4">
+            <span class="h-px w-8 bg-gold/70"></span> Identidade Visual
+          </span>
+          <h2 class="font-spartan text-3xl md:text-4xl font-black text-white">A história da nossa logo</h2>
+          <div class="w-16 h-1 bg-gold rounded-full mt-5 mb-8"></div>
+
+          <div class="space-y-5 leading-relaxed">
+            <p class="text-white">
+              Criada em <strong class="text-gold">2023 por Bruno Groper Morbin</strong>, então aluno do
+              Bacharelado em Estatística e membro do Departamento de Marketing da aMostra, nossa
+              identidade visual carrega em cada traço uma referência à Estatística.
+            </p>
+            <p class="text-white">
+              O símbolo central nasce da junção de <strong class="text-gold">duas distribuições beta</strong>,
+              que formam uma curva bimodal, sobreposta por uma <strong class="text-gold">curva normal</strong>.
+              Juntas, elas desenham as letras <strong class="text-gold">A</strong> e <strong class="text-gold">M</strong>, de aMostra.
+            </p>
+            <p class="text-white">
+              Já o formato <strong class="text-gold">hexagonal</strong> é uma piscadela dupla: remete aos
+              ícones dos pacotes da linguagem R e, ao mesmo tempo, à geometria de um dado — símbolo
+              clássico da probabilidade e da estatística.
+            </p>
+          </div>
+
+          <div class="mt-8 inline-flex items-center gap-3 bg-white/10 ring-1 ring-white/15 rounded-full pl-2 pr-4 py-2 backdrop-blur-sm">
+            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-gold text-red-900 font-black font-spartan">B</span>
+            <span class="text-sm text-white font-montserrat">Concepção e código original por <strong class="text-gold">Bruno Groper Morbin</strong> · 2023</span>
+          </div>
+        </div>
+
+        <!-- Card: o código que gera a logo -->
+        <div class="relative">
+          <div class="rounded-2xl bg-red-950/40 ring-1 ring-white/15 shadow-2xl shadow-black/30 backdrop-blur-sm overflow-hidden">
+            <!-- barra do "editor" -->
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/5">
+              <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+              <span class="w-3 h-3 rounded-full bg-gold/80"></span>
+              <span class="w-3 h-3 rounded-full bg-green-400/70"></span>
+              <span class="ml-3 text-xs font-mono text-white/60">normal_curve_AM.Rmd</span>
+            </div>
+            <!-- código em R -->
+            <pre class="p-5 text-[13px] leading-relaxed font-mono text-white/85 overflow-x-auto"><code>library(<span class="text-emerald-300">ggplot2</span>)
+
+x &lt;- seq(0, 1, length.out = 200)
+
+<span class="text-amber-300/80"># duas betas &rarr; curva bimodal (o "M")</span>
+bimodal &lt;- <span class="text-gold">dbeta</span>(x, 8, 15) + <span class="text-gold">dbeta</span>(x, 9, 4)
+
+<span class="text-amber-300/80"># normal sobreposta (o "A")</span>
+ggplot(data.frame(x, y = bimodal)) +
+  geom_line(aes(x, y), color = <span class="text-emerald-300">"white"</span>, linewidth = 1.5) +
+  geom_function(
+    fun = <span class="text-gold">dnorm</span>,
+    args = list(mean = 0.5, sd = 0.07),
+    linewidth = 2, color = <span class="text-emerald-300">"white"</span>
+  ) +
+  theme_void()</code></pre>
+          </div>
+
+          <!-- seta + logo resultante -->
+          <div class="flex items-center justify-center gap-4 sm:gap-5 mt-6">
+            <span class="text-white/70 font-montserrat text-xs sm:text-sm uppercase tracking-wider">Resultado</span>
+            <i class="fa fa-long-arrow-right text-gold text-xl" aria-hidden="true"></i>
+            <img src="styles/Logo.png" alt="Logo da aMostra gerada por código em R" class="w-20 sm:w-24 h-auto drop-shadow-lg">
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 

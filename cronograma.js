@@ -76,7 +76,22 @@ window.CRONOGRAMA = [
         }
       },
       { horario: "12h00", tipo: "Intervalo", titulo: "Almoço", palestrante: null },
-      { horario: "14h00", tipo: "Em breve", titulo: "Em breve", palestrante: null },
+      {
+        horario: "14h00",
+        tipo: "Palestra",
+        titulo: "Estatística Aplicada, Inteligência Artificial e o problema dos boletos",
+        resumo: "Estatística Aplicada e o mercado para estatísticos.",
+        local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
+        descricao: "Conteúdo da palestra será divulgado em breve.",
+        palestrante: {
+          nome: "Paulo do Canto Hubert Junior",
+          cargo: "Head of Data Science · ehab.co",
+          foto: "styles/palestrantes/Paulo_Hubert.avif",
+          bio:
+            "Bacharel e Mestre em Estatística pelo IME-USP; Doutor em Matemática Aplicada pelo IME-USP, professor da EESP-FGV e EAESP-FGV entre 2011 e 2025, trabalhou em diversas empresas do mercado bem como participou como estatístico de diferentes grupos de pesquisa. Atualmente é head of Data Science na ehab.co.",
+          redes: { instagram: "docantopaulo", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
+        }
+      },
       {
         horario: "15h00",
         tipo: "Palestra",
@@ -275,11 +290,19 @@ window.CRONOGRAMA = [
       {
         horario: "15h00",
         tipo: "Palestra",
-        titulo: "Programa de Pós-graduação em Estatística (em breve)",
-        resumo: "Detalhes em breve.",
+        titulo: "Programa de Pós-graduação em Estatística",
+        resumo: "Um relato pessoal sobre a rotina e os primeiros passos na pós-graduação em Estatística.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
-        descricao: "Informações sobre esta atividade serão divulgadas em breve.",
-        palestrante: null
+        descricao:
+          "A partir de sua própria trajetória, o palestrante vai contar como é a rotina da pós-graduação em Estatística no IME-USP, compartilhando as alegrias e os desafios de dar os primeiros passos como pesquisador. Uma conversa aberta e sincera para quem está pensando em seguir pela carreira acadêmica.",
+        palestrante: {
+          nome: "Conrado Freitas Paulo da Costa",
+          cargo: "Economista · Doutor em Probabilidade (Mecânica Estatística)",
+          foto: "styles/palestrantes/Conrado_Freitas.avif",
+          bio:
+            "Economista de formação, com doutorado e pós-doutorado em Probabilidade ligada à Mecânica Estatística.",
+          redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
+        }
       },
       { horario: "16h00", tipo: "Intervalo", titulo: "Coffee Break", palestrante: null }
     ]

@@ -1,0 +1,116 @@
+---
+title: "Construção da identidade visual da Amostra"
+author: "Bruno Groper Morbin"
+date: "2023-05-15"
+output: pdf_document
+description: "Código original relacionado à criação da identidade visual da aMostra."
+---
+
+<!--
+Registro histórico:
+Autor do código e da identidade visual: Bruno Groper Morbin
+Ano de criação da identidade visual: 2023
+Contexto: criado enquanto aluno do Bacharelado em Estatística e membro do Departamento de Marketing da aMostra.
+
+Metadados de preservação acrescentados em setembro de 2026.
+O código original de 2023 foi mantido sem alterações.
+
+Este arquivo deve ser preservado como registro da origem da identidade visual.
+-->
+
+```{r}
+library(ggplot2)
+# gerando vários pontos com coordenadas (x,y) para plotar no gráfico da curva da Normal 
+#coord_x <- runif(1e3, min = 0, max = X) #eixo X
+#coord_y <- runif(1e3, min = 0, max = 1/sqrt(2*pi)) #eixo Y
+
+#coords <- matrix(c(coord_x,coord_y),ncol=2,byrow=F)
+
+fdp_norm <- function(x, media=0, sigma=1) (1/(sqrt(2*pi*(sigma^2))))*exp(-0.5*((x-media)/sigma)^2)
+
+#is_in <- apply(coords, 1, function(x) x[2]<=fdp_norm(x[1]))
+
+ggplot()+
+  #geom_ribbon(aes(x=xs, ymin=ysmin, ymax=ysmax), data=data.frame(xs = seq(-5,X,0.01), ysmin=0, ysmax=sapply(seq(-5,X,0.01), FUN= dnorm)), fill="cyan", alpha=0.5)+
+  #geom_rect(aes(xmin=0, xmax=X, ymin=0, ymax=1/sqrt(2*pi)), fill="black", color=NA, alpha=.15)+
+  #geom_point(data=data.frame(coords), aes(x=X1,y=X2, color=is_in), size=0.6)+
+  geom_function(fun = dnorm, args=list(mean=1.5,sd=1.6), lwd=1.5, color="red", alpha=1)+
+  geom_function(fun = dnorm, args=list(mean=-1.5,sd=1.4), lwd=1.5, color="grey", alpha=1)+
+  geom_function(fun = dnorm, args=list(mean=0,sd=1), lwd=2, color="gray7", alpha=1)+
+  #geom_function(fun = dbeta, args=list(shape1=1,shape2=.3), lwd=1, color='red')+
+  #geom_vline(xintercept = X, linetype="dashed", color="grey60")+
+  #geom_vline(xintercept = 0, linetype="dashed", color="grey60")+
+  #geom_hline(yintercept = 1/sqrt(2*pi), linetype="dashed", color="grey60")+
+  #scale_y_continuous(expand = c(0,0), limits=c(0,.45))+ 
+  theme_void()+
+  scale_x_continuous(limits=c(-5,5))
+```
+
+```{r}
+# Define the range of x values
+x <- seq(-4, 8, length.out = 200)
+
+# Define the parameters for the first normal distribution
+mean1 <- 1
+sd1 <- 0.5
+
+# Calculate the y values for the first normal distribution using dnorm
+y1 <- dnorm(x, mean = mean1, sd = sd1)
+
+# Define the parameters for the second normal distribution
+mean2 <- 5
+sd2 <- 1
+
+# Calculate the y values for the second normal distribution using dnorm
+y2 <- dnorm(x, mean = mean2, sd = sd2)
+
+# Combine the y values of the two distributions to create a bimodal curve
+y <- y1 + y2
+
+# Create a data frame for the x and y values
+data <- data.frame(x = x, y = y)
+
+# Create the plot
+ggplot(data) +
+  geom_line(aes(x = x, y = y), color = "blue", size = 1.5) +
+  labs(x = "x", y = "Density") +
+  ggtitle("Bimodal Gaussian Curve") +
+  theme_minimal()
+```
+
+```{r}
+library(ggplot2)
+
+# Define the range of x values
+x <- seq(0, 1, length.out = 200)
+
+# Define the parameters for the first beta distribution
+shape1 <- 8
+shape2 <- 15
+
+# Calculate the y values for the first beta distribution using dbeta
+y1 <- dbeta(x, shape1, shape2)
+
+# Define the parameters for the second beta distribution
+shape3 <- 9
+shape4 <- 4
+
+# Calculate the y values for the second beta distribution using dbeta
+y2 <- dbeta(x, shape3, shape4)
+
+# Combine the y values of the two distributions to create a bimodal curve
+y <- y1 + y2
+
+# Create a data frame for the x and y values
+data <- data.frame(x = x, y = y)
+
+# Create the plot
+ggplot(data) +
+  geom_line(aes(x = x, y = y), color = "blue", size = 1.5) +
+  labs(x = "x", y = "Density") +
+  geom_function(fun = dnorm, args=list(mean=0.5,sd=.07), lwd=2, color="gray7", alpha=1)+
+  #ggtitle("Bimodal Beta Distribution") +
+  theme_void()
+
+```
+
