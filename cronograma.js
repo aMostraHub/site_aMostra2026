@@ -294,15 +294,25 @@ window.CRONOGRAMA = [
         resumo: "Um relato pessoal sobre a rotina e os primeiros passos na pós-graduação em Estatística.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
         descricao:
-          "A partir de sua própria trajetória, o palestrante vai contar como é a rotina da pós-graduação em Estatística no IME-USP, compartilhando as alegrias e os desafios de dar os primeiros passos como pesquisador. Uma conversa aberta e sincera para quem está pensando em seguir pela carreira acadêmica.",
-        palestrante: {
-          nome: "Conrado Freitas Paulo da Costa",
-          cargo: "Economista · Doutor em Probabilidade (Mecânica Estatística)",
-          foto: "styles/palestrantes/Conrado_Freitas.avif",
-          bio:
-            "Economista de formação, com doutorado e pós-doutorado em Probabilidade ligada à Mecânica Estatística.",
-          redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
-        }
+          "A partir de suas próprias trajetórias, os palestrantes vão contar como é a rotina da pós-graduação em Estatística no IME-USP, compartilhando as alegrias e os desafios de dar os primeiros passos como pesquisador. Uma conversa aberta e sincera para quem está pensando em seguir pela carreira acadêmica.",
+        palestrantes: [
+          {
+            nome: "Conrado Freitas Paulo da Costa",
+            cargo: "Economista · Doutor em Probabilidade (Mecânica Estatística)",
+            foto: "styles/palestrantes/Conrado_Freitas.avif",
+            bio:
+              "Economista de formação, com doutorado e pós-doutorado em Probabilidade ligada à Mecânica Estatística.",
+            redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
+          },
+          {
+            nome: "Marília de Melo Sombra",
+            cargo: "Doutoranda em Probabilidade e Estatística · IME-USP",
+            foto: "styles/palestrantes/Marilia_Sombra.avif",
+            bio:
+              "Bacharel em Estatística pela Universidade Federal do Ceará (UFC), atualmente cursa o doutorado em Probabilidade e Estatística na Universidade de São Paulo (USP). É representante discente na Comissão Coordenadora do Programa de Pós-Graduação em Probabilidade e Estatística do IME-USP.",
+            redes: { instagram: "marilia.sombra", linkedin: "www.linkedin.com/in/mariliasombra", site: "", lattes: "", youtube: "", email: "" }
+          }
+        ]
       },
       { horario: "16h00", tipo: "Intervalo", titulo: "Coffee Break", palestrante: null }
     ]
