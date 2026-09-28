@@ -282,6 +282,7 @@ window.CRONOGRAMA = [
           nome: "Hedibert Freitas Lopes",
           cargo: "Insper",
           foto: "logos/Insper.avif",
+          parceiro: true,
           bio: "",
           redes: { instagram: "", linkedin: "", site: "www.insper.edu.br", lattes: "", youtube: "", email: "" }
         }
