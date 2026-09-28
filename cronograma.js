@@ -273,17 +273,16 @@ window.CRONOGRAMA = [
       {
         horario: "14h00",
         tipo: "Palestra",
-        titulo: "Palestra do Insper (em breve)",
-        resumo: "Detalhes em breve.",
+        titulo: "Experiência Insper: Possibilidades interdisciplinares para quem vem da Estatística",
+        resumo: "Um panorama das possibilidades interdisciplinares no Insper para quem vem da Estatística, com destaque para o novo mestrado em Modelagem e IA.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
-        descricao: "Conteúdo da palestra será divulgado em breve.",
+        descricao:
+          "Hedibert Freitas Lopes apresenta a experiência do Insper e as possibilidades interdisciplinares que a instituição oferece a quem vem da Estatística. A palestra dá atenção especial ao novo Mestrado Profissional em Modelagem e Inteligência Artificial (MPMIA), programa que está sendo submetido à CAPES nos próximos dias.",
         palestrante: {
-          nome: "Luiza Alcântara",
+          nome: "Hedibert Freitas Lopes",
           cargo: "Insper",
           foto: "logos/Insper.avif",
-          parceiro: true,
-          bio:
-            "O Insper é uma instituição independente e sem fins lucrativos, referência em educação e geração de conhecimento por meio do ensino de excelência e da pesquisa nas áreas de Administração, Economia, Direito, Engenharia, Políticas Públicas, Tecnologia e Comunicação. A escola tem as certificações de qualidade da AACSB, AMBA e EQUIS.",
+          bio: "",
           redes: { instagram: "", linkedin: "", site: "www.insper.edu.br", lattes: "", youtube: "", email: "" }
         }
       },
@@ -388,11 +387,27 @@ window.CRONOGRAMA = [
       {
         horario: "14h00",
         tipo: "Palestra",
-        titulo: "R-Ladies (em breve)",
-        resumo: "Detalhes em breve.",
+        titulo: "Projetos de Tradução com a comunidade R",
+        resumo: "Como projetos de tradução tornam a linguagem R mais acessível — e como qualquer pessoa pode contribuir.",
         local: "Auditório Jacy Monteiro — Bloco B, IME-USP",
-        descricao: "Informações sobre esta atividade serão divulgadas em breve.",
-        palestrante: null
+        descricao:
+          "Beatriz Milz e Geovana Lopes Batista apresentam projetos de tradução da comunidade R: como pacotes, mensagens e outros materiais são traduzidos para o português e outras línguas para tornar a linguagem mais acessível. A palestra também mostra como quem tiver interesse pode se envolver e contribuir com esses projetos.",
+        palestrantes: [
+          {
+            nome: "Beatriz Milz",
+            cargo: "R-Ladies",
+            foto: "",
+            bio: "",
+            redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
+          },
+          {
+            nome: "Geovana Lopes Batista",
+            cargo: "R-Ladies",
+            foto: "",
+            bio: "",
+            redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
+          }
+        ]
       },
       {
         horario: "15h00",
