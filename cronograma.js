@@ -395,16 +395,18 @@ window.CRONOGRAMA = [
         palestrantes: [
           {
             nome: "Beatriz Milz",
-            cargo: "R-Ladies",
-            foto: "",
-            bio: "",
+            cargo: "Pesquisadora · Co-organizadora do R-Ladies São Paulo",
+            foto: "styles/palestrantes/Beatriz_Milz.avif",
+            bio:
+              "Doutora em Ciências Ambientais, é pesquisadora com interesse em gestão de recursos hídricos, transparência e dados abertos, ciência de dados ambientais e questões de gênero e meio ambiente. Atualmente realiza pós-doutorado na Universidade Federal do ABC (UFABC). Desde 2018, integra a equipe executiva da revista Ambiente & Sociedade e, desde 2024, é editora de revisão de software no rOpenSci, além de compor a equipe executiva da Revista Diálogos Socioambientais. É instrutora certificada de tidyverse pela RStudio, com experiência lecionando R no Curso-R, no cebrap.lab e no Programa de Verão do IME-USP. Desde 2018, é co-organizadora do R-Ladies São Paulo e é GitHub Star, reconhecimento concedido pelo GitHub a especialistas técnicos e líderes de comunidade.",
             redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
           },
           {
             nome: "Geovana Lopes Batista",
-            cargo: "R-Ladies",
-            foto: "",
-            bio: "",
+            cargo: "Bacharelanda em Estatística (USP) · R-Ladies",
+            foto: "styles/palestrantes/Geovana_Batista.jpg",
+            bio:
+              "Formada em Matemática pela Universidade de São Paulo (USP), atualmente cursa o bacharelado em Estatística na mesma instituição. Tem pós-graduação lato sensu em Ciência de Dados pelo Instituto Federal de Educação, Ciência e Tecnologia de São Paulo (IFSP) e cursa especializações em Estatística com Ênfase em Pesquisa Quantitativa (UEL) e em Economia (MBA, Faculdade Única). É membro do R-Ladies.",
             redes: { instagram: "", linkedin: "", site: "", lattes: "", youtube: "", email: "" }
           }
         ]
