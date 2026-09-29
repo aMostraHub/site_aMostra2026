@@ -14,9 +14,21 @@
   <link rel="stylesheet" href="../styles/style.css?v=20260920">
   <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css">
   <script src="../script.js?v=20260920" defer></script>
-  <!-- Dados vêm do cronograma.js (edite lá para atualizar bios/fotos/palestras) -->
-  <script src="../cronograma.js?v=20260928" defer></script>
-  <script src="../palestrantes.js?v=20260920" defer></script>
+  <!-- Dados vêm do cronograma.js (edite lá para atualizar bios/fotos/palestras).
+       Carregado dinamicamente com parâmetro único para nunca exibir versão
+       antiga em cache; async=false preserva a ordem (cronograma antes de
+       palestrantes). -->
+  <script>
+    (function () {
+      var v = Date.now();
+      ["../cronograma.js", "../palestrantes.js"].forEach(function (src) {
+        var s = document.createElement("script");
+        s.src = src + "?v=" + v;
+        s.async = false;
+        document.head.appendChild(s);
+      });
+    })();
+  </script>
 
   <style>
     .nav-link { position: relative; padding: .25rem .35rem; transition: color .2s ease; }
