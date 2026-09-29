@@ -25,7 +25,17 @@
   <link rel="stylesheet" href="styles/style.css?v=20260920">
   <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
   <script src="script.js?v=20260920" defer></script>
-  <script src="cronograma.js?v=20260928" defer></script>
+  <!-- O cronograma.js é carregado sempre com um parâmetro único para nunca
+       exibir uma versão antiga em cache (é o arquivo atualizado com mais
+       frequência). Assim, não é preciso trocar número de versão a cada edição. -->
+  <script>
+    (function () {
+      var s = document.createElement("script");
+      s.src = "cronograma.js?v=" + Date.now();
+      s.async = false;
+      document.head.appendChild(s);
+    })();
+  </script>
 
   <style>
     /* ===== index — realces visuais (respeitando brand.js / style.css) ===== */

@@ -148,9 +148,16 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  // Pode ser carregado dinamicamente (cache-busting), então roda na hora se o
+  // DOM já estiver pronto — senão espera o DOMContentLoaded.
+  function iniciar() {
     const mount = document.getElementById("palestrantes-lista");
     if (!mount || !Array.isArray(window.CRONOGRAMA)) return;
     render(mount);
-  });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciar);
+  } else {
+    iniciar();
+  }
 })();

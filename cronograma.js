@@ -737,7 +737,10 @@ window.CRONOGRAMA = [
     dia.sessoes.forEach((s) => refs.lista.appendChild(cardSessao(s)));
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  // Como este arquivo pode ser carregado de forma dinâmica (cache-busting),
+  // pode acontecer de ele executar depois do DOMContentLoaded já ter disparado.
+  // Por isso rodamos na hora se o DOM já estiver pronto.
+  function iniciar() {
     const lista = document.getElementById("cronograma-lista");
     if (!lista || !Array.isArray(window.CRONOGRAMA)) return;
     const refs = {
@@ -753,5 +756,10 @@ window.CRONOGRAMA = [
       if (m && hoje.getDate() === +m[1] && (hoje.getMonth() + 1) === +m[2]) inicio = i;
     });
     render(inicio, refs);
-  });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", iniciar);
+  } else {
+    iniciar();
+  }
 })();
