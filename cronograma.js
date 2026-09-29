@@ -145,7 +145,7 @@ window.CRONOGRAMA = [
         descricao:
           "Avanços recentes em Biologia e Medicina levaram ao acúmulo de conjuntos de dados enormes, tanto em tamanho quanto em complexidade. Essa avalanche de dados foi então confrontada com métodos matemáticos e estatísticos cada vez mais complexos, projetados para responder a questões quantitativas cada vez mais complexas. É justo dizer, no entanto, que os desenvolvimentos metodológicos têm lutado para acompanhar o ritmo. Nesta palestra, darei alguns exemplos dos desafios envolvidos na conexão entre os dados que temos e as perguntas que gostaríamos de responder, com foco particular em Epidemiologia. Ao final, apresentarei o programa de pós-graduação (Mestrado e Doutorado) em modelagem matemática e ciência de dados da FGV EMAp.",
         palestrante: {
-          nome: "Monica Souza",
+          nome: "Luiz Max Carvalho",
           cargo: "FGV EMAp — Escola de Matemática Aplicada",
           foto: "logos/FGV.avif",
           parceiro: true,
